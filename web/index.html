@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmicsLab &mdash; Multi-Omics Analysis & Modeling Workstation</title>
+  <meta name="description" content="End-to-end bioinformatics workstation for multi-omics data ingestion, QC, differential analysis, ML modeling, and SHAP biomarker discovery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================= -->
+  <!--  SIDEBAR NAVIGATION                       -->
+  <!-- ========================================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 32 32" width="28" height="28">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.8"/>
+          <circle cx="10" cy="20" r="2.5" fill="currentColor" opacity="0.6"/>
+          <circle cx="22" cy="19" r="2" fill="currentColor" opacity="0.5"/>
+          <line x1="16" y1="13" x2="10" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="16" y1="13" x2="22" y2="17" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="10" y1="20" x2="22" y2="19" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">OmicsLab</span>
+        <span class="brand-edition">v2.4 Research Workstation</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">WORKSPACE</div>
+      <button class="nav-item active" data-tab="tab-ingest" onclick="switchTab('tab-ingest')" id="nav-ingest">
+        <span class="nav-icon">📥</span>
+        <span>1. Ingest Data &amp; Run</span>
+      </button>
+      <button class="nav-item" data-tab="tab-overview" onclick="switchTab('tab-overview')" id="nav-overview">
+        <span class="nav-icon">📊</span>
+        <span>2. Executive Summary</span>
+      </button>
+
+      <div class="nav-group-label">PIPELINE STAGES</div>
+      <button class="nav-item" data-tab="tab-qc" onclick="switchTab('tab-qc')" id="nav-qc">
+        <span class="nav-icon">🔬</span>
+        <span>3. QC &amp; Alignments</span>
+      </button>
+      <button class="nav-item" data-tab="tab-differential" onclick="switchTab('tab-differential')" id="nav-diff">
+        <span class="nav-icon">🧬</span>
+        <span>4. Differential Omics</span>
+      </button>
+      <button class="nav-item" data-tab="tab-models" onclick="switchTab('tab-models')" id="nav-models">
+        <span class="nav-icon">🤖</span>
+        <span>5. ML Models &amp; CV</span>
+      </button>
+      <button class="nav-item" data-tab="tab-shap" onclick="switchTab('tab-shap')" id="nav-shap">
+        <span class="nav-icon">🎯</span>
+        <span>6. SHAP &amp; Biomarkers</span>
+      </button>
+      <button class="nav-item" data-tab="tab-trajectory" onclick="switchTab('tab-trajectory')" id="nav-traj">
+        <span class="nav-icon">📈</span>
+        <span>7. Plasticity Dynamics</span>
+      </button>
+
+      <div class="nav-group-label">EXPLORATION &amp; EXPORT</div>
+      <button class="nav-item" data-tab="tab-explorer" onclick="switchTab('tab-explorer')" id="nav-explorer">
+        <span class="nav-icon">🔍</span>
+        <span>8. Gene Locus Explorer</span>
+      </button>
+      <button class="nav-item" data-tab="tab-simulator" onclick="switchTab('tab-simulator')" id="nav-simulator">
+        <span class="nav-icon">🧪</span>
+        <span>9. In Silico Simulator</span>
+      </button>
+      <button class="nav-item" data-tab="tab-export" onclick="switchTab('tab-export')" id="nav-export">
+        <span class="nav-icon">📄</span>
+        <span>10. Export &amp; Reports</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="pipeline-indicator" id="sidebarStatus">
+        <span class="indicator-dot ready"></span>
+        <span id="sidebarStatusText">System Ready</span>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" title="Switch dark/light theme">
+        <span id="themeEmoji">🌙</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================= -->
+  <!--  MAIN CONTENT AREA                        -->
+  <!-- ========================================= -->
+  <main class="main-content">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+        <div>
+          <h1 class="page-title" id="pageTitle">1. Ingest Data &amp; Run Analysis</h1>
+          <span class="breadcrumb" id="pageBreadcrumb">Upload cohort datasets, validate samples, and execute the 4-stage pipeline</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="dataset-badge" id="topbarDatasetBadge" title="Active Multi-Omics Dataset">
+          <span class="status-pulse green" id="statusPulseDot"></span>
+          <span id="topbarDatasetText">Dataset: Benchmark Multi-Omics (n=24)</span>
+        </div>
+        <button class="action-btn secondary" onclick="switchTab('tab-ingest')" id="btnTopUpload" title="Load or Upload New Data">
+          <span>📁</span> Add Data
+        </button>
+        <button class="action-btn primary" onclick="triggerPipelineRun()" id="btnRunPipeline" title="Execute Pipeline">
+          <span>🚀</span> Run Pipeline
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Content Area -->
+    <div class="content-scroll">
+
+      <!-- ================================================= -->
+      <!--  TAB 1: DATA INGESTION & PIPELINE RUNNER (DEFAULT) -->
+      <!-- ================================================= -->
+      <section id="tab-ingest" class="tab-panel active">
+
+        <!-- Workflow Stepper Guidance -->
+        <div class="stepper-banner">
+          <div class="stepper-step active" onclick="switchTab('tab-ingest')">
+            <span class="step-num">1</span>
+            <span class="step-text">Data Ingestion</span>
+          </div>
+          <div class="stepper-line"></div>
+          <div class="stepper-step" onclick="switchTab('tab-qc')">
+            <span class="step-num">2</span>
+            <span class="step-text">QC &amp; Alignment</span>
+          </div>
+          <div class="stepper-line"></div>
+          <div class="stepper-step" onclick="switchTab('tab-differential')">
+            <span class="step-num">3</span>
+            <span class="step-text">Differential Omics</span>
+          </div>
+          <div class="stepper-line"></div>
+          <div class="stepper-step" onclick="switchTab('tab-models')">
+            <span class="step-num">4</span>
+            <span class="step-text">Machine Learning</span>
+          </div>
+          <div class="stepper-line"></div>
+          <div class="stepper-step" onclick="switchTab('tab-shap')">
+            <span class="step-num">5</span>
+            <span class="step-text">SHAP &amp; Discovery</span>
+          </div>
+        </div>
+
+        <!-- 3 Data Ingestion Options -->
+        <div class="grid-3" style="margin-top: 18px;">
+          <!-- Option A: File Upload Dropzone -->
+          <div class="card interactive-card">
+            <div class="card-top">
+              <h3>Option A: Upload Custom CSV</h3>
+              <a href="/api/download-template" download class="action-btn secondary small" title="Download standard CSV structure">⤓ Template</a>
+            </div>
+            <p class="card-desc">Upload RNA-seq, ChIP-seq, and WGBS table for your biological samples.</p>
+
+            <div class="drop-area" id="fileDropzone" onclick="document.getElementById('hiddenFileInput').click()">
+              <input type="file" id="hiddenFileInput" accept=".csv,.tsv,.txt" style="display:none" onchange="handleFileUpload(event)">
+              <div class="drop-content">
+                <span class="drop-icon">📂</span>
+                <p><strong>Click to browse</strong> or drag &amp; drop CSV here</p>
+                <span class="drop-hint">Format: sample_id, condition, RNA_*, ChIP_*, WGBS_*</span>
+              </div>
+            </div>
+
+            <div id="fileUploadInfo" class="file-info-badge" style="display:none;"></div>
+            <div id="uploadFeedbackBox" class="feedback-msg"></div>
+          </div>
+
+          <!-- Option B: Benchmark Dataset Selector -->
+          <div class="card interactive-card">
+            <div class="card-top">
+              <h3>Option B: Peer-Reviewed Benchmark</h3>
+              <span class="badge badge-accent">Pre-Loaded</span>
+            </div>
+            <p class="card-desc">Instant 1-click loading of the 4-stage neuroplasticity multi-omics cohort.</p>
+
+            <div class="benchmark-info-box">
+              <div class="benchmark-stat-item">
+                <span class="stat-k">Samples:</span>
+                <span class="stat-v">24 Biological Replicates</span>
+              </div>
+              <div class="benchmark-stat-item">
+                <span class="stat-k">Assays:</span>
+                <span class="stat-v">RNA-seq, ChIP (H3K4/27), WGBS, scRNA</span>
+              </div>
+              <div class="benchmark-stat-item">
+                <span class="stat-k">Conditions:</span>
+                <span class="stat-v">Untutored, Early 24h, 7d, Mastery 30d</span>
+              </div>
+            </div>
+
+            <button class="action-btn secondary full-width" style="margin-top: 16px;" onclick="loadBenchmarkDataset()" id="btnLoadBenchmark">
+              ⚡ Load Benchmark Cohort
+            </button>
+            <div id="benchmarkFeedbackBox" class="feedback-msg"></div>
+          </div>
+
+          <!-- Option C: Scaled Simulation & Replicates -->
+          <div class="card interactive-card">
+            <div class="card-top">
+              <h3>Option C: Cohort Synthesizer</h3>
+              <span class="badge">In Silico</span>
+            </div>
+            <p class="card-desc">Synthesize a custom experimental cohort with custom replicate counts.</p>
+
+            <div class="form-grid">
+              <div>
+                <label class="field-label">Replicates / Group:</label>
+                <input type="number" id="numReplicates" class="input-field full-width" min="3" max="25" value="6">
+              </div>
+              <div>
+                <label class="field-label">Random Seed:</label>
+                <input type="number" id="numSeed" class="input-field full-width" value="42">
+              </div>
+            </div>
+
+            <button class="action-btn secondary full-width" style="margin-top: 20px;" onclick="synthesizeCohort()" id="btnSynthesize">
+              🧪 Generate &amp; Analyze
+            </button>
+            <div id="synthesizeFeedbackBox" class="feedback-msg"></div>
+          </div>
+        </div>
+
+        <!-- Active Dataset Health Check & Interactive Preview -->
+        <div class="card" style="margin-top: 20px;">
+          <div class="card-top">
+            <div>
+              <h3>Active Dataset Inspector &amp; Schema Validation</h3>
+              <p class="card-desc" id="datasetHealthDesc">Validated multi-omics matrix loaded and ready for pipeline execution.</p>
+            </div>
+            <div class="dataset-summary-badges">
+              <span class="chip chip-success" id="chipSampleCount">24 Samples</span>
+              <span class="chip chip-blue" id="chipFeatureCount">450+ Features</span>
+              <span class="chip" id="chipModalityCount">4 Modalities</span>
+            </div>
+          </div>
+
+          <!-- Modality Breakdown Cards -->
+          <div class="modality-pills-row" id="modalityPillsRow">
+            <div class="modality-pill">
+              <span class="pill-dot rna"></span>
+              <span class="pill-title">Transcriptome (RNA-seq)</span>
+              <span class="pill-count" id="countRNAFeatures">150 Features</span>
+            </div>
+            <div class="modality-pill">
+              <span class="pill-dot chip"></span>
+              <span class="pill-title">Chromatin (ChIP H3K4me3/27me3)</span>
+              <span class="pill-count" id="countChIPFeatures">100 Peaks</span>
+            </div>
+            <div class="modality-pill">
+              <span class="pill-dot wgbs"></span>
+              <span class="pill-title">DNA Methylome (WGBS CpG)</span>
+              <span class="pill-count" id="countWGBSFeatures">80 DMRs</span>
+            </div>
+            <div class="modality-pill">
+              <span class="pill-dot sc"></span>
+              <span class="pill-title">Single-Cell Deconvolution</span>
+              <span class="pill-count" id="countSCFeatures">5 Cell Types</span>
+            </div>
+          </div>
+
+          <!-- Interactive Table Preview -->
+          <div class="data-preview-wrapper" style="margin-top: 14px;">
+            <div class="preview-table-header">
+              <span class="preview-title">Dataset Matrix Preview (First 6 Samples):</span>
+              <span class="preview-scroll-hint">Scroll horizontally to view all multi-omics modalities →</span>
+            </div>
+            <div class="table-scroll-container">
+              <table class="data-table" id="tableCohortPreview">
+                <thead>
+                  <tr id="previewTableHead">
+                    <th>Sample ID</th>
+                    <th>Animal ID</th>
+                    <th>Condition</th>
+                    <th>Tutoring Hours</th>
+                    <th>RNA_BDNF</th>
+                    <th>RNA_ARC</th>
+                    <th>ChIP_H3K4me3_BDNF</th>
+                    <th>WGBS_CpG_BDNF</th>
+                    <th>scProp_Neuron</th>
+                  </tr>
+                </thead>
+                <tbody id="previewTableBody">
+                  <tr><td colspan="9" style="text-align:center;padding:18px;">Loading dataset preview...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pipeline Execution Console & Live Terminal -->
+        <div class="card execution-card" style="margin-top: 20px;">
+          <div class="card-top">
+            <div>
+              <h3>Pipeline Orchestrator &amp; Real-Time Execution Console</h3>
+              <p class="card-desc">Execute the complete 4-stage multi-omics workflow: QC → Feature Integration → Machine Learning → SHAP Interpretation.</p>
+            </div>
+            <button class="action-btn primary large-btn" onclick="triggerPipelineRun()" id="btnExecuteFullPipeline">
+              <span>🚀</span> Execute Full Pipeline
+            </button>
+          </div>
+
+          <!-- Configuration knobs -->
+          <div class="pipeline-knobs-row">
+            <div class="knob-group">
+              <span class="knob-label">ML Classifiers:</span>
+              <label class="checkbox-label"><input type="checkbox" checked disabled> Random Forest</label>
+              <label class="checkbox-label"><input type="checkbox" checked disabled> XGBoost</label>
+              <label class="checkbox-label"><input type="checkbox" checked disabled> MLP Neural Net</label>
+            </div>
+            <div class="knob-group">
+              <span class="knob-label">Validation:</span>
+              <span class="badge badge-accent">Stratified 5-Fold Group K-Fold (Replicate-Isolated)</span>
+            </div>
+            <div class="knob-group">
+              <span class="knob-label">Significance:</span>
+              <span class="badge">FDR &lt; 0.05 · |log₂FC| &gt; 1.0</span>
+            </div>
+          </div>
+
+          <!-- Live Pipeline Stepper -->
+          <div class="pipeline-progress-box" id="pipelineProgressBox">
+            <div class="stage-stepper-grid">
+              <div class="stage-step-item done" id="stepStage1">
+                <div class="step-circle">1</div>
+                <div class="step-info">
+                  <strong>Stage 1: QC &amp; Alignments</strong>
+                  <span>FastQC, STAR &amp; Bismark</span>
+                </div>
+              </div>
+              <div class="stage-step-item done" id="stepStage2">
+                <div class="step-circle">2</div>
+                <div class="step-info">
+                  <strong>Stage 2: Differential Matrix</strong>
+                  <span>DESeq2 &amp; DMR Epigenetics</span>
+                </div>
+              </div>
+              <div class="stage-step-item done" id="stepStage3">
+                <div class="step-circle">3</div>
+                <div class="step-info">
+                  <strong>Stage 3: ML Modeling</strong>
+                  <span>RF, XGBoost, MLP Benchmark</span>
+                </div>
+              </div>
+              <div class="stage-step-item done" id="stepStage4">
+                <div class="step-circle">4</div>
+                <div class="step-info">
+                  <strong>Stage 4: SHAP Biomarkers</strong>
+                  <span>Attribution &amp; Trajectories</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="pipelineProgressBar" style="width: 100%;"></div>
+            </div>
+            <div class="progress-label-row">
+              <span id="pipelineProgressStatus">Status: Analysis Complete (100%)</span>
+              <span id="pipelineProgressTime">All 4 stages executed</span>
+            </div>
+          </div>
+
+          <!-- Streaming Live Terminal Output -->
+          <div class="terminal-container">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="term-dot red"></span>
+                <span class="term-dot yellow"></span>
+                <span class="term-dot green"></span>
+              </div>
+              <span class="terminal-title">STDOUT &amp; LOG CONSOLE &mdash; python serve_dashboard.py</span>
+              <button class="terminal-clear-btn" onclick="clearTerminalLogs()">Clear Logs</button>
+            </div>
+            <div class="terminal-body" id="terminalLogBody">
+              <div class="log-line info">[System] OmicsLab bioinformatics pipeline initialized.</div>
+              <div class="log-line info">[System] Multi-omics matrices loaded and validated.</div>
+              <div class="log-line success">[Stage 1] FastQC sequence quality &amp; STAR alignment: 24/24 PASS (Q36.9, 89.9% mapped).</div>
+              <div class="log-line success">[Stage 2] DESeq2 DEG analysis: 25 top significant neuroplasticity markers identified.</div>
+              <div class="log-line success">[Stage 3] 5-Fold Stratified Group K-Fold complete: Best Model Random Forest (F1: 0.8617).</div>
+              <div class="log-line success">[Stage 4] SHAP TreeExplainer attribution &amp; plasticity trajectory manifold complete.</div>
+            </div>
+          </div>
+
+          <!-- Post-Run Jump Links Banner -->
+          <div class="post-run-banner" id="postRunBanner">
+            <div class="banner-left">
+              <span class="banner-icon">🎉</span>
+              <div>
+                <strong>Complete Multi-Omics Analysis Finished!</strong>
+                <p>All 4 stages processed without biological leakage. Explore your results:</p>
+              </div>
+            </div>
+            <div class="banner-actions">
+              <button class="action-btn secondary small" onclick="switchTab('tab-qc')">🔬 View QC</button>
+              <button class="action-btn secondary small" onclick="switchTab('tab-differential')">🧬 View DEGs</button>
+              <button class="action-btn secondary small" onclick="switchTab('tab-models')">🤖 View ML Models</button>
+              <button class="action-btn secondary small" onclick="switchTab('tab-shap')">🎯 View SHAP</button>
+              <button class="action-btn primary small" onclick="switchTab('tab-export')">📄 Export Report</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 2: EXECUTIVE SUMMARY & ARCHITECTURE          -->
+      <!-- ================================================= -->
+      <section id="tab-overview" class="tab-panel">
+
+        <!-- Hero summary -->
+        <div class="hero-card">
+          <div class="hero-left">
+            <p class="hero-eyebrow">Multi-Omics Epigenetic Modeling</p>
+            <h2 class="hero-title">Epigenetic Remodeling Across<br>Tutoring Conditions</h2>
+            <p class="hero-description">
+              Integrated RNA-seq, ChIP-seq (H3K4me3 / H3K27me3), WGBS methylation,
+              and single-cell deconvolution across biological replicates &mdash; modeled
+              with XGBoost, Random Forest, and MLP under strict Group K-Fold validation.
+            </p>
+            <div class="hero-tags">
+              <span class="tag">RNA-seq</span>
+              <span class="tag">ChIP-seq</span>
+              <span class="tag">WGBS</span>
+              <span class="tag">scRNA</span>
+              <span class="tag tag-accent">Group K-Fold CV</span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-stat">
+              <span class="hero-stat-number" id="metricCohort">24</span>
+              <span class="hero-stat-label">Animals</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-number" id="metricFeatures">500+</span>
+              <span class="hero-stat-label">Features</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon">🏆</span>
+              <span class="kpi-label">Best Classifier</span>
+            </div>
+            <p class="kpi-value" id="metricBestModel">Random Forest</p>
+            <p class="kpi-detail" id="metricF1">Macro F1: 0.86 &middot; ROC-AUC: 0.94</p>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon">🧬</span>
+              <span class="kpi-label">Top Biomarker</span>
+            </div>
+            <p class="kpi-value accent" id="metricTopGene">BDNF</p>
+            <p class="kpi-detail">Immediate-Early Activation &middot; Promoter Demethylation</p>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-icon">✅</span>
+              <span class="kpi-label">Validation</span>
+            </div>
+            <p class="kpi-value success">Zero Leakage</p>
+            <p class="kpi-detail">Stratified group k-fold across biological replicates</p>
+          </div>
+        </div>
+
+        <!-- Pipeline Architecture -->
+        <div class="section-card">
+          <div class="section-header">
+            <h3>Pipeline Architecture &amp; Execution Graph</h3>
+            <span class="chip">4 Stages &middot; Production Ready</span>
+          </div>
+          <div class="pipeline-flow">
+            <div class="pipeline-stage">
+              <div class="stage-number">1</div>
+              <h4>QC &amp; Processing</h4>
+              <ul>
+                <li>FastQC / MultiQC</li>
+                <li>STAR &amp; HISAT2 alignment</li>
+                <li>MACS3 peak calling</li>
+                <li>Bismark methylation</li>
+              </ul>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-stage">
+              <div class="stage-number">2</div>
+              <h4>Feature Engineering</h4>
+              <ul>
+                <li>DESeq2 Wald test</li>
+                <li>Promoter DMR extraction</li>
+                <li>H3K4me3/H3K27me3 ratio</li>
+                <li>Bivalent scoring</li>
+              </ul>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-stage">
+              <div class="stage-number">3</div>
+              <h4>Machine Learning</h4>
+              <ul>
+                <li>XGBoost classifier</li>
+                <li>Random Forest</li>
+                <li>Multi-Layer Perceptron</li>
+                <li>Group K-Fold CV</li>
+              </ul>
+            </div>
+            <div class="pipeline-arrow">&rarr;</div>
+            <div class="pipeline-stage">
+              <div class="stage-number">4</div>
+              <h4>Interpretation</h4>
+              <ul>
+                <li>SHAP attribution</li>
+                <li>Biomarker discovery</li>
+                <li>Trajectory mapping</li>
+                <li>Kinetic dynamics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 3: QUALITY CONTROL & ALIGNMENTS              -->
+      <!-- ================================================= -->
+      <section id="tab-qc" class="tab-panel">
+        <div class="section-intro">
+          <h2>Quality Control &amp; Genome Alignments</h2>
+          <p>Sequencing quality metrics, STAR/HISAT2 mapping rates, MACS3 ChIP peaks, and Bismark bisulfite conversion across all biological samples.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Per-Sample Phred Quality</h3>
+              <span class="badge" id="badgeQCPass">24/24 Pass</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chartQCPhred"></canvas>
+            </div>
+            <div class="chart-footer">
+              Avg Quality: <strong id="lblMeanPhred">Q36.8</strong> &middot; GC: <strong id="lblMeanGC">48.5%</strong>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>STAR RNA-seq Mapping Rate</h3>
+              <span class="badge badge-success">89.9% Mapped</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chartQCAlignment"></canvas>
+            </div>
+            <div class="chart-footer">
+              Uniquely Mapped: <strong id="lblStarUnique">89.9%</strong> &middot; Multi-Mapped: <strong id="lblStarMulti">7.3%</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-top: 20px;">
+          <div class="section-header">
+            <h3>Sample-Level Quality Audit Log</h3>
+            <span class="chip">24 Biological Samples</span>
+          </div>
+          <div class="table-scroll-container">
+            <table class="data-table" id="tableQCSamples">
+              <thead>
+                <tr>
+                  <th>Sample ID</th>
+                  <th>Condition</th>
+                  <th>Total Reads</th>
+                  <th>Phred Q</th>
+                  <th>GC %</th>
+                  <th>STAR %</th>
+                  <th>MACS3 Peaks</th>
+                  <th>CpG Meth %</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyQCSamples">
+                <tr><td colspan="9" style="text-align:center">Loading samples...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 4: DIFFERENTIAL OMICS (DEG & DMR)            -->
+      <!-- ================================================= -->
+      <section id="tab-differential" class="tab-panel">
+        <div class="section-intro">
+          <h2>Differential Expression &amp; Epigenetic Remodeling</h2>
+          <p>DESeq2 Wald test differential gene expression, WGBS promoter DMRs, and ChIP-seq histone enrichment.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Transcriptome Volcano Plot</h3>
+              <span class="badge">FDR &lt; 0.05</span>
+            </div>
+            <div class="chart-container tall">
+              <canvas id="chartVolcanoCanvas"></canvas>
+            </div>
+            <div class="chart-footer">
+              <span class="dot red"></span> Upregulated &middot;
+              <span class="dot blue"></span> Downregulated &middot;
+              <span class="dot gray"></span> Non-significant
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>Top Differentially Expressed Genes</h3>
+              <span class="badge" id="badgeDegCount">Top 25</span>
+            </div>
+            <div class="table-scroll-container tall">
+              <table class="data-table" id="tableTopDegs">
+                <thead>
+                  <tr>
+                    <th>Gene</th>
+                    <th>BaseMean</th>
+                    <th>log₂FC</th>
+                    <th>p-adj</th>
+                    <th>Regulation</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyTopDegs">
+                  <tr><td colspan="5" style="text-align:center">Loading DEGs...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-top: 20px;">
+          <div class="section-header">
+            <h3>Differentially Methylated Regions (DMRs) &mdash; Promoters</h3>
+            <span class="chip">WGBS Bisulfite</span>
+          </div>
+          <div class="table-scroll-container">
+            <table class="data-table" id="tableTopDmrs">
+              <thead>
+                <tr>
+                  <th>Locus</th>
+                  <th>Gene</th>
+                  <th>Region</th>
+                  <th>Δβ (Methylation)</th>
+                  <th>p-value</th>
+                  <th>FDR</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyTopDmrs">
+                <tr><td colspan="7" style="text-align:center">Loading DMRs...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 5: MACHINE LEARNING MODELS                   -->
+      <!-- ================================================= -->
+      <section id="tab-models" class="tab-panel">
+        <div class="section-intro">
+          <h2>Machine Learning Benchmark &amp; Cross-Validation</h2>
+          <p>Stratified 5-Fold Group K-Fold cross-validation across biological replicates to prevent biological leakage.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Classifier Leaderboard (4 Epochs)</h3>
+              <span class="badge badge-success">Group K-Fold</span>
+            </div>
+            <div class="table-scroll-container">
+              <table class="data-table" id="tableClsLeaderboard">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Accuracy</th>
+                    <th>Balanced Acc</th>
+                    <th>Macro F1</th>
+                    <th>ROC-AUC</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyClsLeaderboard">
+                  <tr><td colspan="5" style="text-align:center">Loading models...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>Confusion Matrix (Best Classifier)</h3>
+              <span class="badge" id="lblBestConfName">Random Forest</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="chartConfusionCanvas"></canvas>
+            </div>
+            <div class="chart-footer">
+              Predicted condition vs ground truth across out-of-fold validation sets.
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-top: 20px;">
+          <div class="section-header">
+            <h3>Continuous Plasticity Score Regression</h3>
+            <span class="chip">Tutoring Mastery Progression</span>
+          </div>
+          <div class="table-scroll-container">
+            <table class="data-table" id="tableRegLeaderboard">
+              <thead>
+                <tr>
+                  <th>Regressor</th>
+                  <th>R² Score</th>
+                  <th>RMSE</th>
+                  <th>MAE</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyRegLeaderboard">
+                <tr><td colspan="4" style="text-align:center">Loading regression benchmarks...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 6: SHAP & MASTER REGULATORS                  -->
+      <!-- ================================================= -->
+      <section id="tab-shap" class="tab-panel">
+        <div class="section-intro">
+          <h2>SHAP Feature Attribution &amp; Biomarker Discovery</h2>
+          <p>Global Shapley values identifying the top multi-omics features driving plasticity epoch discrimination.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Global Feature Importance (|SHAP|)</h3>
+              <span class="badge">Multi-Omic Integration</span>
+            </div>
+            <div class="chart-container tall">
+              <canvas id="chartShapBarCanvas"></canvas>
+            </div>
+            <div class="chart-footer">
+              Mean absolute SHAP value across all out-of-fold test samples.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>Prioritized Master Regulators</h3>
+              <span class="badge badge-accent">Top Plasticity Drivers</span>
+            </div>
+            <div class="table-scroll-container tall">
+              <table class="data-table" id="tableMasterRegulators">
+                <thead>
+                  <tr>
+                    <th>Gene</th>
+                    <th>Biological Role</th>
+                    <th>Evidence</th>
+                    <th>Chromatin Status</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyMasterRegulators">
+                  <tr><td colspan="4" style="text-align:center">Loading biomarkers...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <div class="card-top">
+            <h3>Canonical Pathway Enrichment</h3>
+            <span class="badge">GO / KEGG</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="chartPathwaysCanvas"></canvas>
+          </div>
+          <div class="chart-footer">
+            Integrated pathway scores combining RNA expression, ChIP peaks, and promoter demethylation.
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 7: PLASTICITY TRAJECTORIES                   -->
+      <!-- ================================================= -->
+      <section id="tab-trajectory" class="tab-panel">
+        <div class="section-intro">
+          <h2>Developmental Plasticity Trajectory</h2>
+          <p>Low-dimensional manifold projection across tutoring epochs and multi-omic kinetic wave dynamics.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-top">
+              <h3>Latent Multi-Omics Manifold</h3>
+              <span class="badge">PCA / Pseudotime</span>
+            </div>
+            <div class="chart-container tall">
+              <canvas id="chartTrajectoryCanvas"></canvas>
+            </div>
+            <div class="chart-footer">
+              <span class="dot gray"></span> Untutored &middot;
+              <span class="dot cyan"></span> Early 24h &middot;
+              <span class="dot purple"></span> Subchronic 7d &middot;
+              <span class="dot green"></span> Mastery 30d
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top">
+              <h3>Kinetic Wave Dynamics</h3>
+              <select id="selWaveGene" class="select-field" onchange="renderGeneWaveChart()">
+                <option value="BDNF">BDNF (Neurotrophin)</option>
+                <option value="FOXP2">FOXP2 (Speech/Vocal)</option>
+                <option value="EGR1">EGR1 (Immediate Early)</option>
+                <option value="TET2">TET2 (DNA Demethylase)</option>
+                <option value="DNMT3A">DNMT3A (Methyltransferase)</option>
+                <option value="CAMK2A">CAMK2A (Synaptic LTP)</option>
+              </select>
+            </div>
+            <div class="chart-container tall">
+              <canvas id="chartWaveCanvas"></canvas>
+            </div>
+            <div class="chart-footer">
+              <strong style="color:var(--blue)">― RNA</strong> &middot;
+              <strong style="color:var(--purple)">--- ChIP H3K4me3</strong> &middot;
+              <strong style="color:var(--amber)">··· WGBS Methylation</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 8: GENE LOCUS EXPLORER                       -->
+      <!-- ================================================= -->
+      <section id="tab-explorer" class="tab-panel">
+        <div class="section-intro">
+          <h2>Multi-Modal Gene Locus Explorer</h2>
+          <p>Query any target gene locus across RNA expression, CpG methylation, ChIP histone enrichment, and ML feature attribution.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <div>
+              <h3>Target Locus Inspector</h3>
+              <p class="card-desc">Type a gene symbol or select one of the suggested neuroplasticity markers below:</p>
+            </div>
+            <div class="card-actions">
+              <input type="text" id="txtGeneQuery" class="input-field" placeholder="e.g. BDNF, FOXP2, TET2, ARC..." value="BDNF">
+              <button class="action-btn primary" onclick="queryGeneLocus()">Inspect Locus</button>
+            </div>
+          </div>
+
+          <!-- Quick Suggestion Buttons -->
+          <div class="quick-gene-buttons">
+            <button class="gene-chip" onclick="quickInspectGene('BDNF')">BDNF</button>
+            <button class="gene-chip" onclick="quickInspectGene('FOXP2')">FOXP2</button>
+            <button class="gene-chip" onclick="quickInspectGene('EGR1')">EGR1</button>
+            <button class="gene-chip" onclick="quickInspectGene('TET2')">TET2</button>
+            <button class="gene-chip" onclick="quickInspectGene('DNMT3A')">DNMT3A</button>
+            <button class="gene-chip" onclick="quickInspectGene('CAMK2A')">CAMK2A</button>
+            <button class="gene-chip" onclick="quickInspectGene('ARC')">ARC</button>
+            <button class="gene-chip" onclick="quickInspectGene('FOS')">FOS</button>
+          </div>
+
+          <!-- Results Container -->
+          <div id="geneLocusResultContainer" class="locus-results" style="margin-top: 18px;"></div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 9: IN SILICO GENE KNOCKOUT SIMULATOR          -->
+      <!-- ================================================= -->
+      <section id="tab-simulator" class="tab-panel">
+        <div class="section-intro">
+          <h2>In Silico Gene Perturbation &amp; Knockout Simulator</h2>
+          <p>Virtual multi-omics intervention engine. Simulate gene knockouts, epigenetic chromatin alterations, and DNA methylation tuning using trained models.</p>
+        </div>
+
+        <!-- Quick Experiment Presets Bar -->
+        <div class="card" style="margin-bottom: 20px;">
+          <div class="card-top">
+            <h3>Benchmark In Silico Experiments (One-Click)</h3>
+            <span class="badge blue">Instant AI Discovery</span>
+          </div>
+          <p class="card-desc">Select a preset to load published neuroplasticity perturbation hypotheses:</p>
+          <div class="gene-chip-cloud" id="simPresetPills" style="margin-top: 10px;">
+            <button class="gene-chip active" onclick="loadSimPreset('BDNF', 0.05, 0.15, -0.6)">🧬 BDNF Complete KO (Severe Impairment)</button>
+            <button class="gene-chip" onclick="loadSimPreset('FOXP2', 0.10, 0.20, -0.4)">🗣️ FOXP2 Disruption (Vocal Learning)</button>
+            <button class="gene-chip" onclick="loadSimPreset('TET2', 2.20, -0.30, 0.8)">⚡ TET2 Rejuvenation (Demethylation Boost)</button>
+            <button class="gene-chip" onclick="loadSimPreset('CREB1', 0.05, 0.10, -0.5)">🎯 CREB1 Master Switch KO</button>
+            <button class="gene-chip" onclick="loadSimPreset('ARC', 0.10, 0.05, -0.3)">📉 ARC Synaptic Knockdown</button>
+            <button class="gene-chip" onclick="loadSimPreset('EGR1', 2.20, -0.20, 0.7)">🚀 EGR1 Plasticity Cocktail</button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Control Panel -->
+          <div class="card">
+            <div class="card-top">
+              <h3>Perturbation Control Console</h3>
+              <span class="badge amber" id="simCurrentGeneBadge">Target: BDNF</span>
+            </div>
+            
+            <div style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+              <div style="flex: 1; min-width: 140px;">
+                <label style="font-size: 11px; text-transform: uppercase; color: var(--text-2); font-weight: 600; display: block; margin-bottom: 6px;">Target Gene</label>
+                <select id="simGeneSelect" class="form-select" onchange="onSimGeneChange()" style="width: 100%; padding: 8px; border-radius: var(--radius-s); background: var(--bg-1); color: var(--text-0); border: 1px solid var(--border-1);">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+
+              <div style="flex: 1; min-width: 160px;">
+                <label style="font-size: 11px; text-transform: uppercase; color: var(--text-2); font-weight: 600; display: block; margin-bottom: 6px;">Baseline Cellular State</label>
+                <select id="simBaselineCondition" class="form-select" style="width: 100%; padding: 8px; border-radius: var(--radius-s); background: var(--bg-1); color: var(--text-0); border: 1px solid var(--border-1);">
+                  <option value="Tutored_Mastery_30d" selected>Tutored_Mastery_30d (Consolidated)</option>
+                  <option value="Tutored_Subchronic_7d">Tutored_Subchronic_7d (Plastic Rewiring)</option>
+                  <option value="Tutored_Early_24h">Tutored_Early_24h (Early Induction)</option>
+                  <option value="Untutored_Isolate">Untutored_Isolate (Naive Baseline)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Sliders -->
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="font-size: 13px; font-weight: 500;">RNA Transcriptional Fold Change</span>
+                  <span class="badge" id="simRnaLabel" style="font-family: var(--font-mono);">0.05x (Knockout)</span>
+                </div>
+                <input type="range" id="simRnaSlider" min="0.0" max="3.0" step="0.05" value="0.05" oninput="updateSimSliderLabels()" style="width: 100%;">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3);">
+                  <span>0.0x (Complete KO)</span>
+                  <span>1.0x (Wild-Type)</span>
+                  <span>3.0x (Overexpression)</span>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="font-size: 13px; font-weight: 500;">Active Chromatin (H3K4me3 / H3K27me3 Shift)</span>
+                  <span class="badge" id="simHistoneLabel" style="font-family: var(--font-mono);">-60% (Closed)</span>
+                </div>
+                <input type="range" id="simHistoneSlider" min="-1.0" max="1.5" step="0.05" value="-0.60" oninput="updateSimSliderLabels()" style="width: 100%;">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3);">
+                  <span>-100% (Heterochromatin)</span>
+                  <span>0% (Wild-Type)</span>
+                  <span>+150% (Euchromatin)</span>
+                </div>
+              </div>
+
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="font-size: 13px; font-weight: 500;">DNA Methylation Shift (&Delta;&beta; CpG)</span>
+                  <span class="badge" id="simMethLabel" style="font-family: var(--font-mono);">+0.15 &beta;</span>
+                </div>
+                <input type="range" id="simMethSlider" min="-0.5" max="0.5" step="0.05" value="0.15" oninput="updateSimSliderLabels()" style="width: 100%;">
+                <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-3);">
+                  <span>-0.50 (Demethylated)</span>
+                  <span>0.0 (Unchanged)</span>
+                  <span>+0.50 (Hypermethylated)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+              <button class="action-btn primary" onclick="executeInSilicoSimulation()" id="btnRunSim" style="flex: 2;">
+                <span>⚡ Run Live Simulation</span>
+              </button>
+              <button class="action-btn secondary" onclick="resetSimToWildType()" style="flex: 1;">
+                <span>↺ Wild-Type</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulation Live Output -->
+          <div class="card" id="simResultsCard">
+            <div class="card-top">
+              <h3>Predicted Phenotypic Outcome</h3>
+              <span class="badge green" id="simFateBadge">Predicted: Tutored_Mastery_30d</span>
+            </div>
+
+            <!-- Metric Cards Row -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
+              <div style="background: var(--bg-1); border: 1px solid var(--border-1); border-radius: var(--radius-m); padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: var(--text-2); text-transform: uppercase;">Baseline Score</div>
+                <div id="simBaseScoreVal" style="font-size: 20px; font-weight: 700; font-family: var(--font-mono); color: var(--text-0); margin-top: 4px;">0.875</div>
+              </div>
+
+              <div style="background: var(--bg-1); border: 1px solid var(--border-1); border-radius: var(--radius-m); padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: var(--text-2); text-transform: uppercase;">Perturbed Score</div>
+                <div id="simPertScoreVal" style="font-size: 20px; font-weight: 700; font-family: var(--font-mono); color: var(--amber); margin-top: 4px;">0.312</div>
+              </div>
+
+              <div style="background: var(--bg-1); border: 1px solid var(--border-1); border-radius: var(--radius-m); padding: 12px; text-align: center;">
+                <div style="font-size: 11px; color: var(--text-2); text-transform: uppercase;">Plasticity Delta</div>
+                <div id="simDeltaScoreVal" style="font-size: 20px; font-weight: 700; font-family: var(--font-mono); color: var(--red); margin-top: 4px;">-64.3%</div>
+              </div>
+            </div>
+
+            <!-- State Transition Probabilities (SVG Chart) -->
+            <div style="margin-bottom: 16px;">
+              <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-2); margin-bottom: 8px;">State Transition Probabilities (Baseline vs. Perturbed)</h4>
+              <div id="simProbBarsContainer" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Populated dynamically with side-by-side bars -->
+              </div>
+            </div>
+
+            <!-- Mechanistic Narrative -->
+            <div style="background: var(--bg-1); border-left: 3px solid var(--blue); padding: 12px; border-radius: var(--radius-s); margin-bottom: 14px;">
+              <div style="font-size: 11px; font-weight: 600; color: var(--blue); text-transform: uppercase; margin-bottom: 4px;">Mechanistic Insight</div>
+              <p id="simNarrativeText" style="font-size: 13px; color: var(--text-1); line-height: 1.5; margin: 0;">
+                Awaiting simulation execution...
+              </p>
+            </div>
+
+            <!-- Downstream Cascade -->
+            <div id="simCascadeSection">
+              <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-2); margin-bottom: 6px;">Downstream Regulatory Cascade</h4>
+              <div id="simCascadePills" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <!-- Secondary target badges -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!--  TAB 10: EXPORT & LAB REPORTS                     -->
+      <!-- ================================================= -->
+      <section id="tab-export" class="tab-panel">
+        <div class="section-intro">
+          <h2>Data Export &amp; Comprehensive Lab Reports</h2>
+          <p>Export all processed bioinformatics matrices, differential tables, ML model benchmarks, or generate a printable HTML report.</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Data Tables Downloads -->
+          <div class="card">
+            <div class="card-top">
+              <h3>Processed Tables (CSV)</h3>
+              <span class="badge">RFC-4180</span>
+            </div>
+            <p class="card-desc">Download publication-ready CSV files generated during pipeline execution:</p>
+
+            <div class="export-list">
+              <div class="export-item">
+                <div>
+                  <strong>Differentially Expressed Genes (DESeq2)</strong>
+                  <span>Gene, baseMean, log2FoldChange, lfcSE, stat, pvalue, padj</span>
+                </div>
+                <a href="/api/export-csv?type=deg" download class="action-btn secondary small">⤓ CSV</a>
+              </div>
+
+              <div class="export-item">
+                <div>
+                  <strong>Differentially Methylated Regions (WGBS)</strong>
+                  <span>Promoter locus, CpG count, delta-beta, FDR</span>
+                </div>
+                <a href="/api/export-csv?type=dmr" download class="action-btn secondary small">⤓ CSV</a>
+              </div>
+
+              <div class="export-item">
+                <div>
+                  <strong>Integrated Multi-Omics Feature Matrix</strong>
+                  <span>Scaled z-scores across RNA, ChIP, WGBS, and scRNA</span>
+                </div>
+                <a href="/api/export-csv?type=matrix" download class="action-btn secondary small">⤓ CSV</a>
+              </div>
+
+              <div class="export-item">
+                <div>
+                  <strong>Quality Control Audit Table</strong>
+                  <span>FastQC phred, GC content, STAR alignment, and MACS3 peaks</span>
+                </div>
+                <a href="/api/export-csv?type=qc" download class="action-btn secondary small">⤓ CSV</a>
+              </div>
+
+              <div class="export-item">
+                <div>
+                  <strong>Prioritized Master Regulators</strong>
+                  <span>Integrative biological evidence, chromatin status, SHAP rank</span>
+                </div>
+                <a href="/api/export-csv?type=regulators" download class="action-btn secondary small">⤓ CSV</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comprehensive JSON & Printable Report -->
+          <div class="card">
+            <div class="card-top">
+              <h3>Structured JSON &amp; Lab Summary</h3>
+              <span class="badge badge-accent">Full Bundle</span>
+            </div>
+            <p class="card-desc">Complete multi-stage pipeline state for downstream computational notebooks or publication supplements:</p>
+
+            <div class="report-box">
+              <div class="report-icon">📑</div>
+              <div class="report-text">
+                <strong>OmicsLab Complete Pipeline Bundle (.json)</strong>
+                <p>Contains metadata, stage 1 QC, stage 2 DEGs/DMRs, stage 3 model weights &amp; confusion matrices, and stage 4 SHAP values (185 KB).</p>
+              </div>
+              <button class="action-btn primary full-width" style="margin-top: 14px;" onclick="exportDataJSON()">
+                ⤓ Download Complete JSON Bundle
+              </button>
+            </div>
+
+            <div class="report-box" style="margin-top: 14px;">
+              <div class="report-icon">🖨️</div>
+              <div class="report-text">
+                <strong>Printable / PDF Lab Summary Report</strong>
+                <p>Generates a formatted summary view suitable for printing or saving as PDF.</p>
+              </div>
+              <button class="action-btn secondary full-width" style="margin-top: 14px;" onclick="generatePrintReport()">
+                📄 Open Printable Report
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /content-scroll -->
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

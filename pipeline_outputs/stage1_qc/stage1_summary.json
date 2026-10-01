@@ -1,0 +1,32 @@
+{
+  "fastqc": {
+    "mean_phred": 36.91,
+    "mean_gc": 48.39,
+    "passed_ratio": "24/24",
+    "summary": {
+      "qc_tool": "FastQC v0.12.1 / MultiQC v1.21",
+      "read_length_avg": "150 bp paired-end",
+      "adapter_contamination": "< 0.05% (Illumina Universal Trimmed)",
+      "per_tile_sequence_quality": "OPTIMAL",
+      "overall_quality_assessment": "EXCELLENT"
+    }
+  },
+  "alignment": {
+    "mean_uniquely_mapped": 89.91,
+    "mean_multi_mapped": 7.3,
+    "metadata": {
+      "primary_aligner": "STAR v2.7.11a (RNA-seq)",
+      "secondary_aligner": "HISAT2 v2.2.1 (Validation)",
+      "reference_genome": "Ensembl GRCh38 / Taeniopygia_guttata (v3.2.4)",
+      "splice_junction_detection": "Canonical GT/AG & Non-canonical annotated",
+      "mapping_concordance": "HIGH"
+    }
+  },
+  "epigenetics": {
+    "mean_h3k4me3_peaks": 24690,
+    "mean_h3k27me3_peaks": 37959,
+    "mean_frip": 0.675,
+    "mean_cpg_meth": 68.33,
+    "bisulfite_conv": 99.64
+  }
+}

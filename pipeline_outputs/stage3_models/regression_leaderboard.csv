@@ -1,0 +1,4 @@
+Model,R2_Score,Pearson_r,MAE,RMSE
+Random_Forest_Regressor,0.469,0.8554,0.2067,0.2498
+XGBoost_Regressor,0.2416,0.5028,0.2167,0.2985
+MLP_Regressor,-1.4207,0.2358,0.4344,0.5333

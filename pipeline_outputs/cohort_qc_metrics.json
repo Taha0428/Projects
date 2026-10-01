@@ -1,0 +1,650 @@
+{
+  "ANML_01_Untu_R1": {
+    "fastqc": {
+      "total_reads": 39381308,
+      "mean_phred_qscore": 37.02,
+      "gc_content_pct": 48.18,
+      "sequence_duplication_pct": 16.84,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 89.02,
+      "multi_mapped_pct": 7.03,
+      "unmapped_pct": 3.95,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24386,
+      "h3k27me3_broad_peaks": 39535,
+      "frip_score": 0.692,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "27.4x",
+      "bisulfite_conversion_pct": 99.53,
+      "global_cpg_methylation_pct": 68.8,
+      "status": "PASS"
+    }
+  },
+  "ANML_02_Untu_R2": {
+    "fastqc": {
+      "total_reads": 35683152,
+      "mean_phred_qscore": 36.46,
+      "gc_content_pct": 47.86,
+      "sequence_duplication_pct": 23.29,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 87.36,
+      "multi_mapped_pct": 6.49,
+      "unmapped_pct": 6.15,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23833,
+      "h3k27me3_broad_peaks": 37250,
+      "frip_score": 0.72,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "27.9x",
+      "bisulfite_conversion_pct": 99.46,
+      "global_cpg_methylation_pct": 70.98,
+      "status": "PASS"
+    }
+  },
+  "ANML_03_Untu_R3": {
+    "fastqc": {
+      "total_reads": 38659097,
+      "mean_phred_qscore": 37.14,
+      "gc_content_pct": 49.28,
+      "sequence_duplication_pct": 15.61,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 89.39,
+      "multi_mapped_pct": 7.94,
+      "unmapped_pct": 2.67,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23731,
+      "h3k27me3_broad_peaks": 38843,
+      "frip_score": 0.702,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "25.3x",
+      "bisulfite_conversion_pct": 99.5,
+      "global_cpg_methylation_pct": 64.29,
+      "status": "PASS"
+    }
+  },
+  "ANML_04_Untu_R4": {
+    "fastqc": {
+      "total_reads": 38566834,
+      "mean_phred_qscore": 38.31,
+      "gc_content_pct": 47.67,
+      "sequence_duplication_pct": 17.8,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.02,
+      "multi_mapped_pct": 7.44,
+      "unmapped_pct": 1.54,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23331,
+      "h3k27me3_broad_peaks": 41405,
+      "frip_score": 0.688,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "28.0x",
+      "bisulfite_conversion_pct": 99.6,
+      "global_cpg_methylation_pct": 69.46,
+      "status": "PASS"
+    }
+  },
+  "ANML_05_Untu_R5": {
+    "fastqc": {
+      "total_reads": 36466533,
+      "mean_phred_qscore": 38.06,
+      "gc_content_pct": 50.01,
+      "sequence_duplication_pct": 18.22,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 89.5,
+      "multi_mapped_pct": 6.44,
+      "unmapped_pct": 4.06,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23735,
+      "h3k27me3_broad_peaks": 35815,
+      "frip_score": 0.672,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "28.6x",
+      "bisulfite_conversion_pct": 99.43,
+      "global_cpg_methylation_pct": 69.64,
+      "status": "PASS"
+    }
+  },
+  "ANML_06_Untu_R6": {
+    "fastqc": {
+      "total_reads": 35822793,
+      "mean_phred_qscore": 37.13,
+      "gc_content_pct": 49.47,
+      "sequence_duplication_pct": 20.94,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.16,
+      "multi_mapped_pct": 8.69,
+      "unmapped_pct": 0.15,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25478,
+      "h3k27me3_broad_peaks": 38552,
+      "frip_score": 0.661,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "28.2x",
+      "bisulfite_conversion_pct": 99.82,
+      "global_cpg_methylation_pct": 68.04,
+      "status": "PASS"
+    }
+  },
+  "ANML_07_Tuto_R1": {
+    "fastqc": {
+      "total_reads": 37987138,
+      "mean_phred_qscore": 37.98,
+      "gc_content_pct": 48.22,
+      "sequence_duplication_pct": 16.53,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.21,
+      "multi_mapped_pct": 6.46,
+      "unmapped_pct": 2.33,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24984,
+      "h3k27me3_broad_peaks": 38680,
+      "frip_score": 0.693,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "23.2x",
+      "bisulfite_conversion_pct": 99.71,
+      "global_cpg_methylation_pct": 68.29,
+      "status": "PASS"
+    }
+  },
+  "ANML_08_Tuto_R2": {
+    "fastqc": {
+      "total_reads": 39540707,
+      "mean_phred_qscore": 37.2,
+      "gc_content_pct": 48.88,
+      "sequence_duplication_pct": 17.37,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 88.78,
+      "multi_mapped_pct": 7.15,
+      "unmapped_pct": 4.07,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24705,
+      "h3k27me3_broad_peaks": 37309,
+      "frip_score": 0.718,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "27.8x",
+      "bisulfite_conversion_pct": 99.5,
+      "global_cpg_methylation_pct": 69.47,
+      "status": "PASS"
+    }
+  },
+  "ANML_09_Tuto_R3": {
+    "fastqc": {
+      "total_reads": 42702908,
+      "mean_phred_qscore": 35.87,
+      "gc_content_pct": 48.35,
+      "sequence_duplication_pct": 20.43,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.31,
+      "multi_mapped_pct": 7.76,
+      "unmapped_pct": 1.93,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24536,
+      "h3k27me3_broad_peaks": 32618,
+      "frip_score": 0.69,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "29.3x",
+      "bisulfite_conversion_pct": 99.76,
+      "global_cpg_methylation_pct": 67.05,
+      "status": "PASS"
+    }
+  },
+  "ANML_10_Tuto_R4": {
+    "fastqc": {
+      "total_reads": 42207048,
+      "mean_phred_qscore": 36.55,
+      "gc_content_pct": 47.92,
+      "sequence_duplication_pct": 16.69,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.07,
+      "multi_mapped_pct": 6.21,
+      "unmapped_pct": 2.72,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25258,
+      "h3k27me3_broad_peaks": 36504,
+      "frip_score": 0.678,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "25.1x",
+      "bisulfite_conversion_pct": 99.71,
+      "global_cpg_methylation_pct": 68.13,
+      "status": "PASS"
+    }
+  },
+  "ANML_11_Tuto_R5": {
+    "fastqc": {
+      "total_reads": 39393575,
+      "mean_phred_qscore": 36.66,
+      "gc_content_pct": 49.13,
+      "sequence_duplication_pct": 18.1,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.59,
+      "multi_mapped_pct": 7.68,
+      "unmapped_pct": 1.73,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24735,
+      "h3k27me3_broad_peaks": 36309,
+      "frip_score": 0.663,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "26.8x",
+      "bisulfite_conversion_pct": 99.79,
+      "global_cpg_methylation_pct": 69.8,
+      "status": "PASS"
+    }
+  },
+  "ANML_12_Tuto_R6": {
+    "fastqc": {
+      "total_reads": 38094370,
+      "mean_phred_qscore": 36.35,
+      "gc_content_pct": 47.55,
+      "sequence_duplication_pct": 18.46,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 92.35,
+      "multi_mapped_pct": 7.21,
+      "unmapped_pct": 0.44,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25942,
+      "h3k27me3_broad_peaks": 38778,
+      "frip_score": 0.703,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "27.5x",
+      "bisulfite_conversion_pct": 99.6,
+      "global_cpg_methylation_pct": 66.9,
+      "status": "PASS"
+    }
+  },
+  "ANML_13_Tuto_R1": {
+    "fastqc": {
+      "total_reads": 38761459,
+      "mean_phred_qscore": 36.61,
+      "gc_content_pct": 48.93,
+      "sequence_duplication_pct": 16.13,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.13,
+      "multi_mapped_pct": 7.35,
+      "unmapped_pct": 2.52,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24664,
+      "h3k27me3_broad_peaks": 39017,
+      "frip_score": 0.67,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "36.9x",
+      "bisulfite_conversion_pct": 99.68,
+      "global_cpg_methylation_pct": 68.59,
+      "status": "PASS"
+    }
+  },
+  "ANML_14_Tuto_R2": {
+    "fastqc": {
+      "total_reads": 39854935,
+      "mean_phred_qscore": 36.38,
+      "gc_content_pct": 47.83,
+      "sequence_duplication_pct": 19.88,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.82,
+      "multi_mapped_pct": 8.27,
+      "unmapped_pct": 0.91,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 22789,
+      "h3k27me3_broad_peaks": 37934,
+      "frip_score": 0.693,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "30.1x",
+      "bisulfite_conversion_pct": 99.68,
+      "global_cpg_methylation_pct": 66.87,
+      "status": "PASS"
+    }
+  },
+  "ANML_15_Tuto_R3": {
+    "fastqc": {
+      "total_reads": 39286892,
+      "mean_phred_qscore": 37.06,
+      "gc_content_pct": 48.88,
+      "sequence_duplication_pct": 15.9,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 87.9,
+      "multi_mapped_pct": 8.83,
+      "unmapped_pct": 3.27,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25683,
+      "h3k27me3_broad_peaks": 38067,
+      "frip_score": 0.678,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "33.4x",
+      "bisulfite_conversion_pct": 99.63,
+      "global_cpg_methylation_pct": 68.19,
+      "status": "PASS"
+    }
+  },
+  "ANML_16_Tuto_R4": {
+    "fastqc": {
+      "total_reads": 36016478,
+      "mean_phred_qscore": 36.61,
+      "gc_content_pct": 46.48,
+      "sequence_duplication_pct": 19.29,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.41,
+      "multi_mapped_pct": 8.34,
+      "unmapped_pct": 0.25,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23657,
+      "h3k27me3_broad_peaks": 33381,
+      "frip_score": 0.694,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "31.4x",
+      "bisulfite_conversion_pct": 99.43,
+      "global_cpg_methylation_pct": 67.73,
+      "status": "PASS"
+    }
+  },
+  "ANML_17_Tuto_R5": {
+    "fastqc": {
+      "total_reads": 38893536,
+      "mean_phred_qscore": 36.13,
+      "gc_content_pct": 46.43,
+      "sequence_duplication_pct": 16.64,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 88.49,
+      "multi_mapped_pct": 5.5,
+      "unmapped_pct": 6.01,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25785,
+      "h3k27me3_broad_peaks": 41463,
+      "frip_score": 0.681,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "30.1x",
+      "bisulfite_conversion_pct": 99.44,
+      "global_cpg_methylation_pct": 68.15,
+      "status": "PASS"
+    }
+  },
+  "ANML_18_Tuto_R6": {
+    "fastqc": {
+      "total_reads": 36552738,
+      "mean_phred_qscore": 37.13,
+      "gc_content_pct": 45.26,
+      "sequence_duplication_pct": 17.56,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.41,
+      "multi_mapped_pct": 7.41,
+      "unmapped_pct": 2.18,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25439,
+      "h3k27me3_broad_peaks": 36943,
+      "frip_score": 0.567,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "30.9x",
+      "bisulfite_conversion_pct": 99.71,
+      "global_cpg_methylation_pct": 71.22,
+      "status": "PASS"
+    }
+  },
+  "ANML_19_Tuto_R1": {
+    "fastqc": {
+      "total_reads": 38185641,
+      "mean_phred_qscore": 37.13,
+      "gc_content_pct": 51.3,
+      "sequence_duplication_pct": 14.31,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.11,
+      "multi_mapped_pct": 8.3,
+      "unmapped_pct": 1.59,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24755,
+      "h3k27me3_broad_peaks": 38339,
+      "frip_score": 0.621,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "31.7x",
+      "bisulfite_conversion_pct": 99.75,
+      "global_cpg_methylation_pct": 70.71,
+      "status": "PASS"
+    }
+  },
+  "ANML_20_Tuto_R2": {
+    "fastqc": {
+      "total_reads": 37946115,
+      "mean_phred_qscore": 36.54,
+      "gc_content_pct": 48.49,
+      "sequence_duplication_pct": 21.77,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 88.98,
+      "multi_mapped_pct": 8.53,
+      "unmapped_pct": 2.49,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 24323,
+      "h3k27me3_broad_peaks": 36399,
+      "frip_score": 0.597,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "29.8x",
+      "bisulfite_conversion_pct": 99.71,
+      "global_cpg_methylation_pct": 66.33,
+      "status": "PASS"
+    }
+  },
+  "ANML_21_Tuto_R3": {
+    "fastqc": {
+      "total_reads": 41692158,
+      "mean_phred_qscore": 35.69,
+      "gc_content_pct": 49.35,
+      "sequence_duplication_pct": 19.79,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 91.12,
+      "multi_mapped_pct": 5.43,
+      "unmapped_pct": 3.45,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25780,
+      "h3k27me3_broad_peaks": 37895,
+      "frip_score": 0.666,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "30.3x",
+      "bisulfite_conversion_pct": 99.74,
+      "global_cpg_methylation_pct": 64.82,
+      "status": "PASS"
+    }
+  },
+  "ANML_22_Tuto_R4": {
+    "fastqc": {
+      "total_reads": 34775530,
+      "mean_phred_qscore": 37.76,
+      "gc_content_pct": 49.07,
+      "sequence_duplication_pct": 18.58,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 87.82,
+      "multi_mapped_pct": 7.59,
+      "unmapped_pct": 4.59,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25962,
+      "h3k27me3_broad_peaks": 43067,
+      "frip_score": 0.666,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "30.4x",
+      "bisulfite_conversion_pct": 99.84,
+      "global_cpg_methylation_pct": 65.79,
+      "status": "PASS"
+    }
+  },
+  "ANML_23_Tuto_R5": {
+    "fastqc": {
+      "total_reads": 42497821,
+      "mean_phred_qscore": 36.96,
+      "gc_content_pct": 48.59,
+      "sequence_duplication_pct": 17.06,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 88.82,
+      "multi_mapped_pct": 6.53,
+      "unmapped_pct": 4.65,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 23356,
+      "h3k27me3_broad_peaks": 39144,
+      "frip_score": 0.725,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "26.2x",
+      "bisulfite_conversion_pct": 99.54,
+      "global_cpg_methylation_pct": 68.86,
+      "status": "PASS"
+    }
+  },
+  "ANML_24_Tuto_R6": {
+    "fastqc": {
+      "total_reads": 35213748,
+      "mean_phred_qscore": 37.0,
+      "gc_content_pct": 48.18,
+      "sequence_duplication_pct": 14.76,
+      "status": "PASS"
+    },
+    "alignment_star": {
+      "uniquely_mapped_pct": 90.15,
+      "multi_mapped_pct": 6.7,
+      "unmapped_pct": 3.15,
+      "status": "PASS"
+    },
+    "macs3_peaks": {
+      "h3k4me3_narrow_peaks": 25730,
+      "h3k27me3_broad_peaks": 37789,
+      "frip_score": 0.652,
+      "status": "PASS"
+    },
+    "bismark_wgbs": {
+      "cpg_coverage_depth": "28.4x",
+      "bisulfite_conversion_pct": 99.77,
+      "global_cpg_methylation_pct": 71.72,
+      "status": "PASS"
+    }
+  }
+}

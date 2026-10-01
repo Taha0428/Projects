@@ -1,0 +1,4 @@
+Model,CV_Scheme,Accuracy,Macro_F1,Precision,Recall,ROC_AUC_OvR
+Random_Forest,Stratified Group K-Fold (replicate-split),0.875,0.8617,0.9018,0.875,0.9676
+MLP_Neural_Net,Stratified Group K-Fold (replicate-split),0.875,0.8617,0.9018,0.875,0.9676
+XGBoost,Stratified Group K-Fold (replicate-split),0.7083,0.7131,0.7833,0.7083,0.912

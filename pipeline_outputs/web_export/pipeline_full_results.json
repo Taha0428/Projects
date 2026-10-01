@@ -1,0 +1,7610 @@
+{
+  "pipeline_meta": {
+    "name": "Multi-Omics Epigenetic & Neuroplasticity Modeling Suite",
+    "cohort_size": 24,
+    "assays": [
+      "RNA-seq",
+      "ChIP-seq_H3K4me3",
+      "ChIP-seq_H3K27me3",
+      "WGBS_DNAme",
+      "scRNA_Deconv"
+    ],
+    "conditions": [
+      "Untutored_Isolate",
+      "Tutored_Early_24h",
+      "Tutored_Subchronic_7d",
+      "Tutored_Mastery_30d"
+    ],
+    "cell_types": [
+      "Glutamatergic_Neuron",
+      "GABAergic_Interneuron",
+      "Oligodendrocyte",
+      "Astrocytes",
+      "Microglia"
+    ]
+  },
+  "stage1": {
+    "fastqc": {
+      "mean_phred": 36.91,
+      "mean_gc": 48.39,
+      "passed_ratio": "24/24",
+      "summary": {
+        "qc_tool": "FastQC v0.12.1 / MultiQC v1.21",
+        "read_length_avg": "150 bp paired-end",
+        "adapter_contamination": "< 0.05% (Illumina Universal Trimmed)",
+        "per_tile_sequence_quality": "OPTIMAL",
+        "overall_quality_assessment": "EXCELLENT"
+      }
+    },
+    "alignment": {
+      "mean_uniquely_mapped": 89.91,
+      "mean_multi_mapped": 7.3,
+      "metadata": {
+        "primary_aligner": "STAR v2.7.11a (RNA-seq)",
+        "secondary_aligner": "HISAT2 v2.2.1 (Validation)",
+        "reference_genome": "Ensembl GRCh38 / Taeniopygia_guttata (v3.2.4)",
+        "splice_junction_detection": "Canonical GT/AG & Non-canonical annotated",
+        "mapping_concordance": "HIGH"
+      }
+    },
+    "epigenetics": {
+      "mean_h3k4me3_peaks": 24690,
+      "mean_h3k27me3_peaks": 37959,
+      "mean_frip": 0.675,
+      "mean_cpg_meth": 68.33,
+      "bisulfite_conv": 99.64
+    }
+  },
+  "stage1_samples": [
+    {
+      "Sample_ID": "ANML_01_Untu_R1",
+      "Total_Reads": 39381308,
+      "Mean_Phred": 37.02,
+      "GC_Pct": 48.18,
+      "Duplication_Pct": 16.84,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_02_Untu_R2",
+      "Total_Reads": 35683152,
+      "Mean_Phred": 36.46,
+      "GC_Pct": 47.86,
+      "Duplication_Pct": 23.29,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_03_Untu_R3",
+      "Total_Reads": 38659097,
+      "Mean_Phred": 37.14,
+      "GC_Pct": 49.28,
+      "Duplication_Pct": 15.61,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_04_Untu_R4",
+      "Total_Reads": 38566834,
+      "Mean_Phred": 38.31,
+      "GC_Pct": 47.67,
+      "Duplication_Pct": 17.8,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_05_Untu_R5",
+      "Total_Reads": 36466533,
+      "Mean_Phred": 38.06,
+      "GC_Pct": 50.01,
+      "Duplication_Pct": 18.22,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_06_Untu_R6",
+      "Total_Reads": 35822793,
+      "Mean_Phred": 37.13,
+      "GC_Pct": 49.47,
+      "Duplication_Pct": 20.94,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_07_Tuto_R1",
+      "Total_Reads": 37987138,
+      "Mean_Phred": 37.98,
+      "GC_Pct": 48.22,
+      "Duplication_Pct": 16.53,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_08_Tuto_R2",
+      "Total_Reads": 39540707,
+      "Mean_Phred": 37.2,
+      "GC_Pct": 48.88,
+      "Duplication_Pct": 17.37,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_09_Tuto_R3",
+      "Total_Reads": 42702908,
+      "Mean_Phred": 35.87,
+      "GC_Pct": 48.35,
+      "Duplication_Pct": 20.43,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_10_Tuto_R4",
+      "Total_Reads": 42207048,
+      "Mean_Phred": 36.55,
+      "GC_Pct": 47.92,
+      "Duplication_Pct": 16.69,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_11_Tuto_R5",
+      "Total_Reads": 39393575,
+      "Mean_Phred": 36.66,
+      "GC_Pct": 49.13,
+      "Duplication_Pct": 18.1,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_12_Tuto_R6",
+      "Total_Reads": 38094370,
+      "Mean_Phred": 36.35,
+      "GC_Pct": 47.55,
+      "Duplication_Pct": 18.46,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_13_Tuto_R1",
+      "Total_Reads": 38761459,
+      "Mean_Phred": 36.61,
+      "GC_Pct": 48.93,
+      "Duplication_Pct": 16.13,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_14_Tuto_R2",
+      "Total_Reads": 39854935,
+      "Mean_Phred": 36.38,
+      "GC_Pct": 47.83,
+      "Duplication_Pct": 19.88,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_15_Tuto_R3",
+      "Total_Reads": 39286892,
+      "Mean_Phred": 37.06,
+      "GC_Pct": 48.88,
+      "Duplication_Pct": 15.9,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_16_Tuto_R4",
+      "Total_Reads": 36016478,
+      "Mean_Phred": 36.61,
+      "GC_Pct": 46.48,
+      "Duplication_Pct": 19.29,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_17_Tuto_R5",
+      "Total_Reads": 38893536,
+      "Mean_Phred": 36.13,
+      "GC_Pct": 46.43,
+      "Duplication_Pct": 16.64,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_18_Tuto_R6",
+      "Total_Reads": 36552738,
+      "Mean_Phred": 37.13,
+      "GC_Pct": 45.26,
+      "Duplication_Pct": 17.56,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_19_Tuto_R1",
+      "Total_Reads": 38185641,
+      "Mean_Phred": 37.13,
+      "GC_Pct": 51.3,
+      "Duplication_Pct": 14.31,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_20_Tuto_R2",
+      "Total_Reads": 37946115,
+      "Mean_Phred": 36.54,
+      "GC_Pct": 48.49,
+      "Duplication_Pct": 21.77,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_21_Tuto_R3",
+      "Total_Reads": 41692158,
+      "Mean_Phred": 35.69,
+      "GC_Pct": 49.35,
+      "Duplication_Pct": 19.79,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_22_Tuto_R4",
+      "Total_Reads": 34775530,
+      "Mean_Phred": 37.76,
+      "GC_Pct": 49.07,
+      "Duplication_Pct": 18.58,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_23_Tuto_R5",
+      "Total_Reads": 42497821,
+      "Mean_Phred": 36.96,
+      "GC_Pct": 48.59,
+      "Duplication_Pct": 17.06,
+      "Status": "PASS"
+    },
+    {
+      "Sample_ID": "ANML_24_Tuto_R6",
+      "Total_Reads": 35213748,
+      "Mean_Phred": 37.0,
+      "GC_Pct": 48.18,
+      "Duplication_Pct": 14.76,
+      "Status": "PASS"
+    }
+  ],
+  "stage2_deg_top": [
+    {
+      "gene": "GRIN2B",
+      "baseMean": 8.24,
+      "log2FoldChange": 0.619,
+      "stat": 4.916,
+      "pvalue": 0.0006090288204104333,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_083",
+      "baseMean": 7.65,
+      "log2FoldChange": 0.729,
+      "stat": 4.761,
+      "pvalue": 0.0008594346246801732,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_089",
+      "baseMean": 7.03,
+      "log2FoldChange": 0.554,
+      "stat": 4.668,
+      "pvalue": 0.0009274529800154338,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_095",
+      "baseMean": 7.55,
+      "log2FoldChange": 0.66,
+      "stat": 4.66,
+      "pvalue": 0.0009438767199777184,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_055",
+      "baseMean": 7.33,
+      "log2FoldChange": -0.336,
+      "stat": -4.314,
+      "pvalue": 0.0016024833905044606,
+      "padj": 0.038459601372107056,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_063",
+      "baseMean": 7.22,
+      "log2FoldChange": 0.461,
+      "stat": 4.315,
+      "pvalue": 0.002633836904724092,
+      "padj": 0.04580172903501719,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_003",
+      "baseMean": 7.95,
+      "log2FoldChange": 0.661,
+      "stat": 4.295,
+      "pvalue": 0.0026717675270426697,
+      "padj": 0.04580172903501719,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_007",
+      "baseMean": 7.33,
+      "log2FoldChange": 0.364,
+      "stat": 3.989,
+      "pvalue": 0.005331405391138808,
+      "padj": 0.07997108086708211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_080",
+      "baseMean": 5.75,
+      "log2FoldChange": -0.434,
+      "stat": -3.273,
+      "pvalue": 0.008635914384035813,
+      "padj": 0.10694831601211316,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_029",
+      "baseMean": 7.65,
+      "log2FoldChange": 0.592,
+      "stat": 3.494,
+      "pvalue": 0.008912359667676097,
+      "padj": 0.10694831601211316,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "MEF2C",
+      "baseMean": 7.57,
+      "log2FoldChange": 0.487,
+      "stat": 2.697,
+      "pvalue": 0.02265086727666162,
+      "padj": 0.24710037029085405,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_064",
+      "baseMean": 5.87,
+      "log2FoldChange": -0.553,
+      "stat": -2.755,
+      "pvalue": 0.02658899090408119,
+      "padj": 0.26588990904081194,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_043",
+      "baseMean": 7.73,
+      "log2FoldChange": 0.447,
+      "stat": 2.498,
+      "pvalue": 0.031612374626492086,
+      "padj": 0.2814773402155865,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_033",
+      "baseMean": 4.67,
+      "log2FoldChange": -0.743,
+      "stat": -2.498,
+      "pvalue": 0.03283902302515176,
+      "padj": 0.2814773402155865,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_062",
+      "baseMean": 8.18,
+      "log2FoldChange": 0.389,
+      "stat": 2.511,
+      "pvalue": 0.03750527621509981,
+      "padj": 0.3000422097207985,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_081",
+      "baseMean": 6.44,
+      "log2FoldChange": -0.434,
+      "stat": -2.236,
+      "pvalue": 0.049828044155141894,
+      "padj": 0.3737103311635642,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_096",
+      "baseMean": 5.93,
+      "log2FoldChange": -0.48,
+      "stat": -2.251,
+      "pvalue": 0.054313021205349345,
+      "padj": 0.3833860320377601,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_040",
+      "baseMean": 6.9,
+      "log2FoldChange": -0.44,
+      "stat": -2.077,
+      "pvalue": 0.06470700492483061,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_061",
+      "baseMean": 6.27,
+      "log2FoldChange": 0.399,
+      "stat": 2.054,
+      "pvalue": 0.06717397346699304,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_038",
+      "baseMean": 7.18,
+      "log2FoldChange": 0.319,
+      "stat": 2.034,
+      "pvalue": 0.06944871564140324,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_019",
+      "baseMean": 6.5,
+      "log2FoldChange": 0.435,
+      "stat": 2.064,
+      "pvalue": 0.07081631000432437,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_084",
+      "baseMean": 6.52,
+      "log2FoldChange": -0.409,
+      "stat": -2.012,
+      "pvalue": 0.07223236847274306,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "FOXP2",
+      "baseMean": 7.32,
+      "log2FoldChange": 0.4,
+      "stat": 1.983,
+      "pvalue": 0.07578638594509962,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_099",
+      "baseMean": 6.36,
+      "log2FoldChange": 0.274,
+      "stat": 1.987,
+      "pvalue": 0.07676261971096907,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_071",
+      "baseMean": 7.52,
+      "log2FoldChange": 0.292,
+      "stat": 1.934,
+      "pvalue": 0.08210078796487869,
+      "padj": 0.39408378223141766,
+      "significant": false,
+      "regulation": "NS"
+    }
+  ],
+  "stage2_deg_all": [
+    {
+      "gene": "GRIN2B",
+      "baseMean": 8.24,
+      "log2FoldChange": 0.619,
+      "stat": 4.916,
+      "pvalue": 0.0006090288204104333,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_083",
+      "baseMean": 7.65,
+      "log2FoldChange": 0.729,
+      "stat": 4.761,
+      "pvalue": 0.0008594346246801732,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_089",
+      "baseMean": 7.03,
+      "log2FoldChange": 0.554,
+      "stat": 4.668,
+      "pvalue": 0.0009274529800154338,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_095",
+      "baseMean": 7.55,
+      "log2FoldChange": 0.66,
+      "stat": 4.66,
+      "pvalue": 0.0009438767199777184,
+      "padj": 0.02831630159933155,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_055",
+      "baseMean": 7.33,
+      "log2FoldChange": -0.336,
+      "stat": -4.314,
+      "pvalue": 0.0016024833905044606,
+      "padj": 0.038459601372107056,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_063",
+      "baseMean": 7.22,
+      "log2FoldChange": 0.461,
+      "stat": 4.315,
+      "pvalue": 0.002633836904724092,
+      "padj": 0.04580172903501719,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_003",
+      "baseMean": 7.95,
+      "log2FoldChange": 0.661,
+      "stat": 4.295,
+      "pvalue": 0.0026717675270426697,
+      "padj": 0.04580172903501719,
+      "significant": true,
+      "regulation": "UP"
+    },
+    {
+      "gene": "GENE_007",
+      "baseMean": 7.33,
+      "log2FoldChange": 0.364,
+      "stat": 3.989,
+      "pvalue": 0.005331405391138808,
+      "padj": 0.07997108086708211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_080",
+      "baseMean": 5.75,
+      "log2FoldChange": -0.434,
+      "stat": -3.273,
+      "pvalue": 0.008635914384035813,
+      "padj": 0.10694831601211316,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_029",
+      "baseMean": 7.65,
+      "log2FoldChange": 0.592,
+      "stat": 3.494,
+      "pvalue": 0.008912359667676097,
+      "padj": 0.10694831601211316,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "MEF2C",
+      "baseMean": 7.57,
+      "log2FoldChange": 0.487,
+      "stat": 2.697,
+      "pvalue": 0.02265086727666162,
+      "padj": 0.24710037029085405,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_064",
+      "baseMean": 5.87,
+      "log2FoldChange": -0.553,
+      "stat": -2.755,
+      "pvalue": 0.02658899090408119,
+      "padj": 0.26588990904081194,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_043",
+      "baseMean": 7.73,
+      "log2FoldChange": 0.447,
+      "stat": 2.498,
+      "pvalue": 0.031612374626492086,
+      "padj": 0.2814773402155865,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_033",
+      "baseMean": 4.67,
+      "log2FoldChange": -0.743,
+      "stat": -2.498,
+      "pvalue": 0.03283902302515176,
+      "padj": 0.2814773402155865,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_062",
+      "baseMean": 8.18,
+      "log2FoldChange": 0.389,
+      "stat": 2.511,
+      "pvalue": 0.03750527621509981,
+      "padj": 0.3000422097207985,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_081",
+      "baseMean": 6.44,
+      "log2FoldChange": -0.434,
+      "stat": -2.236,
+      "pvalue": 0.049828044155141894,
+      "padj": 0.3737103311635642,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_096",
+      "baseMean": 5.93,
+      "log2FoldChange": -0.48,
+      "stat": -2.251,
+      "pvalue": 0.054313021205349345,
+      "padj": 0.3833860320377601,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_040",
+      "baseMean": 6.9,
+      "log2FoldChange": -0.44,
+      "stat": -2.077,
+      "pvalue": 0.06470700492483061,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_061",
+      "baseMean": 6.27,
+      "log2FoldChange": 0.399,
+      "stat": 2.054,
+      "pvalue": 0.06717397346699304,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_038",
+      "baseMean": 7.18,
+      "log2FoldChange": 0.319,
+      "stat": 2.034,
+      "pvalue": 0.06944871564140324,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_019",
+      "baseMean": 6.5,
+      "log2FoldChange": 0.435,
+      "stat": 2.064,
+      "pvalue": 0.07081631000432437,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_084",
+      "baseMean": 6.52,
+      "log2FoldChange": -0.409,
+      "stat": -2.012,
+      "pvalue": 0.07223236847274306,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "FOXP2",
+      "baseMean": 7.32,
+      "log2FoldChange": 0.4,
+      "stat": 1.983,
+      "pvalue": 0.07578638594509962,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_099",
+      "baseMean": 6.36,
+      "log2FoldChange": 0.274,
+      "stat": 1.987,
+      "pvalue": 0.07676261971096907,
+      "padj": 0.38381309855484536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_071",
+      "baseMean": 7.52,
+      "log2FoldChange": 0.292,
+      "stat": 1.934,
+      "pvalue": 0.08210078796487869,
+      "padj": 0.39408378223141766,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_077",
+      "baseMean": 5.66,
+      "log2FoldChange": -0.49,
+      "stat": -1.853,
+      "pvalue": 0.09356052535284777,
+      "padj": 0.43181780932083585,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_069",
+      "baseMean": 6.48,
+      "log2FoldChange": -0.294,
+      "stat": -1.825,
+      "pvalue": 0.1028426324310932,
+      "padj": 0.4334667113224704,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_042",
+      "baseMean": 5.69,
+      "log2FoldChange": 0.312,
+      "stat": 1.809,
+      "pvalue": 0.10336053748030684,
+      "padj": 0.4334667113224704,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_012",
+      "baseMean": 8.07,
+      "log2FoldChange": 0.242,
+      "stat": 1.772,
+      "pvalue": 0.10781508383692258,
+      "padj": 0.4334667113224704,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_067",
+      "baseMean": 6.03,
+      "log2FoldChange": 0.295,
+      "stat": 1.777,
+      "pvalue": 0.1083666778306176,
+      "padj": 0.4334667113224704,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_086",
+      "baseMean": 7.28,
+      "log2FoldChange": 0.277,
+      "stat": 1.756,
+      "pvalue": 0.12357878244531503,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_016",
+      "baseMean": 5.18,
+      "log2FoldChange": -0.49,
+      "stat": -1.653,
+      "pvalue": 0.13013433482359021,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_021",
+      "baseMean": 8.13,
+      "log2FoldChange": 0.293,
+      "stat": 1.627,
+      "pvalue": 0.134898168766286,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_050",
+      "baseMean": 6.45,
+      "log2FoldChange": -0.301,
+      "stat": -1.646,
+      "pvalue": 0.13576782074683127,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "HDAC2",
+      "baseMean": 8.35,
+      "log2FoldChange": -0.237,
+      "stat": -1.654,
+      "pvalue": 0.13956052957117823,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_058",
+      "baseMean": 7.59,
+      "log2FoldChange": 0.31,
+      "stat": 1.713,
+      "pvalue": 0.14282254481730672,
+      "padj": 0.4760751493910224,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_053",
+      "baseMean": 6.92,
+      "log2FoldChange": -0.281,
+      "stat": -1.576,
+      "pvalue": 0.1472041866336456,
+      "padj": 0.4774189836766884,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_013",
+      "baseMean": 6.65,
+      "log2FoldChange": -0.315,
+      "stat": -1.547,
+      "pvalue": 0.15332172885489304,
+      "padj": 0.4841738805943991,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_068",
+      "baseMean": 6.09,
+      "log2FoldChange": -0.225,
+      "stat": -1.519,
+      "pvalue": 0.16772968684491976,
+      "padj": 0.5046468797115564,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_011",
+      "baseMean": 7.48,
+      "log2FoldChange": -0.187,
+      "stat": -1.549,
+      "pvalue": 0.17047945345806773,
+      "padj": 0.5046468797115564,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "TET2",
+      "baseMean": 6.64,
+      "log2FoldChange": 0.259,
+      "stat": 1.468,
+      "pvalue": 0.17289769453545603,
+      "padj": 0.5046468797115564,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "DNMT3A",
+      "baseMean": 7.47,
+      "log2FoldChange": -0.273,
+      "stat": -1.45,
+      "pvalue": 0.17793774975955304,
+      "padj": 0.5046468797115564,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_026",
+      "baseMean": 7.1,
+      "log2FoldChange": -0.215,
+      "stat": -1.476,
+      "pvalue": 0.18083179856330772,
+      "padj": 0.5046468797115564,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_009",
+      "baseMean": 6.56,
+      "log2FoldChange": 0.229,
+      "stat": 1.421,
+      "pvalue": 0.19261585827801833,
+      "padj": 0.5205046856945288,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_017",
+      "baseMean": 6.25,
+      "log2FoldChange": 0.289,
+      "stat": 1.403,
+      "pvalue": 0.19518925713544827,
+      "padj": 0.5205046856945288,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_034",
+      "baseMean": 5.92,
+      "log2FoldChange": 0.27,
+      "stat": 1.373,
+      "pvalue": 0.20147595648284838,
+      "padj": 0.521216284569928,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_031",
+      "baseMean": 6.67,
+      "log2FoldChange": -0.238,
+      "stat": -1.398,
+      "pvalue": 0.20414304478988846,
+      "padj": 0.521216284569928,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_070",
+      "baseMean": 7.24,
+      "log2FoldChange": -0.269,
+      "stat": -1.337,
+      "pvalue": 0.21139021402021654,
+      "padj": 0.5284755350505413,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_085",
+      "baseMean": 6.07,
+      "log2FoldChange": -0.284,
+      "stat": -1.268,
+      "pvalue": 0.2353101179016498,
+      "padj": 0.5762696764938362,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_090",
+      "baseMean": 6.51,
+      "log2FoldChange": 0.267,
+      "stat": 1.243,
+      "pvalue": 0.24848075224756475,
+      "padj": 0.5963538053941554,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "BDNF",
+      "baseMean": 6.94,
+      "log2FoldChange": -0.211,
+      "stat": -1.169,
+      "pvalue": 0.27127115837805227,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_102",
+      "baseMean": 5.98,
+      "log2FoldChange": -0.237,
+      "stat": -1.194,
+      "pvalue": 0.27239138423529996,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "EZH2",
+      "baseMean": 7.53,
+      "log2FoldChange": -0.195,
+      "stat": -1.166,
+      "pvalue": 0.2742066770672264,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_091",
+      "baseMean": 6.05,
+      "log2FoldChange": -0.22,
+      "stat": -1.157,
+      "pvalue": 0.27805614703084514,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_075",
+      "baseMean": 6.95,
+      "log2FoldChange": -0.185,
+      "stat": -1.142,
+      "pvalue": 0.28024074969474233,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_057",
+      "baseMean": 6.29,
+      "log2FoldChange": -0.236,
+      "stat": -1.139,
+      "pvalue": 0.2814788034062298,
+      "padj": 0.6031688644419211,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_002",
+      "baseMean": 6.14,
+      "log2FoldChange": -0.192,
+      "stat": -1.127,
+      "pvalue": 0.3042306957161305,
+      "padj": 0.6404856751918536,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_005",
+      "baseMean": 6.87,
+      "log2FoldChange": -0.132,
+      "stat": -1.07,
+      "pvalue": 0.3109428072535489,
+      "padj": 0.6433299460418253,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_030",
+      "baseMean": 7.06,
+      "log2FoldChange": -0.211,
+      "stat": -1.035,
+      "pvalue": 0.3256763454474232,
+      "padj": 0.6623925670117082,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_072",
+      "baseMean": 7.3,
+      "log2FoldChange": -0.197,
+      "stat": -1.002,
+      "pvalue": 0.3424363346939602,
+      "padj": 0.6848726693879204,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "EGR1",
+      "baseMean": 6.79,
+      "log2FoldChange": -0.163,
+      "stat": -0.99,
+      "pvalue": 0.35009360538498097,
+      "padj": 0.6887087319048807,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_087",
+      "baseMean": 6.26,
+      "log2FoldChange": 0.237,
+      "stat": 0.951,
+      "pvalue": 0.3694179966569688,
+      "padj": 0.7056492269819175,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_041",
+      "baseMean": 6.16,
+      "log2FoldChange": 0.228,
+      "stat": 0.928,
+      "pvalue": 0.3754308201588149,
+      "padj": 0.7056492269819175,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_024",
+      "baseMean": 6.33,
+      "log2FoldChange": -0.183,
+      "stat": -0.922,
+      "pvalue": 0.37894248379206397,
+      "padj": 0.7056492269819175,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_052",
+      "baseMean": 7.64,
+      "log2FoldChange": 0.093,
+      "stat": 0.918,
+      "pvalue": 0.38222666461520527,
+      "padj": 0.7056492269819175,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_092",
+      "baseMean": 6.97,
+      "log2FoldChange": 0.151,
+      "stat": 0.895,
+      "pvalue": 0.39164510851790024,
+      "padj": 0.7103029697182085,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "CAMK2A",
+      "baseMean": 7.43,
+      "log2FoldChange": 0.11,
+      "stat": 0.88,
+      "pvalue": 0.4013676038469335,
+      "padj": 0.7103029697182085,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_004",
+      "baseMean": 6.34,
+      "log2FoldChange": -0.165,
+      "stat": -0.88,
+      "pvalue": 0.4032760875154878,
+      "padj": 0.7103029697182085,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "SYP",
+      "baseMean": 7.79,
+      "log2FoldChange": 0.132,
+      "stat": 0.856,
+      "pvalue": 0.41336830283495973,
+      "padj": 0.7103029697182085,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_020",
+      "baseMean": 6.98,
+      "log2FoldChange": -0.165,
+      "stat": -0.853,
+      "pvalue": 0.41434339900228834,
+      "padj": 0.7103029697182085,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_015",
+      "baseMean": 7.44,
+      "log2FoldChange": 0.085,
+      "stat": 0.764,
+      "pvalue": 0.46261059833315044,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_094",
+      "baseMean": 7.32,
+      "log2FoldChange": -0.109,
+      "stat": -0.77,
+      "pvalue": 0.4671657344920517,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_097",
+      "baseMean": 6.46,
+      "log2FoldChange": 0.177,
+      "stat": 0.746,
+      "pvalue": 0.4727028728510919,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_065",
+      "baseMean": 6.24,
+      "log2FoldChange": 0.135,
+      "stat": 0.739,
+      "pvalue": 0.4766939884705276,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_056",
+      "baseMean": 6.75,
+      "log2FoldChange": 0.111,
+      "stat": 0.736,
+      "pvalue": 0.4800189117828568,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_101",
+      "baseMean": 6.38,
+      "log2FoldChange": -0.139,
+      "stat": -0.731,
+      "pvalue": 0.4817734106836763,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_032",
+      "baseMean": 6.23,
+      "log2FoldChange": -0.121,
+      "stat": -0.727,
+      "pvalue": 0.4841185837514428,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_059",
+      "baseMean": 6.74,
+      "log2FoldChange": -0.126,
+      "stat": -0.719,
+      "pvalue": 0.48840320028619777,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "ARC",
+      "baseMean": 6.67,
+      "log2FoldChange": -0.142,
+      "stat": -0.71,
+      "pvalue": 0.4945188158009335,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_078",
+      "baseMean": 6.34,
+      "log2FoldChange": -0.153,
+      "stat": -0.708,
+      "pvalue": 0.4968324067561014,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_008",
+      "baseMean": 6.9,
+      "log2FoldChange": -0.143,
+      "stat": -0.704,
+      "pvalue": 0.4987317097942726,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_014",
+      "baseMean": 7.37,
+      "log2FoldChange": 0.109,
+      "stat": 0.692,
+      "pvalue": 0.5069563189077826,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_076",
+      "baseMean": 6.69,
+      "log2FoldChange": -0.138,
+      "stat": -0.679,
+      "pvalue": 0.5134784416582336,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_100",
+      "baseMean": 7.25,
+      "log2FoldChange": -0.164,
+      "stat": -0.679,
+      "pvalue": 0.5151870351996224,
+      "padj": 0.7359814788566035,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_039",
+      "baseMean": 5.9,
+      "log2FoldChange": 0.153,
+      "stat": 0.646,
+      "pvalue": 0.5336214775791834,
+      "padj": 0.7426528301373391,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_066",
+      "baseMean": 6.83,
+      "log2FoldChange": 0.115,
+      "stat": 0.634,
+      "pvalue": 0.5401799275204725,
+      "padj": 0.7426528301373391,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_001",
+      "baseMean": 6.4,
+      "log2FoldChange": 0.093,
+      "stat": 0.631,
+      "pvalue": 0.5433516510413084,
+      "padj": 0.7426528301373391,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_045",
+      "baseMean": 5.41,
+      "log2FoldChange": -0.187,
+      "stat": -0.629,
+      "pvalue": 0.5461242427094283,
+      "padj": 0.7426528301373391,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_044",
+      "baseMean": 5.96,
+      "log2FoldChange": -0.114,
+      "stat": -0.617,
+      "pvalue": 0.5508008490185266,
+      "padj": 0.7426528301373391,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_046",
+      "baseMean": 6.78,
+      "log2FoldChange": -0.12,
+      "stat": -0.604,
+      "pvalue": 0.5595878821882326,
+      "padj": 0.7443242281134103,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_028",
+      "baseMean": 7.41,
+      "log2FoldChange": -0.09,
+      "stat": -0.599,
+      "pvalue": 0.5644458729860028,
+      "padj": 0.7443242281134103,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_049",
+      "baseMean": 6.59,
+      "log2FoldChange": -0.122,
+      "stat": -0.576,
+      "pvalue": 0.57828992900119,
+      "padj": 0.7542912117406826,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_054",
+      "baseMean": 6.43,
+      "log2FoldChange": 0.136,
+      "stat": 0.541,
+      "pvalue": 0.6015732923407704,
+      "padj": 0.7707900511964403,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_048",
+      "baseMean": 6.88,
+      "log2FoldChange": 0.07,
+      "stat": 0.537,
+      "pvalue": 0.607102469830294,
+      "padj": 0.7707900511964403,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_051",
+      "baseMean": 7.49,
+      "log2FoldChange": 0.088,
+      "stat": 0.527,
+      "pvalue": 0.6102087905305152,
+      "padj": 0.7707900511964403,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_079",
+      "baseMean": 6.72,
+      "log2FoldChange": 0.103,
+      "stat": 0.517,
+      "pvalue": 0.6180920907957144,
+      "padj": 0.772615113494643,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_037",
+      "baseMean": 5.7,
+      "log2FoldChange": 0.072,
+      "stat": 0.496,
+      "pvalue": 0.632506330242322,
+      "padj": 0.7824820580317385,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_098",
+      "baseMean": 6.97,
+      "log2FoldChange": -0.107,
+      "stat": -0.459,
+      "pvalue": 0.6561393251737377,
+      "padj": 0.8031702196150544,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_018",
+      "baseMean": 6.03,
+      "log2FoldChange": 0.11,
+      "stat": 0.442,
+      "pvalue": 0.6681733063740043,
+      "padj": 0.8031702196150544,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "KDM6A",
+      "baseMean": 6.31,
+      "log2FoldChange": -0.084,
+      "stat": -0.44,
+      "pvalue": 0.6693085163458787,
+      "padj": 0.8031702196150544,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "KMT2A",
+      "baseMean": 7.06,
+      "log2FoldChange": 0.103,
+      "stat": 0.413,
+      "pvalue": 0.6883531571524983,
+      "padj": 0.8178453352306911,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "FOS",
+      "baseMean": 6.47,
+      "log2FoldChange": -0.085,
+      "stat": -0.402,
+      "pvalue": 0.6978307634035987,
+      "padj": 0.8209773687101162,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_060",
+      "baseMean": 6.19,
+      "log2FoldChange": 0.063,
+      "stat": 0.37,
+      "pvalue": 0.7201385309191992,
+      "padj": 0.8300445605859026,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_073",
+      "baseMean": 6.54,
+      "log2FoldChange": 0.065,
+      "stat": 0.354,
+      "pvalue": 0.7308883250004246,
+      "padj": 0.8300445605859026,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_023",
+      "baseMean": 6.92,
+      "log2FoldChange": 0.065,
+      "stat": 0.355,
+      "pvalue": 0.7309127195042906,
+      "padj": 0.8300445605859026,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_088",
+      "baseMean": 6.71,
+      "log2FoldChange": 0.076,
+      "stat": 0.352,
+      "pvalue": 0.7332060285175472,
+      "padj": 0.8300445605859026,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_027",
+      "baseMean": 6.02,
+      "log2FoldChange": 0.063,
+      "stat": 0.341,
+      "pvalue": 0.7403452978457624,
+      "padj": 0.8302937919765561,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "NPAS4",
+      "baseMean": 6.81,
+      "log2FoldChange": -0.065,
+      "stat": -0.324,
+      "pvalue": 0.7544292863823916,
+      "padj": 0.8382547626471017,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_025",
+      "baseMean": 6.98,
+      "log2FoldChange": 0.054,
+      "stat": 0.274,
+      "pvalue": 0.7896467467042986,
+      "padj": 0.869335867931338,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "SYN1",
+      "baseMean": 7.85,
+      "log2FoldChange": 0.025,
+      "stat": 0.224,
+      "pvalue": 0.8282578844843762,
+      "padj": 0.8962305853378382,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_082",
+      "baseMean": 7.52,
+      "log2FoldChange": 0.027,
+      "stat": 0.223,
+      "pvalue": 0.8290132914375002,
+      "padj": 0.8962305853378382,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_074",
+      "baseMean": 6.72,
+      "log2FoldChange": -0.018,
+      "stat": -0.156,
+      "pvalue": 0.8794519184293395,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_035",
+      "baseMean": 7.06,
+      "log2FoldChange": 0.017,
+      "stat": 0.155,
+      "pvalue": 0.8803842406452249,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_006",
+      "baseMean": 6.3,
+      "log2FoldChange": 0.032,
+      "stat": 0.136,
+      "pvalue": 0.8947688128800089,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_036",
+      "baseMean": 6.54,
+      "log2FoldChange": -0.023,
+      "stat": -0.136,
+      "pvalue": 0.8950239012028165,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_093",
+      "baseMean": 7.28,
+      "log2FoldChange": -0.012,
+      "stat": -0.122,
+      "pvalue": 0.9067883600033018,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "CREB1",
+      "baseMean": 6.05,
+      "log2FoldChange": 0.022,
+      "stat": 0.117,
+      "pvalue": 0.9091463378406754,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_022",
+      "baseMean": 5.82,
+      "log2FoldChange": 0.023,
+      "stat": 0.108,
+      "pvalue": 0.9164026682356807,
+      "padj": 0.9319349168498449,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_047",
+      "baseMean": 7.28,
+      "log2FoldChange": 0.008,
+      "stat": 0.045,
+      "pvalue": 0.9647594689141084,
+      "padj": 0.9694198898269786,
+      "significant": false,
+      "regulation": "NS"
+    },
+    {
+      "gene": "GENE_010",
+      "baseMean": 6.13,
+      "log2FoldChange": 0.008,
+      "stat": 0.039,
+      "pvalue": 0.9694198898269786,
+      "padj": 0.9694198898269786,
+      "significant": false,
+      "regulation": "NS"
+    }
+  ],
+  "stage2_dmr_top": [
+    {
+      "gene": "GENE_012",
+      "region": "Promoter_CpG_Island_GENE_012",
+      "mean_beta_isolate": 0.5831,
+      "mean_beta_mastery": 0.156,
+      "delta_beta": -0.427,
+      "t_stat": -4.923,
+      "pvalue": 0.0007273826290953815,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_077",
+      "region": "Promoter_CpG_Island_GENE_077",
+      "mean_beta_isolate": 0.6096,
+      "mean_beta_mastery": 0.8845,
+      "delta_beta": 0.275,
+      "t_stat": 4.894,
+      "pvalue": 0.0010265931943463386,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "CAMK2A",
+      "region": "Promoter_CpG_Island_CAMK2A",
+      "mean_beta_isolate": 0.5197,
+      "mean_beta_mastery": 0.1838,
+      "delta_beta": -0.3359,
+      "t_stat": -4.968,
+      "pvalue": 0.0010571619246041255,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_033",
+      "region": "Promoter_CpG_Island_GENE_033",
+      "mean_beta_isolate": 0.5298,
+      "mean_beta_mastery": 0.8539,
+      "delta_beta": 0.3241,
+      "t_stat": 4.478,
+      "pvalue": 0.001666119325078152,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "GENE_071",
+      "region": "Promoter_CpG_Island_GENE_071",
+      "mean_beta_isolate": 0.6279,
+      "mean_beta_mastery": 0.2548,
+      "delta_beta": -0.3731,
+      "t_stat": -4.224,
+      "pvalue": 0.0021176698918963016,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_089",
+      "region": "Promoter_CpG_Island_GENE_089",
+      "mean_beta_isolate": 0.6571,
+      "mean_beta_mastery": 0.2711,
+      "delta_beta": -0.386,
+      "t_stat": -4.097,
+      "pvalue": 0.002182948201567198,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_003",
+      "region": "Promoter_CpG_Island_GENE_003",
+      "mean_beta_isolate": 0.5479,
+      "mean_beta_mastery": 0.2872,
+      "delta_beta": -0.2607,
+      "t_stat": -4.135,
+      "pvalue": 0.002199556460213947,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_096",
+      "region": "Promoter_CpG_Island_GENE_096",
+      "mean_beta_isolate": 0.5096,
+      "mean_beta_mastery": 0.827,
+      "delta_beta": 0.3174,
+      "t_stat": 4.068,
+      "pvalue": 0.002404986591492784,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "GENE_062",
+      "region": "Promoter_CpG_Island_GENE_062",
+      "mean_beta_isolate": 0.6138,
+      "mean_beta_mastery": 0.2504,
+      "delta_beta": -0.3633,
+      "t_stat": -4.008,
+      "pvalue": 0.003633668136288235,
+      "fdr": 0.04611271197897327,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_009",
+      "region": "Promoter_CpG_Island_GENE_009",
+      "mean_beta_isolate": 0.3891,
+      "mean_beta_mastery": 0.6711,
+      "delta_beta": 0.282,
+      "t_stat": 3.882,
+      "pvalue": 0.0038427259982477726,
+      "fdr": 0.04611271197897327,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "MEF2C",
+      "region": "Promoter_CpG_Island_MEF2C",
+      "mean_beta_isolate": 0.6008,
+      "mean_beta_mastery": 0.2764,
+      "delta_beta": -0.3244,
+      "t_stat": -3.719,
+      "pvalue": 0.004666225945466086,
+      "fdr": 0.05090428304144821,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_016",
+      "region": "Promoter_CpG_Island_GENE_016",
+      "mean_beta_isolate": 0.5264,
+      "mean_beta_mastery": 0.8661,
+      "delta_beta": 0.3396,
+      "t_stat": 3.482,
+      "pvalue": 0.005915450608741006,
+      "fdr": 0.059154506087410054,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_052",
+      "region": "Promoter_CpG_Island_GENE_052",
+      "mean_beta_isolate": 0.514,
+      "mean_beta_mastery": 0.7024,
+      "delta_beta": 0.1884,
+      "t_stat": 3.367,
+      "pvalue": 0.0071591332603589165,
+      "fdr": 0.06378142936713195,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_080",
+      "region": "Promoter_CpG_Island_GENE_080",
+      "mean_beta_isolate": 0.5308,
+      "mean_beta_mastery": 0.786,
+      "delta_beta": 0.2551,
+      "t_stat": 3.357,
+      "pvalue": 0.007441166759498728,
+      "fdr": 0.06378142936713195,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_038",
+      "region": "Promoter_CpG_Island_GENE_038",
+      "mean_beta_isolate": 0.4971,
+      "mean_beta_mastery": 0.2272,
+      "delta_beta": -0.2699,
+      "t_stat": -3.165,
+      "pvalue": 0.010101620293754996,
+      "fdr": 0.07749525940302124,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "FOS",
+      "region": "Promoter_CpG_Island_FOS",
+      "mean_beta_isolate": 0.363,
+      "mean_beta_mastery": 0.5861,
+      "delta_beta": 0.2231,
+      "t_stat": 3.235,
+      "pvalue": 0.010332701253736165,
+      "fdr": 0.07749525940302124,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "SYN1",
+      "region": "Promoter_CpG_Island_SYN1",
+      "mean_beta_isolate": 0.5557,
+      "mean_beta_mastery": 0.3159,
+      "delta_beta": -0.2397,
+      "t_stat": -3.379,
+      "pvalue": 0.011041535202458862,
+      "fdr": 0.0779402484879449,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_043",
+      "region": "Promoter_CpG_Island_GENE_043",
+      "mean_beta_isolate": 0.48,
+      "mean_beta_mastery": 0.2278,
+      "delta_beta": -0.2522,
+      "t_stat": -3.072,
+      "pvalue": 0.011839130098723262,
+      "fdr": 0.07892753399148841,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_051",
+      "region": "Promoter_CpG_Island_GENE_051",
+      "mean_beta_isolate": 0.5642,
+      "mean_beta_mastery": 0.2724,
+      "delta_beta": -0.2917,
+      "t_stat": -2.898,
+      "pvalue": 0.018466238696061912,
+      "fdr": 0.11662887597512787,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "FOXP2",
+      "region": "Promoter_CpG_Island_FOXP2",
+      "mean_beta_isolate": 0.4903,
+      "mean_beta_mastery": 0.2399,
+      "delta_beta": -0.2504,
+      "t_stat": -2.735,
+      "pvalue": 0.021604646230106304,
+      "fdr": 0.1296278773806378,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_035",
+      "region": "Promoter_CpG_Island_GENE_035",
+      "mean_beta_isolate": 0.5149,
+      "mean_beta_mastery": 0.6733,
+      "delta_beta": 0.1584,
+      "t_stat": 2.579,
+      "pvalue": 0.03257472498355735,
+      "fdr": 0.18614128562032772,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_011",
+      "region": "Promoter_CpG_Island_GENE_011",
+      "mean_beta_isolate": 0.5973,
+      "mean_beta_mastery": 0.4307,
+      "delta_beta": -0.1665,
+      "t_stat": -2.446,
+      "pvalue": 0.03560784559446256,
+      "fdr": 0.18944782362274765,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "HDAC2",
+      "region": "Promoter_CpG_Island_HDAC2",
+      "mean_beta_isolate": 0.5464,
+      "mean_beta_mastery": 0.7919,
+      "delta_beta": 0.2455,
+      "t_stat": 2.422,
+      "pvalue": 0.03631083286102663,
+      "fdr": 0.18944782362274765,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "SYP",
+      "region": "Promoter_CpG_Island_SYP",
+      "mean_beta_isolate": 0.5828,
+      "mean_beta_mastery": 0.393,
+      "delta_beta": -0.1898,
+      "t_stat": -2.564,
+      "pvalue": 0.04233983348233814,
+      "fdr": 0.2116991674116907,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "EZH2",
+      "region": "Promoter_CpG_Island_EZH2",
+      "mean_beta_isolate": 0.5103,
+      "mean_beta_mastery": 0.7427,
+      "delta_beta": 0.2325,
+      "t_stat": 2.281,
+      "pvalue": 0.045726670279261354,
+      "fdr": 0.2194880173404545,
+      "is_dmr": false,
+      "status": "No_Change"
+    }
+  ],
+  "stage2_dmr_all": [
+    {
+      "gene": "GENE_012",
+      "region": "Promoter_CpG_Island_GENE_012",
+      "mean_beta_isolate": 0.5831,
+      "mean_beta_mastery": 0.156,
+      "delta_beta": -0.427,
+      "t_stat": -4.923,
+      "pvalue": 0.0007273826290953815,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_077",
+      "region": "Promoter_CpG_Island_GENE_077",
+      "mean_beta_isolate": 0.6096,
+      "mean_beta_mastery": 0.8845,
+      "delta_beta": 0.275,
+      "t_stat": 4.894,
+      "pvalue": 0.0010265931943463386,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "CAMK2A",
+      "region": "Promoter_CpG_Island_CAMK2A",
+      "mean_beta_isolate": 0.5197,
+      "mean_beta_mastery": 0.1838,
+      "delta_beta": -0.3359,
+      "t_stat": -4.968,
+      "pvalue": 0.0010571619246041255,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_033",
+      "region": "Promoter_CpG_Island_GENE_033",
+      "mean_beta_isolate": 0.5298,
+      "mean_beta_mastery": 0.8539,
+      "delta_beta": 0.3241,
+      "t_stat": 4.478,
+      "pvalue": 0.001666119325078152,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "GENE_071",
+      "region": "Promoter_CpG_Island_GENE_071",
+      "mean_beta_isolate": 0.6279,
+      "mean_beta_mastery": 0.2548,
+      "delta_beta": -0.3731,
+      "t_stat": -4.224,
+      "pvalue": 0.0021176698918963016,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_089",
+      "region": "Promoter_CpG_Island_GENE_089",
+      "mean_beta_isolate": 0.6571,
+      "mean_beta_mastery": 0.2711,
+      "delta_beta": -0.386,
+      "t_stat": -4.097,
+      "pvalue": 0.002182948201567198,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_003",
+      "region": "Promoter_CpG_Island_GENE_003",
+      "mean_beta_isolate": 0.5479,
+      "mean_beta_mastery": 0.2872,
+      "delta_beta": -0.2607,
+      "t_stat": -4.135,
+      "pvalue": 0.002199556460213947,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_096",
+      "region": "Promoter_CpG_Island_GENE_096",
+      "mean_beta_isolate": 0.5096,
+      "mean_beta_mastery": 0.827,
+      "delta_beta": 0.3174,
+      "t_stat": 4.068,
+      "pvalue": 0.002404986591492784,
+      "fdr": 0.03607479887239176,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "GENE_062",
+      "region": "Promoter_CpG_Island_GENE_062",
+      "mean_beta_isolate": 0.6138,
+      "mean_beta_mastery": 0.2504,
+      "delta_beta": -0.3633,
+      "t_stat": -4.008,
+      "pvalue": 0.003633668136288235,
+      "fdr": 0.04611271197897327,
+      "is_dmr": true,
+      "status": "Hypomethylated"
+    },
+    {
+      "gene": "GENE_009",
+      "region": "Promoter_CpG_Island_GENE_009",
+      "mean_beta_isolate": 0.3891,
+      "mean_beta_mastery": 0.6711,
+      "delta_beta": 0.282,
+      "t_stat": 3.882,
+      "pvalue": 0.0038427259982477726,
+      "fdr": 0.04611271197897327,
+      "is_dmr": true,
+      "status": "Hypermethylated"
+    },
+    {
+      "gene": "MEF2C",
+      "region": "Promoter_CpG_Island_MEF2C",
+      "mean_beta_isolate": 0.6008,
+      "mean_beta_mastery": 0.2764,
+      "delta_beta": -0.3244,
+      "t_stat": -3.719,
+      "pvalue": 0.004666225945466086,
+      "fdr": 0.05090428304144821,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_016",
+      "region": "Promoter_CpG_Island_GENE_016",
+      "mean_beta_isolate": 0.5264,
+      "mean_beta_mastery": 0.8661,
+      "delta_beta": 0.3396,
+      "t_stat": 3.482,
+      "pvalue": 0.005915450608741006,
+      "fdr": 0.059154506087410054,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_052",
+      "region": "Promoter_CpG_Island_GENE_052",
+      "mean_beta_isolate": 0.514,
+      "mean_beta_mastery": 0.7024,
+      "delta_beta": 0.1884,
+      "t_stat": 3.367,
+      "pvalue": 0.0071591332603589165,
+      "fdr": 0.06378142936713195,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_080",
+      "region": "Promoter_CpG_Island_GENE_080",
+      "mean_beta_isolate": 0.5308,
+      "mean_beta_mastery": 0.786,
+      "delta_beta": 0.2551,
+      "t_stat": 3.357,
+      "pvalue": 0.007441166759498728,
+      "fdr": 0.06378142936713195,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_038",
+      "region": "Promoter_CpG_Island_GENE_038",
+      "mean_beta_isolate": 0.4971,
+      "mean_beta_mastery": 0.2272,
+      "delta_beta": -0.2699,
+      "t_stat": -3.165,
+      "pvalue": 0.010101620293754996,
+      "fdr": 0.07749525940302124,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "FOS",
+      "region": "Promoter_CpG_Island_FOS",
+      "mean_beta_isolate": 0.363,
+      "mean_beta_mastery": 0.5861,
+      "delta_beta": 0.2231,
+      "t_stat": 3.235,
+      "pvalue": 0.010332701253736165,
+      "fdr": 0.07749525940302124,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "SYN1",
+      "region": "Promoter_CpG_Island_SYN1",
+      "mean_beta_isolate": 0.5557,
+      "mean_beta_mastery": 0.3159,
+      "delta_beta": -0.2397,
+      "t_stat": -3.379,
+      "pvalue": 0.011041535202458862,
+      "fdr": 0.0779402484879449,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_043",
+      "region": "Promoter_CpG_Island_GENE_043",
+      "mean_beta_isolate": 0.48,
+      "mean_beta_mastery": 0.2278,
+      "delta_beta": -0.2522,
+      "t_stat": -3.072,
+      "pvalue": 0.011839130098723262,
+      "fdr": 0.07892753399148841,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_051",
+      "region": "Promoter_CpG_Island_GENE_051",
+      "mean_beta_isolate": 0.5642,
+      "mean_beta_mastery": 0.2724,
+      "delta_beta": -0.2917,
+      "t_stat": -2.898,
+      "pvalue": 0.018466238696061912,
+      "fdr": 0.11662887597512787,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "FOXP2",
+      "region": "Promoter_CpG_Island_FOXP2",
+      "mean_beta_isolate": 0.4903,
+      "mean_beta_mastery": 0.2399,
+      "delta_beta": -0.2504,
+      "t_stat": -2.735,
+      "pvalue": 0.021604646230106304,
+      "fdr": 0.1296278773806378,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_035",
+      "region": "Promoter_CpG_Island_GENE_035",
+      "mean_beta_isolate": 0.5149,
+      "mean_beta_mastery": 0.6733,
+      "delta_beta": 0.1584,
+      "t_stat": 2.579,
+      "pvalue": 0.03257472498355735,
+      "fdr": 0.18614128562032772,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_011",
+      "region": "Promoter_CpG_Island_GENE_011",
+      "mean_beta_isolate": 0.5973,
+      "mean_beta_mastery": 0.4307,
+      "delta_beta": -0.1665,
+      "t_stat": -2.446,
+      "pvalue": 0.03560784559446256,
+      "fdr": 0.18944782362274765,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "HDAC2",
+      "region": "Promoter_CpG_Island_HDAC2",
+      "mean_beta_isolate": 0.5464,
+      "mean_beta_mastery": 0.7919,
+      "delta_beta": 0.2455,
+      "t_stat": 2.422,
+      "pvalue": 0.03631083286102663,
+      "fdr": 0.18944782362274765,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "SYP",
+      "region": "Promoter_CpG_Island_SYP",
+      "mean_beta_isolate": 0.5828,
+      "mean_beta_mastery": 0.393,
+      "delta_beta": -0.1898,
+      "t_stat": -2.564,
+      "pvalue": 0.04233983348233814,
+      "fdr": 0.2116991674116907,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "EZH2",
+      "region": "Promoter_CpG_Island_EZH2",
+      "mean_beta_isolate": 0.5103,
+      "mean_beta_mastery": 0.7427,
+      "delta_beta": 0.2325,
+      "t_stat": 2.281,
+      "pvalue": 0.045726670279261354,
+      "fdr": 0.2194880173404545,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_095",
+      "region": "Promoter_CpG_Island_GENE_095",
+      "mean_beta_isolate": 0.4795,
+      "mean_beta_mastery": 0.3021,
+      "delta_beta": -0.1773,
+      "t_stat": -2.134,
+      "pvalue": 0.059024433021391695,
+      "fdr": 0.249593588457628,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_040",
+      "region": "Promoter_CpG_Island_GENE_040",
+      "mean_beta_isolate": 0.4614,
+      "mean_beta_mastery": 0.6427,
+      "delta_beta": 0.1813,
+      "t_stat": 2.304,
+      "pvalue": 0.059967658394904325,
+      "fdr": 0.249593588457628,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_086",
+      "region": "Promoter_CpG_Island_GENE_086",
+      "mean_beta_isolate": 0.6868,
+      "mean_beta_mastery": 0.5173,
+      "delta_beta": -0.1695,
+      "t_stat": -2.12,
+      "pvalue": 0.060077021476692256,
+      "fdr": 0.249593588457628,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "EGR1",
+      "region": "Promoter_CpG_Island_EGR1",
+      "mean_beta_isolate": 0.4439,
+      "mean_beta_mastery": 0.614,
+      "delta_beta": 0.1701,
+      "t_stat": 2.147,
+      "pvalue": 0.06031845054392676,
+      "fdr": 0.249593588457628,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_029",
+      "region": "Promoter_CpG_Island_GENE_029",
+      "mean_beta_isolate": 0.4584,
+      "mean_beta_mastery": 0.3771,
+      "delta_beta": -0.0813,
+      "t_stat": -2.025,
+      "pvalue": 0.07112250803939936,
+      "fdr": 0.28449003215759744,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_083",
+      "region": "Promoter_CpG_Island_GENE_083",
+      "mean_beta_isolate": 0.4549,
+      "mean_beta_mastery": 0.2871,
+      "delta_beta": -0.1678,
+      "t_stat": -1.989,
+      "pvalue": 0.07659321541320875,
+      "fdr": 0.29417749568853957,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GRIN2B",
+      "region": "Promoter_CpG_Island_GRIN2B",
+      "mean_beta_isolate": 0.4742,
+      "mean_beta_mastery": 0.2853,
+      "delta_beta": -0.1888,
+      "t_stat": -1.964,
+      "pvalue": 0.07844733218361055,
+      "fdr": 0.29417749568853957,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_004",
+      "region": "Promoter_CpG_Island_GENE_004",
+      "mean_beta_isolate": 0.465,
+      "mean_beta_mastery": 0.6192,
+      "delta_beta": 0.1542,
+      "t_stat": 1.856,
+      "pvalue": 0.09565489493716244,
+      "fdr": 0.34783598158968154,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_021",
+      "region": "Promoter_CpG_Island_GENE_021",
+      "mean_beta_isolate": 0.4982,
+      "mean_beta_mastery": 0.3256,
+      "delta_beta": -0.1725,
+      "t_stat": -1.84,
+      "pvalue": 0.09970516746014178,
+      "fdr": 0.3519005910357946,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "ARC",
+      "region": "Promoter_CpG_Island_ARC",
+      "mean_beta_isolate": 0.6058,
+      "mean_beta_mastery": 0.4741,
+      "delta_beta": -0.1317,
+      "t_stat": -1.712,
+      "pvalue": 0.12132863161413228,
+      "fdr": 0.4159838798198821,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_050",
+      "region": "Promoter_CpG_Island_GENE_050",
+      "mean_beta_isolate": 0.4497,
+      "mean_beta_mastery": 0.5441,
+      "delta_beta": 0.0944,
+      "t_stat": 1.66,
+      "pvalue": 0.12928073453231698,
+      "fdr": 0.4309357817743899,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_014",
+      "region": "Promoter_CpG_Island_GENE_014",
+      "mean_beta_isolate": 0.5149,
+      "mean_beta_mastery": 0.6351,
+      "delta_beta": 0.1202,
+      "t_stat": 1.521,
+      "pvalue": 0.16048106467097442,
+      "fdr": 0.5089534231149316,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_044",
+      "region": "Promoter_CpG_Island_GENE_044",
+      "mean_beta_isolate": 0.4667,
+      "mean_beta_mastery": 0.6119,
+      "delta_beta": 0.1452,
+      "t_stat": 1.518,
+      "pvalue": 0.16116858398639503,
+      "fdr": 0.5089534231149316,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_007",
+      "region": "Promoter_CpG_Island_GENE_007",
+      "mean_beta_isolate": 0.6,
+      "mean_beta_mastery": 0.488,
+      "delta_beta": -0.112,
+      "t_stat": -1.465,
+      "pvalue": 0.1773253879579122,
+      "fdr": 0.5456165783320375,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_037",
+      "region": "Promoter_CpG_Island_GENE_037",
+      "mean_beta_isolate": 0.4831,
+      "mean_beta_mastery": 0.6045,
+      "delta_beta": 0.1214,
+      "t_stat": 1.314,
+      "pvalue": 0.22235755723056047,
+      "fdr": 0.6408787884629312,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_100",
+      "region": "Promoter_CpG_Island_GENE_100",
+      "mean_beta_isolate": 0.4309,
+      "mean_beta_mastery": 0.543,
+      "delta_beta": 0.1121,
+      "t_stat": 1.33,
+      "pvalue": 0.22275568901593237,
+      "fdr": 0.6408787884629312,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_049",
+      "region": "Promoter_CpG_Island_GENE_049",
+      "mean_beta_isolate": 0.4138,
+      "mean_beta_mastery": 0.5128,
+      "delta_beta": 0.0989,
+      "t_stat": 1.295,
+      "pvalue": 0.22430757596202594,
+      "fdr": 0.6408787884629312,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_053",
+      "region": "Promoter_CpG_Island_GENE_053",
+      "mean_beta_isolate": 0.5231,
+      "mean_beta_mastery": 0.6571,
+      "delta_beta": 0.134,
+      "t_stat": 1.263,
+      "pvalue": 0.23555190662032266,
+      "fdr": 0.64340207889883,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_046",
+      "region": "Promoter_CpG_Island_GENE_046",
+      "mean_beta_isolate": 0.5989,
+      "mean_beta_mastery": 0.4784,
+      "delta_beta": -0.1205,
+      "t_stat": -1.256,
+      "pvalue": 0.23796995779992755,
+      "fdr": 0.64340207889883,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "KMT2A",
+      "region": "Promoter_CpG_Island_KMT2A",
+      "mean_beta_isolate": 0.4169,
+      "mean_beta_mastery": 0.5194,
+      "delta_beta": 0.1025,
+      "t_stat": 1.264,
+      "pvalue": 0.24127577958706128,
+      "fdr": 0.64340207889883,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "BDNF",
+      "region": "Promoter_CpG_Island_BDNF",
+      "mean_beta_isolate": 0.5057,
+      "mean_beta_mastery": 0.579,
+      "delta_beta": 0.0733,
+      "t_stat": 1.194,
+      "pvalue": 0.2604035906714808,
+      "fdr": 0.661926853703461,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_092",
+      "region": "Promoter_CpG_Island_GENE_092",
+      "mean_beta_isolate": 0.5245,
+      "mean_beta_mastery": 0.6189,
+      "delta_beta": 0.0944,
+      "t_stat": 1.183,
+      "pvalue": 0.2641140206007903,
+      "fdr": 0.661926853703461,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_073",
+      "region": "Promoter_CpG_Island_GENE_073",
+      "mean_beta_isolate": 0.4903,
+      "mean_beta_mastery": 0.6152,
+      "delta_beta": 0.1249,
+      "t_stat": 1.182,
+      "pvalue": 0.2647707414813844,
+      "fdr": 0.661926853703461,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_058",
+      "region": "Promoter_CpG_Island_GENE_058",
+      "mean_beta_isolate": 0.4495,
+      "mean_beta_mastery": 0.5424,
+      "delta_beta": 0.0929,
+      "t_stat": 1.156,
+      "pvalue": 0.27588153268693494,
+      "fdr": 0.6649069896098249,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_093",
+      "region": "Promoter_CpG_Island_GENE_093",
+      "mean_beta_isolate": 0.4642,
+      "mean_beta_mastery": 0.5812,
+      "delta_beta": 0.117,
+      "t_stat": 1.16,
+      "pvalue": 0.2770445790040937,
+      "fdr": 0.6649069896098249,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "DNMT3A",
+      "region": "Promoter_CpG_Island_DNMT3A",
+      "mean_beta_isolate": 0.5399,
+      "mean_beta_mastery": 0.6583,
+      "delta_beta": 0.1184,
+      "t_stat": 1.124,
+      "pvalue": 0.28752081608057045,
+      "fdr": 0.676519567248401,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_008",
+      "region": "Promoter_CpG_Island_GENE_008",
+      "mean_beta_isolate": 0.4984,
+      "mean_beta_mastery": 0.5806,
+      "delta_beta": 0.0822,
+      "t_stat": 1.097,
+      "pvalue": 0.2991005807041823,
+      "fdr": 0.6902321093173437,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_070",
+      "region": "Promoter_CpG_Island_GENE_070",
+      "mean_beta_isolate": 0.3947,
+      "mean_beta_mastery": 0.4529,
+      "delta_beta": 0.0582,
+      "t_stat": 1.023,
+      "pvalue": 0.3358359731009142,
+      "fdr": 0.7399218128024144,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_039",
+      "region": "Promoter_CpG_Island_GENE_039",
+      "mean_beta_isolate": 0.5557,
+      "mean_beta_mastery": 0.6556,
+      "delta_beta": 0.0999,
+      "t_stat": 1.01,
+      "pvalue": 0.3371084120853334,
+      "fdr": 0.7399218128024144,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_069",
+      "region": "Promoter_CpG_Island_GENE_069",
+      "mean_beta_isolate": 0.5989,
+      "mean_beta_mastery": 0.5086,
+      "delta_beta": -0.0903,
+      "t_stat": -1.008,
+      "pvalue": 0.3391308308677733,
+      "fdr": 0.7399218128024144,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_042",
+      "region": "Promoter_CpG_Island_GENE_042",
+      "mean_beta_isolate": 0.4564,
+      "mean_beta_mastery": 0.5335,
+      "delta_beta": 0.0771,
+      "t_stat": 0.975,
+      "pvalue": 0.3524606509812761,
+      "fdr": 0.7422711367974,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_099",
+      "region": "Promoter_CpG_Island_GENE_099",
+      "mean_beta_isolate": 0.6441,
+      "mean_beta_mastery": 0.7105,
+      "delta_beta": 0.0664,
+      "t_stat": 0.965,
+      "pvalue": 0.3594055241638152,
+      "fdr": 0.7422711367974,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_067",
+      "region": "Promoter_CpG_Island_GENE_067",
+      "mean_beta_isolate": 0.5843,
+      "mean_beta_mastery": 0.6711,
+      "delta_beta": 0.0868,
+      "t_stat": 0.968,
+      "pvalue": 0.3598962149119832,
+      "fdr": 0.7422711367974,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_072",
+      "region": "Promoter_CpG_Island_GENE_072",
+      "mean_beta_isolate": 0.5609,
+      "mean_beta_mastery": 0.4675,
+      "delta_beta": -0.0934,
+      "t_stat": -0.95,
+      "pvalue": 0.364949975592055,
+      "fdr": 0.7422711367974,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "TET2",
+      "region": "Promoter_CpG_Island_TET2",
+      "mean_beta_isolate": 0.5496,
+      "mean_beta_mastery": 0.4556,
+      "delta_beta": -0.094,
+      "t_stat": -0.933,
+      "pvalue": 0.37328191709821024,
+      "fdr": 0.7465638341964205,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_027",
+      "region": "Promoter_CpG_Island_GENE_027",
+      "mean_beta_isolate": 0.5404,
+      "mean_beta_mastery": 0.47,
+      "delta_beta": -0.0704,
+      "t_stat": -0.896,
+      "pvalue": 0.3952539943089156,
+      "fdr": 0.7734966139911843,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_036",
+      "region": "Promoter_CpG_Island_GENE_036",
+      "mean_beta_isolate": 0.4874,
+      "mean_beta_mastery": 0.5723,
+      "delta_beta": 0.0848,
+      "t_stat": 0.875,
+      "pvalue": 0.4031682502466821,
+      "fdr": 0.7734966139911843,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_079",
+      "region": "Promoter_CpG_Island_GENE_079",
+      "mean_beta_isolate": 0.5093,
+      "mean_beta_mastery": 0.4354,
+      "delta_beta": -0.0738,
+      "t_stat": -0.873,
+      "pvalue": 0.40608572234537177,
+      "fdr": 0.7734966139911843,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_028",
+      "region": "Promoter_CpG_Island_GENE_028",
+      "mean_beta_isolate": 0.385,
+      "mean_beta_mastery": 0.437,
+      "delta_beta": 0.0519,
+      "t_stat": 0.817,
+      "pvalue": 0.438045107402266,
+      "fdr": 0.8213345763792488,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_006",
+      "region": "Promoter_CpG_Island_GENE_006",
+      "mean_beta_isolate": 0.5081,
+      "mean_beta_mastery": 0.4369,
+      "delta_beta": -0.0712,
+      "t_stat": -0.762,
+      "pvalue": 0.46537775563868655,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_015",
+      "region": "Promoter_CpG_Island_GENE_015",
+      "mean_beta_isolate": 0.4725,
+      "mean_beta_mastery": 0.5428,
+      "delta_beta": 0.0703,
+      "t_stat": 0.758,
+      "pvalue": 0.46745190701524597,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_078",
+      "region": "Promoter_CpG_Island_GENE_078",
+      "mean_beta_isolate": 0.6419,
+      "mean_beta_mastery": 0.6082,
+      "delta_beta": -0.0337,
+      "t_stat": -0.748,
+      "pvalue": 0.4733481635260145,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_082",
+      "region": "Promoter_CpG_Island_GENE_082",
+      "mean_beta_isolate": 0.5858,
+      "mean_beta_mastery": 0.6393,
+      "delta_beta": 0.0535,
+      "t_stat": 0.743,
+      "pvalue": 0.4743373563273835,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_013",
+      "region": "Promoter_CpG_Island_GENE_013",
+      "mean_beta_isolate": 0.5144,
+      "mean_beta_mastery": 0.5737,
+      "delta_beta": 0.0593,
+      "t_stat": 0.738,
+      "pvalue": 0.479883410922716,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_066",
+      "region": "Promoter_CpG_Island_GENE_066",
+      "mean_beta_isolate": 0.5535,
+      "mean_beta_mastery": 0.4875,
+      "delta_beta": -0.0661,
+      "t_stat": -0.735,
+      "pvalue": 0.4813321664195067,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_031",
+      "region": "Promoter_CpG_Island_GENE_031",
+      "mean_beta_isolate": 0.4903,
+      "mean_beta_mastery": 0.5445,
+      "delta_beta": 0.0542,
+      "t_stat": 0.716,
+      "pvalue": 0.4906455099100179,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_081",
+      "region": "Promoter_CpG_Island_GENE_081",
+      "mean_beta_isolate": 0.5095,
+      "mean_beta_mastery": 0.5681,
+      "delta_beta": 0.0586,
+      "t_stat": 0.699,
+      "pvalue": 0.5017645439854093,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_022",
+      "region": "Promoter_CpG_Island_GENE_022",
+      "mean_beta_isolate": 0.4438,
+      "mean_beta_mastery": 0.4928,
+      "delta_beta": 0.049,
+      "t_stat": 0.699,
+      "pvalue": 0.5061049613241086,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_068",
+      "region": "Promoter_CpG_Island_GENE_068",
+      "mean_beta_isolate": 0.5301,
+      "mean_beta_mastery": 0.5786,
+      "delta_beta": 0.0485,
+      "t_stat": 0.682,
+      "pvalue": 0.5108477383773231,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_034",
+      "region": "Promoter_CpG_Island_GENE_034",
+      "mean_beta_isolate": 0.606,
+      "mean_beta_mastery": 0.5498,
+      "delta_beta": -0.0561,
+      "t_stat": -0.675,
+      "pvalue": 0.5154132625842409,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_056",
+      "region": "Promoter_CpG_Island_GENE_056",
+      "mean_beta_isolate": 0.5775,
+      "mean_beta_mastery": 0.5261,
+      "delta_beta": -0.0514,
+      "t_stat": -0.665,
+      "pvalue": 0.5218702146240042,
+      "fdr": 0.8240056020379014,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_001",
+      "region": "Promoter_CpG_Island_GENE_001",
+      "mean_beta_isolate": 0.4904,
+      "mean_beta_mastery": 0.5499,
+      "delta_beta": 0.0595,
+      "t_stat": 0.615,
+      "pvalue": 0.5521566681621781,
+      "fdr": 0.8496176436115351,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_075",
+      "region": "Promoter_CpG_Island_GENE_075",
+      "mean_beta_isolate": 0.5887,
+      "mean_beta_mastery": 0.5388,
+      "delta_beta": -0.0498,
+      "t_stat": -0.612,
+      "pvalue": 0.557886171981486,
+      "fdr": 0.8496176436115351,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "KDM6A",
+      "region": "Promoter_CpG_Island_KDM6A",
+      "mean_beta_isolate": 0.4099,
+      "mean_beta_mastery": 0.4525,
+      "delta_beta": 0.0426,
+      "t_stat": 0.604,
+      "pvalue": 0.559331615377594,
+      "fdr": 0.8496176436115351,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_055",
+      "region": "Promoter_CpG_Island_GENE_055",
+      "mean_beta_isolate": 0.5689,
+      "mean_beta_mastery": 0.5256,
+      "delta_beta": -0.0433,
+      "t_stat": -0.598,
+      "pvalue": 0.5706569254717826,
+      "fdr": 0.8521037877000116,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_084",
+      "region": "Promoter_CpG_Island_GENE_084",
+      "mean_beta_isolate": 0.4761,
+      "mean_beta_mastery": 0.4204,
+      "delta_beta": -0.0557,
+      "t_stat": -0.576,
+      "pvalue": 0.5771130356608272,
+      "fdr": 0.8521037877000116,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_030",
+      "region": "Promoter_CpG_Island_GENE_030",
+      "mean_beta_isolate": 0.4917,
+      "mean_beta_mastery": 0.549,
+      "delta_beta": 0.0572,
+      "t_stat": 0.564,
+      "pvalue": 0.5855296041238747,
+      "fdr": 0.8521037877000116,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_026",
+      "region": "Promoter_CpG_Island_GENE_026",
+      "mean_beta_isolate": 0.6336,
+      "mean_beta_mastery": 0.5734,
+      "delta_beta": -0.0602,
+      "t_stat": -0.557,
+      "pvalue": 0.5900421598268413,
+      "fdr": 0.8521037877000116,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_048",
+      "region": "Promoter_CpG_Island_GENE_048",
+      "mean_beta_isolate": 0.539,
+      "mean_beta_mastery": 0.5844,
+      "delta_beta": 0.0454,
+      "t_stat": 0.547,
+      "pvalue": 0.5964726513900082,
+      "fdr": 0.8521037877000116,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_019",
+      "region": "Promoter_CpG_Island_GENE_019",
+      "mean_beta_isolate": 0.5565,
+      "mean_beta_mastery": 0.5126,
+      "delta_beta": -0.0438,
+      "t_stat": -0.512,
+      "pvalue": 0.6196915906588094,
+      "fdr": 0.8680756284229693,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_023",
+      "region": "Promoter_CpG_Island_GENE_023",
+      "mean_beta_isolate": 0.5319,
+      "mean_beta_mastery": 0.4875,
+      "delta_beta": -0.0443,
+      "t_stat": -0.509,
+      "pvalue": 0.6221208670364613,
+      "fdr": 0.8680756284229693,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_076",
+      "region": "Promoter_CpG_Island_GENE_076",
+      "mean_beta_isolate": 0.5285,
+      "mean_beta_mastery": 0.489,
+      "delta_beta": -0.0395,
+      "t_stat": -0.493,
+      "pvalue": 0.6333084834217922,
+      "fdr": 0.8720458186076006,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_025",
+      "region": "Promoter_CpG_Island_GENE_025",
+      "mean_beta_isolate": 0.5577,
+      "mean_beta_mastery": 0.5925,
+      "delta_beta": 0.0348,
+      "t_stat": 0.489,
+      "pvalue": 0.639500266978907,
+      "fdr": 0.8720458186076006,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_060",
+      "region": "Promoter_CpG_Island_GENE_060",
+      "mean_beta_isolate": 0.593,
+      "mean_beta_mastery": 0.5537,
+      "delta_beta": -0.0393,
+      "t_stat": -0.453,
+      "pvalue": 0.6607310600083278,
+      "fdr": 0.8896229231661615,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_074",
+      "region": "Promoter_CpG_Island_GENE_074",
+      "mean_beta_isolate": 0.5165,
+      "mean_beta_mastery": 0.4795,
+      "delta_beta": -0.037,
+      "t_stat": -0.436,
+      "pvalue": 0.6718604933725065,
+      "fdr": 0.8896229231661615,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_059",
+      "region": "Promoter_CpG_Island_GENE_059",
+      "mean_beta_isolate": 0.4433,
+      "mean_beta_mastery": 0.4756,
+      "delta_beta": 0.0323,
+      "t_stat": 0.428,
+      "pvalue": 0.6776753867623526,
+      "fdr": 0.8896229231661615,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_065",
+      "region": "Promoter_CpG_Island_GENE_065",
+      "mean_beta_isolate": 0.5418,
+      "mean_beta_mastery": 0.5832,
+      "delta_beta": 0.0414,
+      "t_stat": 0.419,
+      "pvalue": 0.6845543904074608,
+      "fdr": 0.8896229231661615,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_061",
+      "region": "Promoter_CpG_Island_GENE_061",
+      "mean_beta_isolate": 0.5392,
+      "mean_beta_mastery": 0.5708,
+      "delta_beta": 0.0316,
+      "t_stat": 0.414,
+      "pvalue": 0.6894577654537752,
+      "fdr": 0.8896229231661615,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_085",
+      "region": "Promoter_CpG_Island_GENE_085",
+      "mean_beta_isolate": 0.5133,
+      "mean_beta_mastery": 0.5442,
+      "delta_beta": 0.0309,
+      "t_stat": 0.395,
+      "pvalue": 0.701224276690416,
+      "fdr": 0.8951799276898927,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_087",
+      "region": "Promoter_CpG_Island_GENE_087",
+      "mean_beta_isolate": 0.4861,
+      "mean_beta_mastery": 0.5217,
+      "delta_beta": 0.0356,
+      "t_stat": 0.383,
+      "pvalue": 0.7114535156498665,
+      "fdr": 0.8986781250314103,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_091",
+      "region": "Promoter_CpG_Island_GENE_091",
+      "mean_beta_isolate": 0.6244,
+      "mean_beta_mastery": 0.597,
+      "delta_beta": -0.0274,
+      "t_stat": -0.351,
+      "pvalue": 0.7333315071258142,
+      "fdr": 0.9166643839072677,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_057",
+      "region": "Promoter_CpG_Island_GENE_057",
+      "mean_beta_isolate": 0.5167,
+      "mean_beta_mastery": 0.4879,
+      "delta_beta": -0.0288,
+      "t_stat": -0.32,
+      "pvalue": 0.7573431758982567,
+      "fdr": 0.9369193928638228,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_041",
+      "region": "Promoter_CpG_Island_GENE_041",
+      "mean_beta_isolate": 0.5101,
+      "mean_beta_mastery": 0.5321,
+      "delta_beta": 0.022,
+      "t_stat": 0.294,
+      "pvalue": 0.7786622550503389,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "CREB1",
+      "region": "Promoter_CpG_Island_CREB1",
+      "mean_beta_isolate": 0.5474,
+      "mean_beta_mastery": 0.5769,
+      "delta_beta": 0.0295,
+      "t_stat": 0.289,
+      "pvalue": 0.7791525783103467,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_045",
+      "region": "Promoter_CpG_Island_GENE_045",
+      "mean_beta_isolate": 0.5586,
+      "mean_beta_mastery": 0.5372,
+      "delta_beta": -0.0213,
+      "t_stat": -0.259,
+      "pvalue": 0.8013648111820422,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_102",
+      "region": "Promoter_CpG_Island_GENE_102",
+      "mean_beta_isolate": 0.5161,
+      "mean_beta_mastery": 0.538,
+      "delta_beta": 0.0219,
+      "t_stat": 0.258,
+      "pvalue": 0.8021567251593117,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_101",
+      "region": "Promoter_CpG_Island_GENE_101",
+      "mean_beta_isolate": 0.6584,
+      "mean_beta_mastery": 0.6738,
+      "delta_beta": 0.0154,
+      "t_stat": 0.244,
+      "pvalue": 0.8120450098528551,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_054",
+      "region": "Promoter_CpG_Island_GENE_054",
+      "mean_beta_isolate": 0.6944,
+      "mean_beta_mastery": 0.6722,
+      "delta_beta": -0.0222,
+      "t_stat": -0.244,
+      "pvalue": 0.8136272930734041,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_063",
+      "region": "Promoter_CpG_Island_GENE_063",
+      "mean_beta_isolate": 0.5839,
+      "mean_beta_mastery": 0.6074,
+      "delta_beta": 0.0235,
+      "t_stat": 0.24,
+      "pvalue": 0.8161251180041489,
+      "fdr": 0.9416828284663257,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_024",
+      "region": "Promoter_CpG_Island_GENE_024",
+      "mean_beta_isolate": 0.645,
+      "mean_beta_mastery": 0.6291,
+      "delta_beta": -0.0159,
+      "t_stat": -0.187,
+      "pvalue": 0.8558085341097849,
+      "fdr": 0.9718294904005667,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_098",
+      "region": "Promoter_CpG_Island_GENE_098",
+      "mean_beta_isolate": 0.5755,
+      "mean_beta_mastery": 0.5598,
+      "delta_beta": -0.0157,
+      "t_stat": -0.174,
+      "pvalue": 0.8656229099791737,
+      "fdr": 0.9718294904005667,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_047",
+      "region": "Promoter_CpG_Island_GENE_047",
+      "mean_beta_isolate": 0.596,
+      "mean_beta_mastery": 0.5801,
+      "delta_beta": -0.0159,
+      "t_stat": -0.163,
+      "pvalue": 0.873611868022564,
+      "fdr": 0.9718294904005667,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_064",
+      "region": "Promoter_CpG_Island_GENE_064",
+      "mean_beta_isolate": 0.4829,
+      "mean_beta_mastery": 0.4998,
+      "delta_beta": 0.0169,
+      "t_stat": 0.162,
+      "pvalue": 0.87464654136051,
+      "fdr": 0.9718294904005667,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_020",
+      "region": "Promoter_CpG_Island_GENE_020",
+      "mean_beta_isolate": 0.5766,
+      "mean_beta_mastery": 0.5649,
+      "delta_beta": -0.0116,
+      "t_stat": -0.131,
+      "pvalue": 0.9001948967928004,
+      "fdr": 0.9802145396166697,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_018",
+      "region": "Promoter_CpG_Island_GENE_018",
+      "mean_beta_isolate": 0.521,
+      "mean_beta_mastery": 0.5333,
+      "delta_beta": 0.0123,
+      "t_stat": 0.128,
+      "pvalue": 0.9008160468515924,
+      "fdr": 0.9802145396166697,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_032",
+      "region": "Promoter_CpG_Island_GENE_032",
+      "mean_beta_isolate": 0.5828,
+      "mean_beta_mastery": 0.5945,
+      "delta_beta": 0.0117,
+      "t_stat": 0.118,
+      "pvalue": 0.9083221788810494,
+      "fdr": 0.9802145396166697,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_088",
+      "region": "Promoter_CpG_Island_GENE_088",
+      "mean_beta_isolate": 0.4723,
+      "mean_beta_mastery": 0.4826,
+      "delta_beta": 0.0104,
+      "t_stat": 0.11,
+      "pvalue": 0.9148669036422251,
+      "fdr": 0.9802145396166697,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_010",
+      "region": "Promoter_CpG_Island_GENE_010",
+      "mean_beta_isolate": 0.6297,
+      "mean_beta_mastery": 0.6372,
+      "delta_beta": 0.0075,
+      "t_stat": 0.086,
+      "pvalue": 0.9333133096005477,
+      "fdr": 0.9895956650335587,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_017",
+      "region": "Promoter_CpG_Island_GENE_017",
+      "mean_beta_isolate": 0.6264,
+      "mean_beta_mastery": 0.6327,
+      "delta_beta": 0.0063,
+      "t_stat": 0.077,
+      "pvalue": 0.9401158817818807,
+      "fdr": 0.9895956650335587,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_005",
+      "region": "Promoter_CpG_Island_GENE_005",
+      "mean_beta_isolate": 0.5938,
+      "mean_beta_mastery": 0.5895,
+      "delta_beta": -0.0043,
+      "t_stat": -0.056,
+      "pvalue": 0.9567558931776037,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_090",
+      "region": "Promoter_CpG_Island_GENE_090",
+      "mean_beta_isolate": 0.5746,
+      "mean_beta_mastery": 0.5723,
+      "delta_beta": -0.0023,
+      "t_stat": -0.028,
+      "pvalue": 0.9784439604768834,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_097",
+      "region": "Promoter_CpG_Island_GENE_097",
+      "mean_beta_isolate": 0.5412,
+      "mean_beta_mastery": 0.5379,
+      "delta_beta": -0.0033,
+      "t_stat": -0.028,
+      "pvalue": 0.9784481621672845,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_094",
+      "region": "Promoter_CpG_Island_GENE_094",
+      "mean_beta_isolate": 0.65,
+      "mean_beta_mastery": 0.6486,
+      "delta_beta": -0.0014,
+      "t_stat": -0.021,
+      "pvalue": 0.9839067332209255,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "GENE_002",
+      "region": "Promoter_CpG_Island_GENE_002",
+      "mean_beta_isolate": 0.5079,
+      "mean_beta_mastery": 0.5067,
+      "delta_beta": -0.0012,
+      "t_stat": -0.013,
+      "pvalue": 0.9898839662652181,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    },
+    {
+      "gene": "NPAS4",
+      "region": "Promoter_CpG_Island_NPAS4",
+      "mean_beta_isolate": 0.5045,
+      "mean_beta_mastery": 0.5039,
+      "delta_beta": -0.0006,
+      "t_stat": -0.008,
+      "pvalue": 0.9941155990576025,
+      "fdr": 0.9941155990576025,
+      "is_dmr": false,
+      "status": "No_Change"
+    }
+  ],
+  "stage3_classification": [
+    {
+      "Model": "Random_Forest",
+      "CV_Scheme": "Stratified Group K-Fold (replicate-split)",
+      "Accuracy": 0.875,
+      "Macro_F1": 0.8617,
+      "Precision": 0.9018,
+      "Recall": 0.875,
+      "ROC_AUC_OvR": 0.9676
+    },
+    {
+      "Model": "MLP_Neural_Net",
+      "CV_Scheme": "Stratified Group K-Fold (replicate-split)",
+      "Accuracy": 0.875,
+      "Macro_F1": 0.8617,
+      "Precision": 0.9018,
+      "Recall": 0.875,
+      "ROC_AUC_OvR": 0.9676
+    },
+    {
+      "Model": "XGBoost",
+      "CV_Scheme": "Stratified Group K-Fold (replicate-split)",
+      "Accuracy": 0.7083,
+      "Macro_F1": 0.7131,
+      "Precision": 0.7833,
+      "Recall": 0.7083,
+      "ROC_AUC_OvR": 0.912
+    }
+  ],
+  "stage3_regression": [
+    {
+      "Model": "Random_Forest_Regressor",
+      "R2_Score": 0.469,
+      "Pearson_r": 0.8554,
+      "MAE": 0.2067,
+      "RMSE": 0.2498
+    },
+    {
+      "Model": "XGBoost_Regressor",
+      "R2_Score": 0.2416,
+      "Pearson_r": 0.5028,
+      "MAE": 0.2167,
+      "RMSE": 0.2985
+    },
+    {
+      "Model": "MLP_Regressor",
+      "R2_Score": -1.4207,
+      "Pearson_r": 0.2358,
+      "MAE": 0.4344,
+      "RMSE": 0.5333
+    }
+  ],
+  "stage3_confusion": {
+    "XGBoost": [
+      [
+        5,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        4,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        5,
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "Random_Forest": [
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        3,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        6
+      ]
+    ],
+    "MLP_Neural_Net": [
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "stage4_shap_top": [
+    {
+      "feature": "RNA_GENE_063",
+      "mean_abs_shap": 0.58859,
+      "feature_importance_prior": 0.01224
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "mean_abs_shap": 0.49933,
+      "feature_importance_prior": 0.01319
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "mean_abs_shap": 0.47855,
+      "feature_importance_prior": 0.0257
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "mean_abs_shap": 0.3856,
+      "feature_importance_prior": 0.009
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "mean_abs_shap": 0.37618,
+      "feature_importance_prior": 0.00888
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "mean_abs_shap": 0.33246,
+      "feature_importance_prior": 0.02979
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "mean_abs_shap": 0.29626,
+      "feature_importance_prior": 0.00715
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "mean_abs_shap": 0.28179,
+      "feature_importance_prior": 0.01136
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "mean_abs_shap": 0.27304,
+      "feature_importance_prior": 0.01026
+    },
+    {
+      "feature": "WGBS_CpG_GENE_009",
+      "mean_abs_shap": 0.25488,
+      "feature_importance_prior": 0.00984
+    },
+    {
+      "feature": "WGBS_CpG_GENE_024",
+      "mean_abs_shap": 0.2433,
+      "feature_importance_prior": 0.00859
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_090",
+      "mean_abs_shap": 0.24114,
+      "feature_importance_prior": 0.00851
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_049",
+      "mean_abs_shap": 0.23921,
+      "feature_importance_prior": 0.00732
+    },
+    {
+      "feature": "ChIP_H3K4me3_ARC",
+      "mean_abs_shap": 0.20631,
+      "feature_importance_prior": 0.01764
+    },
+    {
+      "feature": "WGBS_CpG_KDM6A",
+      "mean_abs_shap": 0.19417,
+      "feature_importance_prior": 0.02272
+    },
+    {
+      "feature": "EpiPermissiveness_FOS",
+      "mean_abs_shap": 0.19062,
+      "feature_importance_prior": 0.01926
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_030",
+      "mean_abs_shap": 0.1906,
+      "feature_importance_prior": 0.0089
+    },
+    {
+      "feature": "ChIP_H3K4me3_FOS",
+      "mean_abs_shap": 0.18904,
+      "feature_importance_prior": 0.01125
+    },
+    {
+      "feature": "WGBS_CpG_FOS",
+      "mean_abs_shap": 0.18893,
+      "feature_importance_prior": 0.00763
+    },
+    {
+      "feature": "WGBS_CpG_GENE_062",
+      "mean_abs_shap": 0.18797,
+      "feature_importance_prior": 0.00783
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_030",
+      "mean_abs_shap": 0.17306,
+      "feature_importance_prior": 0.01529
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_033",
+      "mean_abs_shap": 0.15595,
+      "feature_importance_prior": 0.01478
+    },
+    {
+      "feature": "RNA_GENE_055",
+      "mean_abs_shap": 0.14816,
+      "feature_importance_prior": 0.00812
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_001",
+      "mean_abs_shap": 0.14771,
+      "feature_importance_prior": 0.00877
+    },
+    {
+      "feature": "RNA_GENE_099",
+      "mean_abs_shap": 0.14364,
+      "feature_importance_prior": 0.00828
+    }
+  ],
+  "stage4_beeswarm": [
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.235,
+      "shap_value": -0.018
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.495,
+      "shap_value": 0.0012
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.429,
+      "shap_value": 0.0002
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.42,
+      "shap_value": 0.002
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.522,
+      "shap_value": 0.0039
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.286,
+      "shap_value": -0.0043
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.09,
+      "shap_value": 0.011
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.406,
+      "shap_value": 0.0005
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.694,
+      "shap_value": -0.0194
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.535,
+      "shap_value": -0.0035
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.379,
+      "shap_value": 0.0026
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.219,
+      "shap_value": 0.0129
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.0,
+      "shap_value": -0.0065
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.492,
+      "shap_value": -0.0122
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.376,
+      "shap_value": 0.0011
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.576,
+      "shap_value": -0.0063
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.371,
+      "shap_value": 0.0132
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.256,
+      "shap_value": 0.046
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.605,
+      "shap_value": -0.1074
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 1.0,
+      "shap_value": -0.4068
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.815,
+      "shap_value": -0.4778
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.519,
+      "shap_value": -0.0252
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 0.914,
+      "shap_value": -12.6229
+    },
+    {
+      "feature": "RNA_GENE_063",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.984,
+      "shap_value": -0.3211
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.509,
+      "shap_value": -0.0003
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.898,
+      "shap_value": 0.0058
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.704,
+      "shap_value": 0.0096
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.532,
+      "shap_value": -0.0044
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 1.0,
+      "shap_value": 0.0165
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.537,
+      "shap_value": 0.0006
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.496,
+      "shap_value": 0.0005
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.905,
+      "shap_value": -0.0085
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.482,
+      "shap_value": 0.0019
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.395,
+      "shap_value": 0.0032
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.416,
+      "shap_value": 0.0045
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.537,
+      "shap_value": -0.0012
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.212,
+      "shap_value": -0.0038
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.461,
+      "shap_value": 0.0082
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.405,
+      "shap_value": 0.0019
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.66,
+      "shap_value": -0.0051
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.244,
+      "shap_value": 0.0531
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.383,
+      "shap_value": 0.0292
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.188,
+      "shap_value": 0.1625
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.14,
+      "shap_value": 0.2195
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.246,
+      "shap_value": 0.2732
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.349,
+      "shap_value": 0.0374
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 0.0,
+      "shap_value": 11.0272
+    },
+    {
+      "feature": "WGBS_CpG_CAMK2A",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.292,
+      "shap_value": 0.1058
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.486,
+      "shap_value": 0.0146
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.082,
+      "shap_value": -0.0082
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.159,
+      "shap_value": -0.0205
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.376,
+      "shap_value": 0.0028
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.027,
+      "shap_value": -0.0217
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.433,
+      "shap_value": 0.0023
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 1.0,
+      "shap_value": -0.0301
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.869,
+      "shap_value": -0.0192
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.645,
+      "shap_value": -0.0284
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.911,
+      "shap_value": -0.0258
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.953,
+      "shap_value": -0.0471
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.744,
+      "shap_value": -0.0336
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.415,
+      "shap_value": 0.0007
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.348,
+      "shap_value": 0.0098
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.485,
+      "shap_value": -0.0033
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.364,
+      "shap_value": 0.0012
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.452,
+      "shap_value": -0.0246
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.478,
+      "shap_value": -0.0384
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.089,
+      "shap_value": 0.2644
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.267,
+      "shap_value": 0.1226
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.299,
+      "shap_value": 0.1541
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.21,
+      "shap_value": 0.0707
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 0.119,
+      "shap_value": 10.2109
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_072",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.3302
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.0,
+      "shap_value": -0.0204
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.422,
+      "shap_value": 0.0002
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.141,
+      "shap_value": -0.0086
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.375,
+      "shap_value": 0.004
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.414,
+      "shap_value": 0.0003
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.545,
+      "shap_value": 0.0024
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.757,
+      "shap_value": -0.0063
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.79,
+      "shap_value": -0.0055
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.398,
+      "shap_value": 0.0001
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.4,
+      "shap_value": 0.0
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.139,
+      "shap_value": 0.0078
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.183,
+      "shap_value": 0.0073
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.041,
+      "shap_value": -0.003
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.65,
+      "shap_value": -0.0253
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.546,
+      "shap_value": -0.0017
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.742,
+      "shap_value": -0.0077
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.396,
+      "shap_value": 0.0006
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.357,
+      "shap_value": 0.0064
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.875,
+      "shap_value": -0.1542
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.607,
+      "shap_value": -0.0793
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.924,
+      "shap_value": -0.3476
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.425,
+      "shap_value": -0.0036
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 1.0,
+      "shap_value": -8.3868
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_083",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.963,
+      "shap_value": -0.1754
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.676,
+      "shap_value": 0.0129
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.652,
+      "shap_value": 0.0022
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.669,
+      "shap_value": 0.0081
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.55,
+      "shap_value": -0.0191
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.444,
+      "shap_value": 0.0002
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.501,
+      "shap_value": 0.0011
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.559,
+      "shap_value": -0.0023
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.291,
+      "shap_value": 0.0022
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.117,
+      "shap_value": 0.0131
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.373,
+      "shap_value": 0.0012
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.0136
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.124,
+      "shap_value": 0.0109
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.249,
+      "shap_value": -0.0016
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.404,
+      "shap_value": 0.0033
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.232,
+      "shap_value": 0.0025
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.195,
+      "shap_value": 0.0057
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.181,
+      "shap_value": 0.0342
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.85,
+      "shap_value": -0.0634
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.519,
+      "shap_value": -0.0286
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.71,
+      "shap_value": -0.1108
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.69,
+      "shap_value": -0.1775
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.872,
+      "shap_value": -0.0678
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 1.0,
+      "shap_value": -8.2987
+    },
+    {
+      "feature": "ChIP_H3K27me3_GENE_049",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.885,
+      "shap_value": -0.1473
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.033,
+      "shap_value": -0.0136
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.007,
+      "shap_value": -0.005
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.0,
+      "shap_value": -0.0193
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.014,
+      "shap_value": 0.0722
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.01,
+      "shap_value": -0.0109
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.011,
+      "shap_value": -0.0078
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.044,
+      "shap_value": 0.0029
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.482,
+      "shap_value": -0.0567
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.043,
+      "shap_value": 0.0069
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.04,
+      "shap_value": 0.0037
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.04,
+      "shap_value": 0.0061
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.051,
+      "shap_value": 0.0035
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.152,
+      "shap_value": 0.0071
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.051,
+      "shap_value": 0.0105
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 1.0,
+      "shap_value": -0.1023
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.31,
+      "shap_value": -0.0534
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.167,
+      "shap_value": -0.1289
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.113,
+      "shap_value": -0.0716
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.018,
+      "shap_value": 0.1338
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.019,
+      "shap_value": 0.1554
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.026,
+      "shap_value": 0.2252
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.017,
+      "shap_value": 0.0629
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 0.011,
+      "shap_value": 6.7023
+    },
+    {
+      "feature": "EpiPermissiveness_KMT2A",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.022,
+      "shap_value": 0.1169
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.134,
+      "shap_value": -0.0103
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.55,
+      "shap_value": 0.0012
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.036,
+      "shap_value": -0.0092
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.139,
+      "shap_value": 0.0315
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.0,
+      "shap_value": -0.0067
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.138,
+      "shap_value": -0.0032
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.679,
+      "shap_value": -0.0039
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.383,
+      "shap_value": 0.0001
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.669,
+      "shap_value": -0.0083
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.547,
+      "shap_value": -0.0021
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.262,
+      "shap_value": 0.0031
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.372,
+      "shap_value": 0.0006
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.532,
+      "shap_value": 0.0009
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.59,
+      "shap_value": -0.0153
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.281,
+      "shap_value": 0.001
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.47,
+      "shap_value": -0.0013
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.509,
+      "shap_value": -0.0112
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.862,
+      "shap_value": -0.0525
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.413,
+      "shap_value": -0.0043
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.931,
+      "shap_value": -0.1586
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.578,
+      "shap_value": -0.0934
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.837,
+      "shap_value": -0.0503
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 1.0,
+      "shap_value": -6.533
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_012",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.845,
+      "shap_value": -0.1083
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.71,
+      "shap_value": 0.0154
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.451,
+      "shap_value": 0.0006
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.621,
+      "shap_value": 0.0073
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.383,
+      "shap_value": 0.0001
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.877,
+      "shap_value": 0.0101
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 1.0,
+      "shap_value": 0.0093
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.089,
+      "shap_value": 0.0048
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.0051
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 8,
+      "sample_id": "ANML_09_Tuto_R3",
+      "feature_value_norm": 0.034,
+      "shap_value": 0.0127
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 9,
+      "sample_id": "ANML_10_Tuto_R4",
+      "feature_value_norm": 0.228,
+      "shap_value": 0.0025
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 10,
+      "sample_id": "ANML_11_Tuto_R5",
+      "feature_value_norm": 0.074,
+      "shap_value": 0.0085
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 11,
+      "sample_id": "ANML_12_Tuto_R6",
+      "feature_value_norm": 0.45,
+      "shap_value": -0.002
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 12,
+      "sample_id": "ANML_13_Tuto_R1",
+      "feature_value_norm": 0.036,
+      "shap_value": -0.0027
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 13,
+      "sample_id": "ANML_14_Tuto_R2",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.0361
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 14,
+      "sample_id": "ANML_15_Tuto_R3",
+      "feature_value_norm": 0.19,
+      "shap_value": 0.0021
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 15,
+      "sample_id": "ANML_16_Tuto_R4",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.0081
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 16,
+      "sample_id": "ANML_17_Tuto_R5",
+      "feature_value_norm": 0.0,
+      "shap_value": 0.0457
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 17,
+      "sample_id": "ANML_18_Tuto_R6",
+      "feature_value_norm": 0.367,
+      "shap_value": 0.0023
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 18,
+      "sample_id": "ANML_19_Tuto_R1",
+      "feature_value_norm": 0.583,
+      "shap_value": -0.0599
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 19,
+      "sample_id": "ANML_20_Tuto_R2",
+      "feature_value_norm": 0.286,
+      "shap_value": 0.0349
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 20,
+      "sample_id": "ANML_21_Tuto_R3",
+      "feature_value_norm": 0.574,
+      "shap_value": -0.1171
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 21,
+      "sample_id": "ANML_22_Tuto_R4",
+      "feature_value_norm": 0.387,
+      "shap_value": -0.0004
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 22,
+      "sample_id": "ANML_23_Tuto_R5",
+      "feature_value_norm": 0.871,
+      "shap_value": -6.306
+    },
+    {
+      "feature": "WGBS_CpG_TET2",
+      "sample_idx": 23,
+      "sample_id": "ANML_24_Tuto_R6",
+      "feature_value_norm": 0.624,
+      "shap_value": -0.0694
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 0,
+      "sample_id": "ANML_01_Untu_R1",
+      "feature_value_norm": 0.545,
+      "shap_value": 0.0046
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 1,
+      "sample_id": "ANML_02_Untu_R2",
+      "feature_value_norm": 0.081,
+      "shap_value": -0.004
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 2,
+      "sample_id": "ANML_03_Untu_R3",
+      "feature_value_norm": 0.573,
+      "shap_value": 0.004
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 3,
+      "sample_id": "ANML_04_Untu_R4",
+      "feature_value_norm": 0.389,
+      "shap_value": 0.0125
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 4,
+      "sample_id": "ANML_05_Untu_R5",
+      "feature_value_norm": 0.336,
+      "shap_value": -0.003
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 5,
+      "sample_id": "ANML_06_Untu_R6",
+      "feature_value_norm": 0.33,
+      "shap_value": -0.0023
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 6,
+      "sample_id": "ANML_07_Tuto_R1",
+      "feature_value_norm": 0.55,
+      "shap_value": -0.0017
+    },
+    {
+      "feature": "ChIP_H3K4me3_GENE_040",
+      "sample_idx": 7,
+      "sample_id": "ANML_08_Tuto_R2",
+      "feature_value_norm": 0.577,
+      "shap_value": -0.0018
+    }
+  ],
+  "stage4_waterfalls": {
+    "ANML_01_Untu_R1": {
+      "base_value": 0.1609,
+      "predicted_value": 0.0694,
+      "factors": [
+        {
+          "feature": "WGBS_CpG_KDM6A",
+          "raw_val": 1.964,
+          "shap_attribution": 0.0511
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_033",
+          "raw_val": -1.888,
+          "shap_attribution": -0.0324
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_030",
+          "raw_val": -1.218,
+          "shap_attribution": -0.025
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_083",
+          "raw_val": -1.772,
+          "shap_attribution": -0.0204
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_055",
+          "raw_val": -1.043,
+          "shap_attribution": -0.0194
+        },
+        {
+          "feature": "RNA_GENE_063",
+          "raw_val": -0.98,
+          "shap_attribution": -0.018
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_014",
+          "raw_val": 1.842,
+          "shap_attribution": 0.0178
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_077",
+          "raw_val": -1.784,
+          "shap_attribution": -0.0168
+        },
+        {
+          "feature": "WGBS_CpG_TET2",
+          "raw_val": 1.118,
+          "shap_attribution": 0.0154
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_072",
+          "raw_val": 0.209,
+          "shap_attribution": 0.0146
+        },
+        {
+          "feature": "EpiPermissiveness_KMT2A",
+          "raw_val": -0.364,
+          "shap_attribution": -0.0136
+        },
+        {
+          "feature": "RNA_SYN1",
+          "raw_val": -0.364,
+          "shap_attribution": -0.0132
+        }
+      ]
+    },
+    "ANML_02_Untu_R2": {
+      "base_value": 0.1609,
+      "predicted_value": 0.1178,
+      "factors": [
+        {
+          "feature": "ChIP_H3K4me3_GENE_072",
+          "raw_val": -1.179,
+          "shap_attribution": -0.0082
+        },
+        {
+          "feature": "WGBS_CpG_CAMK2A",
+          "raw_val": 1.822,
+          "shap_attribution": 0.0058
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_030",
+          "raw_val": -1.281,
+          "shap_attribution": -0.0051
+        },
+        {
+          "feature": "EpiPermissiveness_KMT2A",
+          "raw_val": -0.486,
+          "shap_attribution": -0.005
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_004",
+          "raw_val": -1.678,
+          "shap_attribution": -0.0045
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_040",
+          "raw_val": -1.281,
+          "shap_attribution": -0.004
+        },
+        {
+          "feature": "ChIP_H3K4me3_NPAS4",
+          "raw_val": -1.485,
+          "shap_attribution": -0.0036
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_033",
+          "raw_val": -1.168,
+          "shap_attribution": -0.0035
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_001",
+          "raw_val": -1.357,
+          "shap_attribution": -0.0031
+        },
+        {
+          "feature": "WGBS_CpG_KDM6A",
+          "raw_val": 0.712,
+          "shap_attribution": 0.003
+        },
+        {
+          "feature": "ChIP_H3K4me3_FOS",
+          "raw_val": -1.022,
+          "shap_attribution": -0.003
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_077",
+          "raw_val": -1.53,
+          "shap_attribution": -0.0028
+        }
+      ]
+    },
+    "ANML_03_Untu_R3": {
+      "base_value": 0.1609,
+      "predicted_value": 0.08,
+      "factors": [
+        {
+          "feature": "ChIP_H3K4me3_GENE_072",
+          "raw_val": -0.914,
+          "shap_attribution": -0.0205
+        },
+        {
+          "feature": "EpiPermissiveness_KMT2A",
+          "raw_val": -0.52,
+          "shap_attribution": -0.0193
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_033",
+          "raw_val": -1.672,
+          "shap_attribution": -0.0183
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_004",
+          "raw_val": -1.588,
+          "shap_attribution": -0.0141
+        },
+        {
+          "feature": "EpiPermissiveness_EZH2",
+          "raw_val": 1.538,
+          "shap_attribution": 0.0125
+        },
+        {
+          "feature": "WGBS_CpG_GENE_062",
+          "raw_val": 1.951,
+          "shap_attribution": 0.0117
+        },
+        {
+          "feature": "RNA_GENE_099",
+          "raw_val": -1.689,
+          "shap_attribution": -0.0105
+        },
+        {
+          "feature": "WGBS_CpG_GENE_024",
+          "raw_val": 1.124,
+          "shap_attribution": 0.01
+        },
+        {
+          "feature": "WGBS_CpG_CAMK2A",
+          "raw_val": 1.018,
+          "shap_attribution": 0.0096
+        },
+        {
+          "feature": "WGBS_CpG_GENE_070",
+          "raw_val": 1.009,
+          "shap_attribution": 0.0096
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_055",
+          "raw_val": -0.824,
+          "shap_attribution": -0.0095
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_012",
+          "raw_val": -1.62,
+          "shap_attribution": -0.0092
+        }
+      ]
+    },
+    "ANML_04_Untu_R4": {
+      "base_value": 0.1609,
+      "predicted_value": 0.0439,
+      "factors": [
+        {
+          "feature": "EpiPermissiveness_EZH2",
+          "raw_val": 2.419,
+          "shap_attribution": -0.0972
+        },
+        {
+          "feature": "EpiPermissiveness_KMT2A",
+          "raw_val": -0.456,
+          "shap_attribution": 0.0722
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_033",
+          "raw_val": -1.181,
+          "shap_attribution": 0.0577
+        },
+        {
+          "feature": "WGBS_CpG_GENE_095",
+          "raw_val": 1.476,
+          "shap_attribution": -0.0541
+        },
+        {
+          "feature": "ChIP_H3K27me3_GENE_090",
+          "raw_val": -1.596,
+          "shap_attribution": 0.0467
+        },
+        {
+          "feature": "WGBS_CpG_GENE_009",
+          "raw_val": 0.853,
+          "shap_attribution": -0.0463
+        },
+        {
+          "feature": "ChIP_H3K4me3_EGR1",
+          "raw_val": 0.759,
+          "shap_attribution": -0.0444
+        },
+        {
+          "feature": "WGBS_CpG_GENE_024",
+          "raw_val": 0.973,
+          "shap_attribution": -0.0418
+        },
+        {
+          "feature": "ChIP_H3K4me3_NPAS4",
+          "raw_val": 1.239,
+          "shap_attribution": -0.0392
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_055",
+          "raw_val": -0.709,
+          "shap_attribution": 0.038
+        },
+        {
+          "feature": "ChIP_H3K4me3_GENE_012",
+          "raw_val": -1.253,
+          "shap_attribution": 0.0315
+        },
+        {
+          "feature": "ChIP_H3K4me3_ARC",
+          "raw_val": 0.317,
+          "shap_attribution": -0.0277
+        }
+      ]
+    }
+  },
+  "stage4_master_regulators": [
+    {
+      "gene": "GENE_083",
+      "multiomics_shap_score": 0.3856,
+      "log2FoldChange": 0.729,
+      "padj": 0.02831630159933155,
+      "regulation": "UP",
+      "dmr_delta_beta": -0.1678,
+      "dmr_fdr": 0.29417749568853957,
+      "dmr_status": "No_Change",
+      "concordance_index": 2.586,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "FOS",
+      "multiomics_shap_score": 0.6597,
+      "log2FoldChange": -0.085,
+      "padj": 0.8209773687101162,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.2231,
+      "dmr_fdr": 0.07749525940302124,
+      "dmr_status": "No_Change",
+      "concordance_index": 2.553,
+      "biological_role": "Immediate-Early Plasticity Trigger"
+    },
+    {
+      "gene": "GENE_063",
+      "multiomics_shap_score": 0.5886,
+      "log2FoldChange": 0.461,
+      "padj": 0.04580172903501719,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.0235,
+      "dmr_fdr": 0.9416828284663257,
+      "dmr_status": "No_Change",
+      "concordance_index": 2.504,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "CAMK2A",
+      "multiomics_shap_score": 0.4993,
+      "log2FoldChange": 0.11,
+      "padj": 0.7103029697182085,
+      "regulation": "NS",
+      "dmr_delta_beta": -0.3359,
+      "dmr_fdr": 0.03607479887239176,
+      "dmr_status": "Hypomethylated",
+      "concordance_index": 2.335,
+      "biological_role": "Synaptic & Vocal Mastery Consolidator"
+    },
+    {
+      "gene": "GENE_033",
+      "multiomics_shap_score": 0.156,
+      "log2FoldChange": -0.743,
+      "padj": 0.2814773402155865,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.3241,
+      "dmr_fdr": 0.03607479887239176,
+      "dmr_status": "Hypermethylated",
+      "concordance_index": 2.231,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_049",
+      "multiomics_shap_score": 0.6154,
+      "log2FoldChange": -0.122,
+      "padj": 0.7542912117406826,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.0989,
+      "dmr_fdr": 0.6408787884629312,
+      "dmr_status": "No_Change",
+      "concordance_index": 2.227,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_012",
+      "multiomics_shap_score": 0.2963,
+      "log2FoldChange": 0.242,
+      "padj": 0.4334667113224704,
+      "regulation": "NS",
+      "dmr_delta_beta": -0.427,
+      "dmr_fdr": 0.03607479887239176,
+      "dmr_status": "Hypomethylated",
+      "concordance_index": 2.106,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_072",
+      "multiomics_shap_score": 0.4785,
+      "log2FoldChange": -0.197,
+      "padj": 0.6848726693879204,
+      "regulation": "NS",
+      "dmr_delta_beta": -0.0934,
+      "dmr_fdr": 0.7422711367974,
+      "dmr_status": "No_Change",
+      "concordance_index": 1.918,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_062",
+      "multiomics_shap_score": 0.188,
+      "log2FoldChange": 0.389,
+      "padj": 0.3000422097207985,
+      "regulation": "NS",
+      "dmr_delta_beta": -0.3633,
+      "dmr_fdr": 0.04611271197897327,
+      "dmr_status": "Hypomethylated",
+      "concordance_index": 1.874,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_040",
+      "multiomics_shap_score": 0.273,
+      "log2FoldChange": -0.44,
+      "padj": 0.38381309855484536,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.1813,
+      "dmr_fdr": 0.249593588457628,
+      "dmr_status": "No_Change",
+      "concordance_index": 1.842,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_009",
+      "multiomics_shap_score": 0.2845,
+      "log2FoldChange": 0.229,
+      "padj": 0.5205046856945288,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.282,
+      "dmr_fdr": 0.04611271197897327,
+      "dmr_status": "Hypermethylated",
+      "concordance_index": 1.761,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_095",
+      "multiomics_shap_score": 0.1352,
+      "log2FoldChange": 0.66,
+      "padj": 0.02831630159933155,
+      "regulation": "UP",
+      "dmr_delta_beta": -0.1773,
+      "dmr_fdr": 0.249593588457628,
+      "dmr_status": "No_Change",
+      "concordance_index": 1.75,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "TET2",
+      "multiomics_shap_score": 0.384,
+      "log2FoldChange": 0.259,
+      "padj": 0.5046468797115564,
+      "regulation": "NS",
+      "dmr_delta_beta": -0.094,
+      "dmr_fdr": 0.7465638341964205,
+      "dmr_status": "No_Change",
+      "concordance_index": 1.729,
+      "biological_role": "Epigenetic Demethylase / Chromatin Opener"
+    },
+    {
+      "gene": "GENE_077",
+      "multiomics_shap_score": 0.1223,
+      "log2FoldChange": -0.49,
+      "padj": 0.43181780932083585,
+      "regulation": "NS",
+      "dmr_delta_beta": 0.275,
+      "dmr_fdr": 0.03607479887239176,
+      "dmr_status": "Hypermethylated",
+      "concordance_index": 1.652,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    },
+    {
+      "gene": "GENE_089",
+      "multiomics_shap_score": 0.0,
+      "log2FoldChange": 0.554,
+      "padj": 0.02831630159933155,
+      "regulation": "UP",
+      "dmr_delta_beta": -0.386,
+      "dmr_fdr": 0.03607479887239176,
+      "dmr_status": "Hypomethylated",
+      "concordance_index": 1.603,
+      "biological_role": "Co-regulated Neuroplasticity Associate"
+    }
+  ],
+  "stage4_pathways": [
+    {
+      "pathway": "Long-Term Potentiation (LTP) & Synaptic Plasticity",
+      "p_value": "1.4e-09",
+      "fdr": "3.2e-08",
+      "genes": [
+        "BDNF",
+        "CAMK2A",
+        "GRIN2B",
+        "CREB1",
+        "ARC"
+      ],
+      "enrichment_ratio": 7.8
+    },
+    {
+      "pathway": "Activity-Dependent Neurogenesis & Vocal Learning Circuit",
+      "p_value": "4.2e-08",
+      "fdr": "8.5e-07",
+      "genes": [
+        "FOXP2",
+        "EGR1",
+        "MEF2C",
+        "NPAS4"
+      ],
+      "enrichment_ratio": 6.9
+    },
+    {
+      "pathway": "Chromatin Remodeling & DNA Demethylation Cascade",
+      "p_value": "2.1e-06",
+      "fdr": "2.8e-05",
+      "genes": [
+        "TET2",
+        "KDM6A",
+        "KMT2A",
+        "DNMT3A",
+        "EZH2"
+      ],
+      "enrichment_ratio": 5.4
+    },
+    {
+      "pathway": "Postsynaptic Density & Dendritic Spine Assembly",
+      "p_value": "5.6e-05",
+      "fdr": "4.1e-04",
+      "genes": [
+        "SYP",
+        "SYN1",
+        "FOS"
+      ],
+      "enrichment_ratio": 4.1
+    }
+  ],
+  "stage4_networks": [
+    {
+      "source": "FOXP2",
+      "target": "BDNF",
+      "interaction": "Transcriptional Activation",
+      "weight": 0.88
+    },
+    {
+      "source": "TET2",
+      "target": "BDNF",
+      "interaction": "Promoter Demethylation",
+      "weight": 0.82
+    },
+    {
+      "source": "KDM6A",
+      "target": "FOXP2",
+      "interaction": "H3K27me3 Demethylation",
+      "weight": 0.79
+    },
+    {
+      "source": "EGR1",
+      "target": "ARC",
+      "interaction": "Synaptic Tagging Induction",
+      "weight": 0.91
+    },
+    {
+      "source": "BDNF",
+      "target": "CAMK2A",
+      "interaction": "TrkB-MAPK Signaling",
+      "weight": 0.94
+    },
+    {
+      "source": "EZH2",
+      "target": "Untutored_Genes",
+      "interaction": "Polycomb Repression",
+      "weight": 0.76
+    }
+  ],
+  "stage4_trajectory_points": [
+    {
+      "sample_id": "ANML_01_Untu_R1",
+      "animal_id": "Animal_01",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.0348,
+      "Latent_Dim1": -4.01,
+      "Latent_Dim2": -10.677,
+      "Inferred_Pseudotime": 0.3254
+    },
+    {
+      "sample_id": "ANML_02_Untu_R2",
+      "animal_id": "Animal_02",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.0,
+      "Latent_Dim1": 1.06,
+      "Latent_Dim2": -13.327,
+      "Inferred_Pseudotime": 0.5172
+    },
+    {
+      "sample_id": "ANML_03_Untu_R3",
+      "animal_id": "Animal_03",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.0453,
+      "Latent_Dim1": -0.795,
+      "Latent_Dim2": -12.408,
+      "Inferred_Pseudotime": 0.447
+    },
+    {
+      "sample_id": "ANML_04_Untu_R4",
+      "animal_id": "Animal_04",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.1066,
+      "Latent_Dim1": -5.246,
+      "Latent_Dim2": -3.479,
+      "Inferred_Pseudotime": 0.2786
+    },
+    {
+      "sample_id": "ANML_05_Untu_R5",
+      "animal_id": "Animal_05",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.0,
+      "Latent_Dim1": 1.485,
+      "Latent_Dim2": -11.65,
+      "Inferred_Pseudotime": 0.5333
+    },
+    {
+      "sample_id": "ANML_06_Untu_R6",
+      "animal_id": "Animal_06",
+      "condition": "Untutored_Isolate",
+      "tutoring_hours": 0,
+      "true_plasticity_score": 0.0,
+      "Latent_Dim1": -0.107,
+      "Latent_Dim2": -11.155,
+      "Inferred_Pseudotime": 0.4731
+    },
+    {
+      "sample_id": "ANML_07_Tuto_R1",
+      "animal_id": "Animal_07",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.4439,
+      "Latent_Dim1": -9.153,
+      "Latent_Dim2": 5.479,
+      "Inferred_Pseudotime": 0.1307
+    },
+    {
+      "sample_id": "ANML_08_Tuto_R2",
+      "animal_id": "Animal_08",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.3871,
+      "Latent_Dim1": -12.608,
+      "Latent_Dim2": 3.592,
+      "Inferred_Pseudotime": 0.0
+    },
+    {
+      "sample_id": "ANML_09_Tuto_R3",
+      "animal_id": "Animal_09",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.3005,
+      "Latent_Dim1": -10.808,
+      "Latent_Dim2": 4.189,
+      "Inferred_Pseudotime": 0.0681
+    },
+    {
+      "sample_id": "ANML_10_Tuto_R4",
+      "animal_id": "Animal_10",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.3713,
+      "Latent_Dim1": -10.912,
+      "Latent_Dim2": 3.192,
+      "Inferred_Pseudotime": 0.0642
+    },
+    {
+      "sample_id": "ANML_11_Tuto_R5",
+      "animal_id": "Animal_11",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.3009,
+      "Latent_Dim1": -9.806,
+      "Latent_Dim2": 2.603,
+      "Inferred_Pseudotime": 0.106
+    },
+    {
+      "sample_id": "ANML_12_Tuto_R6",
+      "animal_id": "Animal_12",
+      "condition": "Tutored_Early_24h",
+      "tutoring_hours": 24,
+      "true_plasticity_score": 0.3007,
+      "Latent_Dim1": -10.611,
+      "Latent_Dim2": 3.135,
+      "Inferred_Pseudotime": 0.0756
+    },
+    {
+      "sample_id": "ANML_13_Tuto_R1",
+      "animal_id": "Animal_13",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.6836,
+      "Latent_Dim1": 4.108,
+      "Latent_Dim2": 2.607,
+      "Inferred_Pseudotime": 0.6326
+    },
+    {
+      "sample_id": "ANML_14_Tuto_R2",
+      "animal_id": "Animal_14",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.5327,
+      "Latent_Dim1": -4.233,
+      "Latent_Dim2": 5.119,
+      "Inferred_Pseudotime": 0.3169
+    },
+    {
+      "sample_id": "ANML_15_Tuto_R3",
+      "animal_id": "Animal_15",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.5459,
+      "Latent_Dim1": -3.468,
+      "Latent_Dim2": 7.14,
+      "Inferred_Pseudotime": 0.3459
+    },
+    {
+      "sample_id": "ANML_16_Tuto_R4",
+      "animal_id": "Animal_16",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.6273,
+      "Latent_Dim1": 1.774,
+      "Latent_Dim2": 5.352,
+      "Inferred_Pseudotime": 0.5442
+    },
+    {
+      "sample_id": "ANML_17_Tuto_R5",
+      "animal_id": "Animal_17",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.5958,
+      "Latent_Dim1": -2.508,
+      "Latent_Dim2": 1.015,
+      "Inferred_Pseudotime": 0.3822
+    },
+    {
+      "sample_id": "ANML_18_Tuto_R6",
+      "animal_id": "Animal_18",
+      "condition": "Tutored_Subchronic_7d",
+      "tutoring_hours": 168,
+      "true_plasticity_score": 0.6887,
+      "Latent_Dim1": 5.542,
+      "Latent_Dim2": 1.525,
+      "Inferred_Pseudotime": 0.6868
+    },
+    {
+      "sample_id": "ANML_19_Tuto_R1",
+      "animal_id": "Animal_19",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 0.9364,
+      "Latent_Dim1": 10.529,
+      "Latent_Dim2": 4.543,
+      "Inferred_Pseudotime": 0.8755
+    },
+    {
+      "sample_id": "ANML_20_Tuto_R2",
+      "animal_id": "Animal_20",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 0.9011,
+      "Latent_Dim1": 13.818,
+      "Latent_Dim2": 4.323,
+      "Inferred_Pseudotime": 1.0
+    },
+    {
+      "sample_id": "ANML_21_Tuto_R3",
+      "animal_id": "Animal_21",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 1.0,
+      "Latent_Dim1": 11.93,
+      "Latent_Dim2": 2.958,
+      "Inferred_Pseudotime": 0.9286
+    },
+    {
+      "sample_id": "ANML_22_Tuto_R4",
+      "animal_id": "Animal_22",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 0.9842,
+      "Latent_Dim1": 10.79,
+      "Latent_Dim2": 0.453,
+      "Inferred_Pseudotime": 0.8854
+    },
+    {
+      "sample_id": "ANML_23_Tuto_R5",
+      "animal_id": "Animal_23",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 1.0,
+      "Latent_Dim1": 12.333,
+      "Latent_Dim2": 4.572,
+      "Inferred_Pseudotime": 0.9438
+    },
+    {
+      "sample_id": "ANML_24_Tuto_R6",
+      "animal_id": "Animal_24",
+      "condition": "Tutored_Mastery_30d",
+      "tutoring_hours": 720,
+      "true_plasticity_score": 0.9003,
+      "Latent_Dim1": 10.897,
+      "Latent_Dim2": 0.901,
+      "Inferred_Pseudotime": 0.8895
+    }
+  ],
+  "stage4_trajectory_curve": [
+    {
+      "dim1": -11.15,
+      "dim2": 3.718
+    },
+    {
+      "dim1": -10.551,
+      "dim2": 3.01
+    },
+    {
+      "dim1": -9.952,
+      "dim2": 2.339
+    },
+    {
+      "dim1": -9.353,
+      "dim2": 1.706
+    },
+    {
+      "dim1": -8.753,
+      "dim2": 1.11
+    },
+    {
+      "dim1": -8.154,
+      "dim2": 0.552
+    },
+    {
+      "dim1": -7.555,
+      "dim2": 0.032
+    },
+    {
+      "dim1": -6.956,
+      "dim2": -0.451
+    },
+    {
+      "dim1": -6.357,
+      "dim2": -0.896
+    },
+    {
+      "dim1": -5.758,
+      "dim2": -1.304
+    },
+    {
+      "dim1": -5.159,
+      "dim2": -1.674
+    },
+    {
+      "dim1": -4.56,
+      "dim2": -2.006
+    },
+    {
+      "dim1": -3.96,
+      "dim2": -2.301
+    },
+    {
+      "dim1": -3.361,
+      "dim2": -2.558
+    },
+    {
+      "dim1": -2.762,
+      "dim2": -2.778
+    },
+    {
+      "dim1": -2.163,
+      "dim2": -2.96
+    },
+    {
+      "dim1": -1.564,
+      "dim2": -3.104
+    },
+    {
+      "dim1": -0.965,
+      "dim2": -3.211
+    },
+    {
+      "dim1": -0.366,
+      "dim2": -3.28
+    },
+    {
+      "dim1": 0.233,
+      "dim2": -3.312
+    },
+    {
+      "dim1": 0.833,
+      "dim2": -3.306
+    },
+    {
+      "dim1": 1.432,
+      "dim2": -3.262
+    },
+    {
+      "dim1": 2.031,
+      "dim2": -3.181
+    },
+    {
+      "dim1": 2.63,
+      "dim2": -3.062
+    },
+    {
+      "dim1": 3.229,
+      "dim2": -2.906
+    },
+    {
+      "dim1": 3.828,
+      "dim2": -2.712
+    },
+    {
+      "dim1": 4.427,
+      "dim2": -2.48
+    },
+    {
+      "dim1": 5.026,
+      "dim2": -2.211
+    },
+    {
+      "dim1": 5.626,
+      "dim2": -1.904
+    },
+    {
+      "dim1": 6.225,
+      "dim2": -1.56
+    },
+    {
+      "dim1": 6.824,
+      "dim2": -1.178
+    },
+    {
+      "dim1": 7.423,
+      "dim2": -0.758
+    },
+    {
+      "dim1": 8.022,
+      "dim2": -0.301
+    },
+    {
+      "dim1": 8.621,
+      "dim2": 0.194
+    },
+    {
+      "dim1": 9.22,
+      "dim2": 0.726
+    },
+    {
+      "dim1": 9.819,
+      "dim2": 1.296
+    },
+    {
+      "dim1": 10.419,
+      "dim2": 1.904
+    },
+    {
+      "dim1": 11.018,
+      "dim2": 2.549
+    },
+    {
+      "dim1": 11.617,
+      "dim2": 3.232
+    },
+    {
+      "dim1": 12.216,
+      "dim2": 3.952
+    }
+  ],
+  "stage4_centroids": {
+    "Untutored_Isolate": {
+      "dim1": -1.269,
+      "dim2": -10.449,
+      "mean_pseudotime": 0.429
+    },
+    "Tutored_Early_24h": {
+      "dim1": -10.65,
+      "dim2": 3.698,
+      "mean_pseudotime": 0.074
+    },
+    "Tutored_Subchronic_7d": {
+      "dim1": 0.202,
+      "dim2": 3.793,
+      "mean_pseudotime": 0.485
+    },
+    "Tutored_Mastery_30d": {
+      "dim1": 11.716,
+      "dim2": 2.958,
+      "mean_pseudotime": 0.92
+    }
+  },
+  "stage4_gene_waves": {
+    "BDNF": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.61,
+        "h3k4me3": 0.628,
+        "dna_methylation": -2.07
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.833,
+        "h3k4me3": 2.214,
+        "dna_methylation": -1.261
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.048,
+        "h3k4me3": 1.457,
+        "dna_methylation": -2.077
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.428,
+        "h3k4me3": 1.258,
+        "dna_methylation": -1.585
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.552,
+        "h3k4me3": 0.346,
+        "dna_methylation": 0.804
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.616,
+        "h3k4me3": 1.159,
+        "dna_methylation": 0.595
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": 0.482,
+        "h3k4me3": -0.297,
+        "dna_methylation": 0.533
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.286,
+        "h3k4me3": 1.467,
+        "dna_methylation": 0.727
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": 0.18,
+        "h3k4me3": -0.58,
+        "dna_methylation": 1.256
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.969,
+        "h3k4me3": 1.187,
+        "dna_methylation": -1.003
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.513,
+        "h3k4me3": -0.519,
+        "dna_methylation": 1.086
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": 0.8,
+        "h3k4me3": 0.242,
+        "dna_methylation": 0.452
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": 0.383,
+        "h3k4me3": -0.012,
+        "dna_methylation": 0.173
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": -0.331,
+        "h3k4me3": -1.214,
+        "dna_methylation": -0.485
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": -1.401,
+        "h3k4me3": -1.19,
+        "dna_methylation": -0.407
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.648,
+        "h3k4me3": -0.12,
+        "dna_methylation": -0.46
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -1.166,
+        "h3k4me3": -0.255,
+        "dna_methylation": 0.147
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -1.485,
+        "h3k4me3": -1.074,
+        "dna_methylation": -0.526
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.035,
+        "h3k4me3": -0.156,
+        "dna_methylation": 0.46
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.337,
+        "h3k4me3": -1.291,
+        "dna_methylation": 0.822
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.446,
+        "h3k4me3": -0.725,
+        "dna_methylation": 0.362
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.553,
+        "h3k4me3": -1.03,
+        "dna_methylation": 1.832
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.617,
+        "h3k4me3": -1.339,
+        "dna_methylation": 0.254
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.634,
+        "h3k4me3": -0.156,
+        "dna_methylation": 0.371
+      }
+    ],
+    "FOXP2": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.746,
+        "h3k4me3": 0.772,
+        "dna_methylation": 0.204
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": -1.006,
+        "h3k4me3": -2.039,
+        "dna_methylation": 0.247
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.304,
+        "h3k4me3": -0.961,
+        "dna_methylation": -0.301
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.535,
+        "h3k4me3": 0.075,
+        "dna_methylation": 0.716
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.621,
+        "h3k4me3": 1.032,
+        "dna_methylation": 0.292
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.545,
+        "h3k4me3": 0.744,
+        "dna_methylation": -0.929
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": -0.144,
+        "h3k4me3": 0.706,
+        "dna_methylation": -0.545
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.923,
+        "h3k4me3": 0.504,
+        "dna_methylation": 0.048
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": -2.37,
+        "h3k4me3": -0.261,
+        "dna_methylation": -0.499
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.569,
+        "h3k4me3": -0.089,
+        "dna_methylation": -1.241
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.379,
+        "h3k4me3": -1.03,
+        "dna_methylation": -0.196
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": -0.163,
+        "h3k4me3": -1.162,
+        "dna_methylation": 1.758
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": -1.573,
+        "h3k4me3": -0.533,
+        "dna_methylation": 1.903
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": -1.962,
+        "h3k4me3": -1.268,
+        "dna_methylation": 1.579
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": 0.2,
+        "h3k4me3": 0.606,
+        "dna_methylation": 0.396
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.81,
+        "h3k4me3": -0.096,
+        "dna_methylation": 0.9
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.022,
+        "h3k4me3": -0.779,
+        "dna_methylation": -0.08
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.616,
+        "h3k4me3": 0.924,
+        "dna_methylation": 1.006
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 1.456,
+        "h3k4me3": 0.013,
+        "dna_methylation": 0.609
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.062,
+        "h3k4me3": 1.513,
+        "dna_methylation": -1.736
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.41,
+        "h3k4me3": -1.241,
+        "dna_methylation": -1.261
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.772,
+        "h3k4me3": 2.076,
+        "dna_methylation": -0.063
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.476,
+        "h3k4me3": 1.103,
+        "dna_methylation": -1.175
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 1.456,
+        "h3k4me3": -0.61,
+        "dna_methylation": -1.634
+      }
+    ],
+    "EGR1": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.986,
+        "h3k4me3": 1.837,
+        "dna_methylation": -0.822
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": 2.163,
+        "h3k4me3": 1.674,
+        "dna_methylation": -1.27
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.153,
+        "h3k4me3": 0.14,
+        "dna_methylation": -1.125
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.668,
+        "h3k4me3": 1.703,
+        "dna_methylation": -1.405
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.056,
+        "h3k4me3": 1.407,
+        "dna_methylation": 0.16
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.606,
+        "h3k4me3": 1.428,
+        "dna_methylation": -0.432
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": 0.932,
+        "h3k4me3": 0.759,
+        "dna_methylation": 0.021
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.12,
+        "h3k4me3": 0.048,
+        "dna_methylation": -1.478
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": -0.3,
+        "h3k4me3": 0.341,
+        "dna_methylation": 0.637
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.147,
+        "h3k4me3": -0.815,
+        "dna_methylation": -0.328
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.154,
+        "h3k4me3": -0.037,
+        "dna_methylation": 0.385
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": 0.42,
+        "h3k4me3": -0.1,
+        "dna_methylation": -0.362
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": -1.743,
+        "h3k4me3": -0.585,
+        "dna_methylation": -0.958
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": -1.349,
+        "h3k4me3": -0.734,
+        "dna_methylation": -0.109
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": 0.416,
+        "h3k4me3": 0.231,
+        "dna_methylation": 0.999
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.033,
+        "h3k4me3": -1.2,
+        "dna_methylation": -0.1
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.05,
+        "h3k4me3": -0.045,
+        "dna_methylation": 0.533
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.076,
+        "h3k4me3": -0.577,
+        "dna_methylation": -0.95
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.286,
+        "h3k4me3": -1.961,
+        "dna_methylation": 1.943
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.202,
+        "h3k4me3": -1.132,
+        "dna_methylation": 0.689
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.86,
+        "h3k4me3": -0.939,
+        "dna_methylation": -0.215
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.926,
+        "h3k4me3": -0.653,
+        "dna_methylation": 0.245
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.23,
+        "h3k4me3": -0.227,
+        "dna_methylation": 1.835
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.633,
+        "h3k4me3": -0.562,
+        "dna_methylation": 2.106
+      }
+    ],
+    "TET2": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.455,
+        "h3k4me3": 1.076,
+        "dna_methylation": -1.203
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.915,
+        "h3k4me3": 0.135,
+        "dna_methylation": -0.458
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.278,
+        "h3k4me3": 1.67,
+        "dna_methylation": -1.093
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.687,
+        "h3k4me3": -0.444,
+        "dna_methylation": 0.267
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.784,
+        "h3k4me3": 1.327,
+        "dna_methylation": -0.96
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.534,
+        "h3k4me3": 1.48,
+        "dna_methylation": -0.914
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": -1.36,
+        "h3k4me3": -1.083,
+        "dna_methylation": 0.049
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.387,
+        "h3k4me3": -0.269,
+        "dna_methylation": -1.203
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": 0.438,
+        "h3k4me3": 0.336,
+        "dna_methylation": 1.118
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.144,
+        "h3k4me3": 0.142,
+        "dna_methylation": -0.582
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.705,
+        "h3k4me3": 0.674,
+        "dna_methylation": -1.203
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": -1.194,
+        "h3k4me3": -0.369,
+        "dna_methylation": 0.825
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": -1.694,
+        "h3k4me3": -1.704,
+        "dna_methylation": 2.065
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": -0.444,
+        "h3k4me3": -0.94,
+        "dna_methylation": 0.272
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": -1.565,
+        "h3k4me3": -1.598,
+        "dna_methylation": 1.663
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.524,
+        "h3k4me3": 1.876,
+        "dna_methylation": -1.203
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.199,
+        "h3k4me3": 0.259,
+        "dna_methylation": -1.084
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.91,
+        "h3k4me3": 0.216,
+        "dna_methylation": -0.004
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.103,
+        "h3k4me3": -0.992,
+        "dna_methylation": 0.703
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.423,
+        "h3k4me3": -1.636,
+        "dna_methylation": 0.06
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.8,
+        "h3k4me3": -0.488,
+        "dna_methylation": 0.838
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.058,
+        "h3k4me3": 0.159,
+        "dna_methylation": 0.674
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.439,
+        "h3k4me3": 0.065,
+        "dna_methylation": 1.642
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.275,
+        "h3k4me3": 0.109,
+        "dna_methylation": -0.269
+      }
+    ],
+    "DNMT3A": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": -1.295,
+        "h3k4me3": 1.361,
+        "dna_methylation": 1.472
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.31,
+        "h3k4me3": 1.346,
+        "dna_methylation": 0.325
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.748,
+        "h3k4me3": 0.282,
+        "dna_methylation": -1.235
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": -1.005,
+        "h3k4me3": -0.226,
+        "dna_methylation": 0.479
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.266,
+        "h3k4me3": -1.041,
+        "dna_methylation": 0.258
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": -0.562,
+        "h3k4me3": 0.927,
+        "dna_methylation": 1.393
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": -0.776,
+        "h3k4me3": -0.416,
+        "dna_methylation": 1.199
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.471,
+        "h3k4me3": -1.708,
+        "dna_methylation": -1.014
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": 0.856,
+        "h3k4me3": 0.257,
+        "dna_methylation": -1.158
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.906,
+        "h3k4me3": 1.095,
+        "dna_methylation": -0.773
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.174,
+        "h3k4me3": 0.297,
+        "dna_methylation": -0.389
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": 1.775,
+        "h3k4me3": -1.275,
+        "dna_methylation": -1.003
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": -0.007,
+        "h3k4me3": 1.02,
+        "dna_methylation": 0.945
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": 1.594,
+        "h3k4me3": -0.042,
+        "dna_methylation": -1.223
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": -0.013,
+        "h3k4me3": 0.76,
+        "dna_methylation": -0.534
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.429,
+        "h3k4me3": 0.623,
+        "dna_methylation": 1.084
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.858,
+        "h3k4me3": 0.456,
+        "dna_methylation": -1.297
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -1.121,
+        "h3k4me3": 0.498,
+        "dna_methylation": -0.865
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.294,
+        "h3k4me3": -0.631,
+        "dna_methylation": -0.262
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 1.13,
+        "h3k4me3": -0.908,
+        "dna_methylation": -0.33
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.859,
+        "h3k4me3": 0.257,
+        "dna_methylation": 1.979
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.406,
+        "h3k4me3": -2.785,
+        "dna_methylation": -0.532
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.581,
+        "h3k4me3": -0.654,
+        "dna_methylation": 1.311
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.591,
+        "h3k4me3": 0.508,
+        "dna_methylation": 0.17
+      }
+    ],
+    "CAMK2A": [
+      {
+        "pseudotime": 0.0,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.05,
+        "h3k4me3": -1.102,
+        "dna_methylation": 1.851
+      },
+      {
+        "pseudotime": 0.0642,
+        "condition": "Tutored_Early_24h",
+        "rna": -1.264,
+        "h3k4me3": -0.893,
+        "dna_methylation": -0.262
+      },
+      {
+        "pseudotime": 0.0681,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.341,
+        "h3k4me3": -1.816,
+        "dna_methylation": 0.101
+      },
+      {
+        "pseudotime": 0.0756,
+        "condition": "Tutored_Early_24h",
+        "rna": -1.164,
+        "h3k4me3": -1.405,
+        "dna_methylation": 0.328
+      },
+      {
+        "pseudotime": 0.106,
+        "condition": "Tutored_Early_24h",
+        "rna": 0.611,
+        "h3k4me3": -0.124,
+        "dna_methylation": -0.173
+      },
+      {
+        "pseudotime": 0.1307,
+        "condition": "Tutored_Early_24h",
+        "rna": 1.855,
+        "h3k4me3": 0.934,
+        "dna_methylation": 0.157
+      },
+      {
+        "pseudotime": 0.2786,
+        "condition": "Untutored_Isolate",
+        "rna": 0.37,
+        "h3k4me3": 0.261,
+        "dna_methylation": 0.307
+      },
+      {
+        "pseudotime": 0.3169,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.038,
+        "h3k4me3": 0.874,
+        "dna_methylation": 0.012
+      },
+      {
+        "pseudotime": 0.3254,
+        "condition": "Untutored_Isolate",
+        "rna": -1.179,
+        "h3k4me3": 0.461,
+        "dna_methylation": 0.214
+      },
+      {
+        "pseudotime": 0.3459,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.137,
+        "h3k4me3": 1.315,
+        "dna_methylation": -0.22
+      },
+      {
+        "pseudotime": 0.3822,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 1.304,
+        "h3k4me3": -0.861,
+        "dna_methylation": -0.885
+      },
+      {
+        "pseudotime": 0.447,
+        "condition": "Untutored_Isolate",
+        "rna": 1.082,
+        "h3k4me3": 0.615,
+        "dna_methylation": 1.018
+      },
+      {
+        "pseudotime": 0.4731,
+        "condition": "Untutored_Isolate",
+        "rna": -2.2,
+        "h3k4me3": -1.818,
+        "dna_methylation": 0.326
+      },
+      {
+        "pseudotime": 0.5172,
+        "condition": "Untutored_Isolate",
+        "rna": -0.272,
+        "h3k4me3": -0.049,
+        "dna_methylation": 1.822
+      },
+      {
+        "pseudotime": 0.5333,
+        "condition": "Untutored_Isolate",
+        "rna": -0.058,
+        "h3k4me3": -0.185,
+        "dna_methylation": 2.246
+      },
+      {
+        "pseudotime": 0.5442,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -1.62,
+        "h3k4me3": 0.978,
+        "dna_methylation": 0.836
+      },
+      {
+        "pseudotime": 0.6326,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": -0.171,
+        "h3k4me3": 0.466,
+        "dna_methylation": -1.019
+      },
+      {
+        "pseudotime": 0.6868,
+        "condition": "Tutored_Subchronic_7d",
+        "rna": 0.571,
+        "h3k4me3": -0.955,
+        "dna_methylation": -0.309
+      },
+      {
+        "pseudotime": 0.8755,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -1.334,
+        "h3k4me3": -0.452,
+        "dna_methylation": -1.12
+      },
+      {
+        "pseudotime": 0.8854,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.331,
+        "h3k4me3": 0.058,
+        "dna_methylation": -0.452
+      },
+      {
+        "pseudotime": 0.8895,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 1.073,
+        "h3k4me3": 1.529,
+        "dna_methylation": -0.686
+      },
+      {
+        "pseudotime": 0.9286,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.791,
+        "h3k4me3": 0.467,
+        "dna_methylation": -0.879
+      },
+      {
+        "pseudotime": 0.9438,
+        "condition": "Tutored_Mastery_30d",
+        "rna": -0.146,
+        "h3k4me3": -0.221,
+        "dna_methylation": -1.897
+      },
+      {
+        "pseudotime": 1.0,
+        "condition": "Tutored_Mastery_30d",
+        "rna": 0.129,
+        "h3k4me3": 1.922,
+        "dna_methylation": -1.315
+      }
+    ]
+  },
+  "stage4_simulations": [
+    {
+      "gene": "BDNF",
+      "perturbation_parameters": {
+        "rna_factor": 0.05,
+        "meth_delta": 0.15,
+        "histone_factor": -0.6,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.9033,
+        "probabilities": {
+          "Untutored_Isolate": 0.0622,
+          "Tutored_Early_24h": 0.0467,
+          "Tutored_Subchronic_7d": 0.1067,
+          "Tutored_Mastery_30d": 0.7844
+        }
+      },
+      "deltas": {
+        "score_delta": 0.0051,
+        "score_pct_change": 0.6,
+        "probabilities": {
+          "Untutored_Isolate": -0.0067,
+          "Tutored_Early_24h": 0.0067,
+          "Tutored_Subchronic_7d": -0.0067,
+          "Tutored_Mastery_30d": 0.0067
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "SYN1",
+          "baseline_rna": 7.92,
+          "perturbed_rna": 5.29,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "SYP",
+          "baseline_rna": 8.15,
+          "perturbed_rna": 5.44,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "ARC",
+          "baseline_rna": 6.34,
+          "perturbed_rna": 4.23,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "CAMK2A",
+          "baseline_rna": 7.71,
+          "perturbed_rna": 5.15,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "GRIN2B",
+          "baseline_rna": 10.0,
+          "perturbed_rna": 6.67,
+          "pct_change": -33.2
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of BDNF (Knockout/Knockdown) partially attenuates learning plasticity, causing an overall neuroplasticity score change of +0.005. BDNF is required as an active molecular gatekeeper; suppressing it deprives the synaptic machinery of essential neuroplastic remodeling.",
+      "preset_label": "BDNF Complete Knockout (Synaptic Impairment)"
+    },
+    {
+      "gene": "FOXP2",
+      "perturbation_parameters": {
+        "rna_factor": 0.1,
+        "meth_delta": 0.2,
+        "histone_factor": -0.4,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.898,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.0533,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7644
+        }
+      },
+      "deltas": {
+        "score_delta": -0.0002,
+        "score_pct_change": -0.0,
+        "probabilities": {
+          "Untutored_Isolate": -0.0,
+          "Tutored_Early_24h": 0.0133,
+          "Tutored_Subchronic_7d": 0.0,
+          "Tutored_Mastery_30d": -0.0133
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "BDNF",
+          "baseline_rna": 6.42,
+          "perturbed_rna": 4.4,
+          "pct_change": -31.5
+        },
+        {
+          "gene": "MEF2C",
+          "baseline_rna": 8.85,
+          "perturbed_rna": 6.06,
+          "pct_change": -31.5
+        },
+        {
+          "gene": "SYN1",
+          "baseline_rna": 7.92,
+          "perturbed_rna": 5.43,
+          "pct_change": -31.5
+        },
+        {
+          "gene": "EGR1",
+          "baseline_rna": 6.4,
+          "perturbed_rna": 4.38,
+          "pct_change": -31.5
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of FOXP2 (Knockout/Knockdown) partially attenuates learning plasticity, causing an overall neuroplasticity score change of -0.000. FOXP2 is required as an active molecular gatekeeper; suppressing it deprives the synaptic machinery of essential neuroplastic remodeling.",
+      "preset_label": "FOXP2 Disruption (Vocal Plasticity Impairment)"
+    },
+    {
+      "gene": "TET2",
+      "perturbation_parameters": {
+        "rna_factor": 2.2,
+        "meth_delta": -0.3,
+        "histone_factor": 0.8,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8921,
+        "probabilities": {
+          "Untutored_Isolate": 0.0578,
+          "Tutored_Early_24h": 0.0467,
+          "Tutored_Subchronic_7d": 0.1333,
+          "Tutored_Mastery_30d": 0.7622
+        }
+      },
+      "deltas": {
+        "score_delta": -0.0062,
+        "score_pct_change": -0.7,
+        "probabilities": {
+          "Untutored_Isolate": -0.0111,
+          "Tutored_Early_24h": 0.0067,
+          "Tutored_Subchronic_7d": 0.02,
+          "Tutored_Mastery_30d": -0.0156
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "BDNF",
+          "baseline_rna": 6.42,
+          "perturbed_rna": 9.12,
+          "pct_change": 42.0
+        },
+        {
+          "gene": "FOXP2",
+          "baseline_rna": 8.35,
+          "perturbed_rna": 11.85,
+          "pct_change": 42.0
+        },
+        {
+          "gene": "KDM6A",
+          "baseline_rna": 6.12,
+          "perturbed_rna": 8.7,
+          "pct_change": 42.0
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of TET2 (Overexpression) maintains robust plasticity index without ectopic cellular stress. Elevating TET2 potentiates chromatin accessibility and sustains rapid transcription of synaptic effector genes.",
+      "preset_label": "TET2 Demethylation Boost (Epigenetic Rejuvenation)"
+    },
+    {
+      "gene": "CREB1",
+      "perturbation_parameters": {
+        "rna_factor": 0.05,
+        "meth_delta": 0.1,
+        "histone_factor": -0.5,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0756,
+          "Tutored_Early_24h": 0.0433,
+          "Tutored_Subchronic_7d": 0.1067,
+          "Tutored_Mastery_30d": 0.7744
+        }
+      },
+      "deltas": {
+        "score_delta": 0.0,
+        "score_pct_change": 0.0,
+        "probabilities": {
+          "Untutored_Isolate": 0.0067,
+          "Tutored_Early_24h": 0.0033,
+          "Tutored_Subchronic_7d": -0.0067,
+          "Tutored_Mastery_30d": -0.0033
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "BDNF",
+          "baseline_rna": 6.42,
+          "perturbed_rna": 4.29,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "FOS",
+          "baseline_rna": 6.27,
+          "perturbed_rna": 4.19,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "ARC",
+          "baseline_rna": 6.34,
+          "perturbed_rna": 4.23,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "EGR1",
+          "baseline_rna": 6.4,
+          "perturbed_rna": 4.27,
+          "pct_change": -33.2
+        },
+        {
+          "gene": "NPAS4",
+          "baseline_rna": 6.66,
+          "perturbed_rna": 4.44,
+          "pct_change": -33.2
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of CREB1 (Knockout/Knockdown) partially attenuates learning plasticity, causing an overall neuroplasticity score change of +0.000. CREB1 is required as an active molecular gatekeeper; suppressing it deprives the synaptic machinery of essential neuroplastic remodeling.",
+      "preset_label": "CREB1 Master Regulator Knockout"
+    },
+    {
+      "gene": "ARC",
+      "perturbation_parameters": {
+        "rna_factor": 0.1,
+        "meth_delta": 0.05,
+        "histone_factor": -0.3,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "deltas": {
+        "score_delta": 0.0,
+        "score_pct_change": 0.0,
+        "probabilities": {
+          "Untutored_Isolate": 0.0,
+          "Tutored_Early_24h": 0.0,
+          "Tutored_Subchronic_7d": 0.0,
+          "Tutored_Mastery_30d": 0.0
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "SYP",
+          "baseline_rna": 8.15,
+          "perturbed_rna": 5.58,
+          "pct_change": -31.5
+        },
+        {
+          "gene": "GRIN2B",
+          "baseline_rna": 10.0,
+          "perturbed_rna": 6.85,
+          "pct_change": -31.5
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of ARC (Knockout/Knockdown) partially attenuates learning plasticity, causing an overall neuroplasticity score change of +0.000. ARC is required as an active molecular gatekeeper; suppressing it deprives the synaptic machinery of essential neuroplastic remodeling.",
+      "preset_label": "ARC Synaptic Plasticity Knockdown"
+    },
+    {
+      "gene": "EGR1",
+      "perturbation_parameters": {
+        "rna_factor": 2.0,
+        "meth_delta": -0.2,
+        "histone_factor": 0.7,
+        "baseline_condition": "Tutored_Mastery_30d"
+      },
+      "initial_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8983,
+        "probabilities": {
+          "Untutored_Isolate": 0.0689,
+          "Tutored_Early_24h": 0.04,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7778
+        }
+      },
+      "perturbed_state": {
+        "dominant_condition": "Tutored_Mastery_30d",
+        "plasticity_score": 0.8794,
+        "probabilities": {
+          "Untutored_Isolate": 0.0956,
+          "Tutored_Early_24h": 0.0467,
+          "Tutored_Subchronic_7d": 0.1133,
+          "Tutored_Mastery_30d": 0.7444
+        }
+      },
+      "deltas": {
+        "score_delta": -0.0189,
+        "score_pct_change": -2.1,
+        "probabilities": {
+          "Untutored_Isolate": 0.0267,
+          "Tutored_Early_24h": 0.0067,
+          "Tutored_Subchronic_7d": 0.0,
+          "Tutored_Mastery_30d": -0.0333
+        }
+      },
+      "downstream_cascade": [
+        {
+          "gene": "ARC",
+          "baseline_rna": 6.34,
+          "perturbed_rna": 8.55,
+          "pct_change": 35.0
+        },
+        {
+          "gene": "SYN1",
+          "baseline_rna": 7.92,
+          "perturbed_rna": 10.69,
+          "pct_change": 35.0
+        },
+        {
+          "gene": "SYP",
+          "baseline_rna": 8.15,
+          "perturbed_rna": 11.0,
+          "pct_change": 35.0
+        }
+      ],
+      "mechanistic_insight": "In silico simulation of EGR1 (Overexpression) maintains robust plasticity index without ectopic cellular stress. Elevating EGR1 potentiates chromatin accessibility and sustains rapid transcription of synaptic effector genes.",
+      "preset_label": "EGR1 Early Plasticity Induction"
+    }
+  ],
+  "available_genes": [
+    "BDNF",
+    "FOXP2",
+    "EGR1",
+    "FOS",
+    "ARC",
+    "NPAS4",
+    "DNMT3A",
+    "TET2",
+    "KDM6A",
+    "EZH2",
+    "CREB1",
+    "HDAC2",
+    "CAMK2A",
+    "GRIN2B",
+    "SYP",
+    "SYN1",
+    "MEF2C",
+    "KMT2A",
+    "GENE_001",
+    "GENE_002",
+    "GENE_003",
+    "GENE_004",
+    "GENE_005",
+    "GENE_006",
+    "GENE_007",
+    "GENE_008",
+    "GENE_009",
+    "GENE_010",
+    "GENE_011",
+    "GENE_012",
+    "GENE_013",
+    "GENE_014",
+    "GENE_015",
+    "GENE_016",
+    "GENE_017",
+    "GENE_018",
+    "GENE_019",
+    "GENE_020",
+    "GENE_021",
+    "GENE_022",
+    "GENE_023",
+    "GENE_024",
+    "GENE_025",
+    "GENE_026",
+    "GENE_027",
+    "GENE_028",
+    "GENE_029",
+    "GENE_030",
+    "GENE_031",
+    "GENE_032",
+    "GENE_033",
+    "GENE_034",
+    "GENE_035",
+    "GENE_036",
+    "GENE_037",
+    "GENE_038",
+    "GENE_039",
+    "GENE_040",
+    "GENE_041",
+    "GENE_042",
+    "GENE_043",
+    "GENE_044",
+    "GENE_045",
+    "GENE_046",
+    "GENE_047",
+    "GENE_048",
+    "GENE_049",
+    "GENE_050",
+    "GENE_051",
+    "GENE_052",
+    "GENE_053",
+    "GENE_054",
+    "GENE_055",
+    "GENE_056",
+    "GENE_057",
+    "GENE_058",
+    "GENE_059",
+    "GENE_060",
+    "GENE_061",
+    "GENE_062",
+    "GENE_063",
+    "GENE_064",
+    "GENE_065",
+    "GENE_066",
+    "GENE_067",
+    "GENE_068",
+    "GENE_069",
+    "GENE_070",
+    "GENE_071",
+    "GENE_072",
+    "GENE_073",
+    "GENE_074",
+    "GENE_075",
+    "GENE_076",
+    "GENE_077",
+    "GENE_078",
+    "GENE_079",
+    "GENE_080",
+    "GENE_081",
+    "GENE_082",
+    "GENE_083",
+    "GENE_084",
+    "GENE_085",
+    "GENE_086",
+    "GENE_087",
+    "GENE_088",
+    "GENE_089",
+    "GENE_090",
+    "GENE_091",
+    "GENE_092",
+    "GENE_093",
+    "GENE_094",
+    "GENE_095",
+    "GENE_096",
+    "GENE_097",
+    "GENE_098",
+    "GENE_099",
+    "GENE_100",
+    "GENE_101",
+    "GENE_102"
+  ]
+}

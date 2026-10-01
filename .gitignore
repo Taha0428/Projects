@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Virtual Envs
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Antigravity & IDE artifacts
+.gemini/
+.system_generated/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Output models & large temp files (keep sample_inputs, exclude large temporary caches)
+*.joblib
+*.pkl
